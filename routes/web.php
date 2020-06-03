@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -26,3 +26,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+//welcome
+Route::get('/','WelcomeController@getWelcomePage');
+//Create Test
+Route::get('/create-test','CreateTestController@getCreateTestPage');
+//Previous Test
+Route::get('/previous-test','PreviousTestController@getPreviousTestPage');
+//Reports
+Route::get('/reports','ReportsController@getReportsPage');
+//Graphs
+Route::get('/graphs','GraphsController@getGraphsPage');
+//Search
+Route::get('/search','SearchController@getSearchPage');
+//Notes
+Route::get('/notes','NotesController@getNotesPage');
+//Flash Cards
+Route::get('/flash-cards','FlashCardsController@getFlashCardsPage');
+//Reset
+Route::get('/reset','ResetController@getResetPage');
+//Help
+Route::get('/help','HelpController@getHelpPage');

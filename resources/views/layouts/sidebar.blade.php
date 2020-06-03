@@ -16,7 +16,15 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{url('/')}}" class="nav-link">
+                    <i class="nav-icon fa fa-tachometer-alt"></i>
+                    <p>
+                        Welcome
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/create-test')}}" class="nav-link active">
                     <i class="nav-icon fa fa-plus"></i>
                     <p>
                         Create Test
@@ -25,7 +33,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/previous-test')}}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Previous Test
@@ -42,13 +50,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="./index.html" class="nav-link active">
+                        <a href="{{url('/reports')}}" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Reports</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index2.html" class="nav-link">
+                        <a href="{{url('/graphs')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Graphs</p>
                         </a>
@@ -56,7 +64,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/search')}}" class="nav-link">
                     <i class="nav-icon fa fa-search"></i>
                     <p>
                         Search
@@ -64,7 +72,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/notes')}}" class="nav-link">
                     <i class="nav-icon fa fa-notes-medical"></i>
                     <p>
                         Notes
@@ -72,7 +80,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/flash-cards')}}" class="nav-link">
                     <i class="nav-icon fa fa-flask"></i>
                     <p>
                         Flash Cards
@@ -80,7 +88,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/reset')}}" class="nav-link">
                     <i class="nav-icon fa fa-circle"></i>
                     <p>
                         Reset
@@ -88,7 +96,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('/help')}}" class="nav-link">
                     <i class="nav-icon fa fa-hands-helping"></i>
                     <p>
                         Help
