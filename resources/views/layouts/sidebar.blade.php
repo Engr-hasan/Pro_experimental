@@ -4,9 +4,10 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
             <img src="{{asset('dashboard')}}/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+            <span class="brand-text font-weight-light" style="color: white">{{ \Auth::user()->name }}</span>
         </div>
         <div class="info">
-            
+
         </div>
     </div>
 
@@ -16,7 +17,7 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{url('/')}}" class="nav-link">
+                <a href="{{url('/')}}" class="nav-link active">
                     <i class="nav-icon fa fa-tachometer-alt"></i>
                     <p>
                         Welcome
@@ -24,7 +25,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/create-test')}}" class="nav-link active">
+                <a href="{{url('/create-test')}}" class="nav-link">
                     <i class="nav-icon fa fa-plus"></i>
                     <p>
                         Create Test
