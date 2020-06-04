@@ -27,7 +27,8 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-
+//Temp
+Route::get('/temp','WelcomeController@getTempPage');
 
 //welcome
 Route::get('/','WelcomeController@getWelcomePage');
