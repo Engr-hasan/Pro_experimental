@@ -10,4 +10,9 @@ class WelcomeController extends Controller
     {
     	return view('welcome.welcome');
     }
+
+    public function getTempPage()
+    {
+    	return view('home');
+    }
 }
