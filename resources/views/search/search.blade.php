@@ -3,42 +3,25 @@
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Main row -->
-            <br/>
-            <div class="row">
-                <section class="col-lg-12 connectedSortable">
-                    <!-- DIRECT CHAT -->
-                    <div class="card direct-chat direct-chat-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Search</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+    <div class="ibox-content">
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-5 center-xs center-sm nopadding">
+                    <div class="input-group">
+                        <input id="searchText" type="text" class="form-control ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="searchKeyword" maxlength="100" placeholder="Enter QuestionId or Keywords">
+                        <span class="input-group-btn">
+                            <button type="submit" ng-disabled="!searchComplete" class="btn btn-primary" ng-click="btnSearchClick()" autofocus="autofocus">Search</button>
+                             <img id="searchTooltip" data-toggle="popover" data-container="body" data-placement="right" src="/assets/media/images/info.png" width="20" style="cursor: pointer;margin-left:5px;margin-top:-2px;" data-original-title="" title="">
+                             <div id="searchTooltipDescription" style="display: none;">
+                                <div class="feed-activity-list">
+                                    Search from the questions you have already used by entering the question ID or keywords
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div>
-                                <p style="padding: 10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                           <h3 class="card-title"></h3>
-                        </div>
-                        <!-- /.card-footer-->
+                        </span>
                     </div>
-                    <!--/.direct-chat -->
-                </section>
+                </div>
+                <img ng-show="!searchComplete" src="img/ajax-loader.gif" style="height: 40px" class="ng-hide">
+                <div class="clearfix"></div>
+                <small><i>Search will be performed only on used questions.</i></small>
             </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 @endsection
