@@ -8,7 +8,7 @@ class WelcomeController extends Controller
 {
     public function getWelcomePage()
     {
-    	return view('welcome.welcome');
+    	return view('welcome.welcome-new');
     }
 
     public function getTempPage()
