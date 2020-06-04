@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="row p-3">
                 <div class="col-md-5">
-                    <div id="piechart"></div>
+                    <canvas id="pie-chart" width="800" height="450"></canvas>
                 </div>
             <div class="col-md-3">
                  <table class="table table-bordered">
@@ -97,7 +97,7 @@
             <hr/>
             <div class="row">
                 <div class="col-md-6">
-                    <div id="chart_div"></div>
+                    <canvas id="line-chart" width="800" height="450"></canvas>
                 </div>
             <div class="col-md-3">
                 <br><br><br>
@@ -189,6 +189,7 @@
               <tbody>
                 <tr>
                   <td>
+                    <span>Medicine</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-danger" style="width: 55%"></div>
                     </div>
@@ -200,6 +201,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Medicine</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-warning" style="width: 55%"></div>
                     </div>
@@ -211,6 +213,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Medicine</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-success" style="width: 55%"></div>
                     </div>
@@ -222,6 +225,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Medicine</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-primary" style="width: 55%"></div>
                     </div>
@@ -233,6 +237,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Medicine</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-info" style="width: 55%"></div>
                     </div>
@@ -244,6 +249,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Medicine</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                     </div>
@@ -284,6 +290,7 @@
               <tbody>
                 <tr>
                   <td>
+                    <span>Dermatology</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-danger" style="width: 55%"></div>
                     </div>
@@ -295,6 +302,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Dermatology</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-warning" style="width: 55%"></div>
                     </div>
@@ -306,6 +314,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Dermatology</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-success" style="width: 55%"></div>
                     </div>
@@ -317,6 +326,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Dermatology</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-primary" style="width: 55%"></div>
                     </div>
@@ -328,6 +338,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Dermatology</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar bg-info" style="width: 55%"></div>
                     </div>
@@ -339,6 +350,7 @@
                 </tr>
                 <tr>
                   <td>
+                    <span>Dermatology</span>
                     <div class="progress progress-xs">
                       <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                     </div>
@@ -370,126 +382,68 @@
     <script src="{{asset('dashboard')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('dashboard')}}/dist/js/adminlte.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
     <script type="text/javascript">
           //pie chart
-          // Load google charts
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-
-            // Draw the chart and set the chart values
-            function drawChart() {
-              var data = google.visualization.arrayToDataTable([
-              ['Task', 'Hours per Day'],
-              ['Work', 8],
-              ['Eat', 2],
-              ['TV', 4],
-              ['Gym', 2],
-              ['Sleep', 8]
-            ]);
-
-              // Optional; add a title and set the width and height of the chart
-              var options = {'width':400, 'height':270};
-
-              // Display the chart inside the <div> element with id="piechart"
-              var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-              chart.draw(data, options);
-            }
+          new Chart(document.getElementById("pie-chart"), {
+                type: 'pie',
+                data: {
+                  labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                  datasets: [{
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    data: [2478,5267,734,784,433]
+                  }]
+                },
+                options: {
+                  title: {
+                    display: true,
+                    // text: 'Predicted world population (millions) in 2050'
+                  }
+                }
+            });
 
 
             //line chart
-            google.charts.load('current', {'packages':['line', 'corechart']});
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-
-              var button = document.getElementById('change-chart');
-              var chartDiv = document.getElementById('chart_div');
-
-              var data = new google.visualization.DataTable();
-              data.addColumn('date', '');  //Month
-              data.addColumn('number', ""); //Average Temperature
-              data.addColumn('number', "");  //Average Hours of Daylight
-
-              data.addRows([
-                [new Date(2014, 0),  -.5,  5.7],
-                [new Date(2014, 1),   .4,  8.7],
-                [new Date(2014, 2),   .5,   12],
-                [new Date(2014, 3),  2.9, 15.3],
-                [new Date(2014, 4),  6.3, 18.6],
-                [new Date(2014, 5),    9, 20.9],
-                [new Date(2014, 6), 10.6, 19.8],
-                [new Date(2014, 7), 10.3, 16.6],
-                [new Date(2014, 8),  7.4, 13.3],
-                [new Date(2014, 9),  4.4,  9.9],
-                [new Date(2014, 10), 1.1,  6.6],
-                [new Date(2014, 11), -.2,  4.5]
-              ]);
-
-              var materialOptions = {
-                // chart: {
-                //   title: 'Average Temperatures and Daylight in Iceland Throughout the Year'
-                // },
-                width: 550,
-                height: 270,
-                // series: {
-                //   // Gives each series an axis name that matches the Y-axis below.
-                //   0: {axis: 'Temps'},
-                //   1: {axis: 'Daylight'}
-                // },
-                // axes: {
-                //   // Adds labels to each axis; they don't have to match the axis names.
-                //   y: {
-                //     Temps: {label: 'Temps (Celsius)'},
-                //     Daylight: {label: 'Daylight'}
-                //   }
-                // }
-              };
-
-              var classicOptions = {
-                title: 'Average Temperatures and Daylight in Iceland Throughout the Year',
-                width: 900,
-                height: 500,
-                // Gives each series an axis that matches the vAxes number below.
-                /*series: {
-                  0: {targetAxisIndex: 0},
-                  1: {targetAxisIndex: 1}
-                },
-                vAxes: {
-                  // Adds titles to each axis.
-                  0: {title: 'Temps (Celsius)'},
-                  1: {title: 'Daylight'}
-                },*/
-                hAxis: {
-                  ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
-                          new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
-                          new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
-                         ]
-                },
-                vAxis: {
-                  viewWindow: {
-                    max: 30
-                  }
+            new Chart(document.getElementById("line-chart"), {
+              type: 'line',
+              data: {
+                labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+                datasets: [{ 
+                    data: [4486,5114,6706,7067,8807,5011,4334,4221,7283,2178],
+                    label: "Africa",
+                    borderColor: "#3e95cd",
+                    fill: false
+                  }/*, { 
+                    data: [282,350,411,502,635,809,947,1402,3700,5267],
+                    label: "Asia",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                  }, { 
+                    data: [168,170,178,190,203,276,408,547,675,734],
+                    label: "Europe",
+                    borderColor: "#3cba9f",
+                    fill: false
+                  }, { 
+                    data: [40,20,10,16,24,38,74,167,508,784],
+                    label: "Latin America",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                  }, { 
+                    data: [6,3,2,2,7,26,82,172,312,433],
+                    label: "North America",
+                    borderColor: "#c45850",
+                    fill: false
+                  }*/
+                ]
+              },
+              options: {
+                title: {
+                  display: true,
+                  // text: 'World population per region (in millions)'
                 }
-              };
-
-              function drawMaterialChart() {
-                var materialChart = new google.charts.Line(chartDiv);
-                materialChart.draw(data, materialOptions);
-                button.innerText = 'Change to Classic';
-                button.onclick = drawClassicChart;
               }
-
-              function drawClassicChart() {
-                var classicChart = new google.visualization.LineChart(chartDiv);
-                classicChart.draw(data, classicOptions);
-                button.innerText = 'Change to Material';
-                button.onclick = drawMaterialChart;
-              }
-
-              drawMaterialChart();
-
-            }
+            });
     </script>
 @stop
 
