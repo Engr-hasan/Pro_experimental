@@ -1,475 +1,228 @@
 @extends('layouts.dashboard')
-
+@section('css')
+  <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+@stop
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <div class="row ibox-content" style="border-top:0px;margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-body">
+            <h4>Subjects</h4>
+            <hr/>
+            <div class="input-group input-group-sm  float-right" style="width: 150px;">
+            <input type="text" name="table_search" class="form-control" placeholder="Search">
 
-        <!-- ngIf: testId > 0 -->
-        <!-- ngIf: testId <= 0 --><div class="pull-right hidden-xs ng-scope" ng-if="testId <= 0" style="position:relative">
-            <img ng-src="../common/img/print.png" style="width: 36px; cursor: pointer;margin-bottom:5px;position: absolute;z-index: 1001;right: 0px;top: 0px;" ng-click="printContent()" src="../common/img/print.png">
-        </div><!-- end ngIf: testId <= 0 -->
-
-        <div class="ibox float-e-margins">
-            <div class="ibox-content nopadding" style="border-top:0px;">
-
-                <div class="col-md-3 center-xs">
-                    <div id="questionlistChart"><div style="position: relative;"><iframe name="Drawing_Frame_55793" id="Drawing_Frame_55793" width="237" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div></div></div></div>
-                </div>
-
-                <div class="col-md-9 col-xs-12">
-                    <div class="col-xs-12 col-sm-6 welcome-graph-vertical-align">
-                        <h3>Question List</h3>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <span class="badge badge-correct ng-binding">8%</span>
-                                <span class="badge badge-plain ng-binding">1</span>
-                                Correct
-                            </li>
-                            <li class="list-group-item ">
-                                <span class="badge badge-incorrect ng-binding">85%</span>
-                                <span class="badge badge-plain ng-binding">11</span>
-                                Incorrect
-                            </li>
-                            <li class="list-group-item">
-                                <span class="badge badge-omitted ng-binding">8%</span>
-                                <span class="badge badge-plain ng-binding">1</span>
-                                Omitted
-                            </li>
-
-                        </ul>
-
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Correct</th>
+                  <th>Incorrect</th>
+                  <th>Omitted</th>
+                  <th>P-Rank</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-danger" style="width: 55%"></div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 welcome-graph-vertical-align">
-                        <!-- ngIf: launchCode == 'nbme' || launchCode == 'collegeprep' --><div ng-if="launchCode == 'nbme' || launchCode == 'collegeprep'" class="ng-scope">
-                            <h3>Answer Changes</h3>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <span class="badge badge-plain ng-binding">0</span>
-                                    Correct to Incorrect
-                                </li>
-                                <li class="list-group-item ">
-                                    <span class="badge badge-plain ng-binding">0</span>
-                                    Incorrect to Correct
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="badge badge-plain ng-binding">0</span>
-                                    Incorrect to Incorrect
-                                </li>
-                            </ul>
-                        </div><!-- end ngIf: launchCode == 'nbme' || launchCode == 'collegeprep' -->
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-warning" style="width: 55%"></div>
                     </div>
-                    <div class="col-xs-12 col-sm-6  ng-hide" style="margin-bottom: 20px;" ng-show="globalConstants.qbankIsSim &amp;&amp; clientConfig.topLevelProductId == clientConstants.topLevelProduct.nclex &amp;&amp; clientConfig.qbankId != clientConstants.qbankIds.med_math">
-                        <div class="nclexSimScoreBar pull-right nclexpadding" style="width: 100%; border: 1px solid  #e7eaec; border-radius: 5px;">
-
-                            <div style="float: left; width: 100%;">
-                                <div style="float: left; width: 80%;">
-                                    <img id="percentileTooltip" data-toggle="popover" data-container="body" data-placement="bottom" src="/assets/media/images/info.png" width="20" style="float: left; margin-top: 4px; cursor: pointer;" data-original-title="" title="">
-                                    <div id="percentileTooltipDescription" style="display: none;">
-                                        <div class="feed-activity-list" style="margin-top: 20px;">
-                                            <table class="table">
-                                                <tbody><tr>
-                                                    <td>
-                                                        Percentile is a comparison of your performance with the performance of other users. A <i>p</i>th percentile means that p% of people have scored less than you. The percentiles shown here are in no way related to the actual exam scores. It only indicates your relative performance when compared with other self-assessment users.
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        </div>
-                                    </div>
-                                    <h4>&nbsp;Percentile :&nbsp;<span ng-style="{'color':fontColor}" style="font-size: 15px" class="ng-binding"><small><sup class="ng-binding"></sup></small></span></h4>
-                                </div>
-                                <div style="margin-top: 5px; text-align: right; float: right; width: 20%; padding-right: 5px;">
-                                    <a ng-click="refreshNclexSimScore()" title="Recalculate score, if you think your score does not represent your performance."><i style="font-size: 13pt; color: #cacace;" class="fas fa-sync-alt"></i></a>
-                                </div>
-                            </div>
-
-                            <div style="float: left; width: 100%;">
-
-                                <div style="height: 25px; width: 100%; margin-top: 7px;">
-
-                                    <div ng-class="{'activestatus': status == 'low'}" style="width: 25%; height: 100%; float: left;">
-                                        <div class="percentilestatusbar" title="Low" ng-style="{'background-color': status == 'low'? fontColor:'#F1F1F1', 'color': status == 'low'? 'white':'#b3b3b3'}" style="border-right: 1px solid rgb(216, 216, 216); border-top-left-radius: 5px; border-bottom-left-radius: 5px; background-color: rgb(241, 241, 241); color: rgb(179, 179, 179);">
-                                            <span>Low</span>
-                                        </div>
-                                    </div>
-                                    <div ng-class="{'activestatus': status == 'borderline'}" style="width: 25%; height: 100%; float: left;">
-                                        <div class="percentilestatusbar" title="Borderline" ng-style="{'background-color': status == 'borderline'? fontColor:'#F1F1F1', 'color': status == 'borderline'? 'white':'#b3b3b3'}" style="border-right: 1px solid rgb(216, 216, 216); background-color: rgb(241, 241, 241); color: rgb(179, 179, 179);">
-                                            <span>Borderline</span>
-                                        </div>
-                                    </div>
-                                    <div ng-class="{'activestatus': status == 'high'}" style="width: 25%; height: 100%; float: left;">
-                                        <div class="percentilestatusbar" title="High" ng-style="{'background-color': status == 'high'? fontColor:'#F1F1F1', 'color': status == 'high'? 'white':'#b3b3b3'}" style="border-right: 1px solid rgb(216, 216, 216); background-color: rgb(241, 241, 241); color: rgb(179, 179, 179);">
-                                            <span>High</span>
-                                        </div>
-                                    </div>
-                                    <div ng-class="{'activestatus': status == 'veryhigh'}" style="width: 25%; height: 100%; float: left;">
-                                        <div class="percentilestatusbar" title="Very High" ng-style="{'background-color': status == 'veryhigh'? fontColor:'#F1F1F1', 'color': status == 'veryhigh'? 'white':'#b3b3b3'}" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px; background-color: rgb(241, 241, 241); color: rgb(179, 179, 179);">
-                                            <span>Very&nbsp;High</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 7px; height: 30px;">
-                                    <img id="copTooltip" data-toggle="popover" data-container="body" data-placement="bottom" src="/assets/media/images/info.png" width="20" style="float: left; margin-top: 3px; cursor: pointer;" data-original-title="" title="">
-                                    <div id="copTooltipDescription" style="display: none;">
-                                        <div class="feed-activity-list" style="margin-top: 20px;">
-                                            <table class="table">
-                                                <caption>
-                                                    <strong>Chance of Passing</strong><br>
-                                                    Indicates your probability of passing the NCLEX exam. This is an estimate based on our proprietary algorithms &amp; data and does not constitute a guarantee.
-                                                </caption>
-
-                                                <tbody><tr>
-                                                    <td>
-                                                        <strong>Very&nbsp;High</strong>
-                                                    </td>
-                                                    <td>Indicates that your probability of passing the NCLEX exam is highest amongst group of users who have used our product.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>High</strong>
-                                                    </td>
-                                                    <td>Indicates that your probability of passing is somewhat higher than rest of users but there are still areas which require improvement.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Borderline</strong>
-                                                    </td>
-                                                    <td>
-                                                        Indicates that we are unable to determine your probability of passing. We do not have sufficient data based on your performance to reach a definite conclusion.
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <strong>Low</strong>
-                                                    </td>
-                                                    <td>Indicates that your probability of passing the NCLEX exam is extremely low.  You will need to identify areas that require improvement and work on them diligently in order to increase your chances of success.</td>
-                                                </tr>
-                                            </tbody></table>
-                                        </div>
-                                    </div>
-                                    <h4 class="pull-left" style="line-height: 15px;">&nbsp;Chance of passing :&nbsp;</h4>
-                                    <h4 ng-style="{'color':fontColor}" class="pull-left ng-binding" style="line-height: 15px;"></h4>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-
-                        </div>
-
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-success" style="width: 55%"></div>
                     </div>
-                </div>
-                <div class="clearfix"></div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-primary" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-info" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+
+          <br><br>
+
+          <h4>Systems</h4>
+            <hr/>
+            <div class="input-group input-group-sm  float-right" style="width: 150px;">
+            <input type="text" name="table_search" class="form-control" placeholder="Search">
+
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
             </div>
-        </div>
-
-        <div ng-show="showPRank" class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Percentile Rank </h5>
-                <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
-    <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
-    
-</div></div>
-            </div>
-            <div class="ibox-content nopadding">
-                <div class="col-xs-12 col-lg-6">
-                    <div id="percentileRankChart" style="height: 300px;margin-bottom:20px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 505px; height: 300px;"><div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="505" height="300" aria-label="A chart." style="overflow: hidden;"><defs id="defs"><clipPath id="_ABSTRACT_RENDERER_ID_199"><rect x="20" y="40" width="465" height="260"></rect></clipPath></defs><rect x="0" y="0" width="505" height="300" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><rect x="20" y="40" width="465" height="260" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(https://www.uworld.com/ClientApp/V2/apps/Qbank/index.html#_ABSTRACT_RENDERER_ID_199)"><g><rect x="22" y="40" width="1" height="260" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="115" y="40" width="1" height="260" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="208" y="40" width="1" height="260" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="301" y="40" width="1" height="260" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="394" y="40" width="1" height="260" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="20" y="299" width="465" height="1" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="20" y="234" width="465" height="1" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="20" y="170" width="465" height="1" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="20" y="105" width="465" height="1" stroke="none" stroke-width="0" fill="#f2f2f2"></rect><rect x="20" y="40" width="465" height="1" stroke="none" stroke-width="0" fill="#f2f2f2"></rect></g><g><rect x="21.5" y="41" width="0.5" height="258" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="26.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="30.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="35.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="39.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="44.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="49.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="53.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="58.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="63.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="67.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="72.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="77.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="81.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="86.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="90.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="95.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="100.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="104.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="109.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="114.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="118.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="123.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="128.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="132.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="137.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="142.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="146.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="151.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="155.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="160.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="165.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="169.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="174.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="179.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="183.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="188.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="193.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="197.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="202.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="206.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="211.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="216.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="220.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="225.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="230.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="234.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="239.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="244.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="248.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="253.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="258.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="262.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="267.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="271.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="276.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="281.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="285.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="290.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="295.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="299.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="304.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="309.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="313.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="318.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="322.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="327.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="332.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="336.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="341.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="346.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="350.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="355.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="360.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="364.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="369.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="374.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="378.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="383.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="387.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="392.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="397.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="401.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="406.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="411.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="415.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="420.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="425.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="429.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="434.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="438.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="443.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="448.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="452.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="457.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="462.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="466.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="471.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="476.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="480.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#69c869"></rect><rect x="22.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="27.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="31.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="36.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="40.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="45.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="50.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="54.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="59.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="64.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="68.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="73.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="78.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="82.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="87.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="91.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="96.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="101.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="105.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="110.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="115.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="119.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="124.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="129.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="133.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="138.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="143.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="147.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="152.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="156.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="161.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="166.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="170.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="175.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="180.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="184.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="189.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="194.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="198.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="203.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="207.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="212.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="217.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="221.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="226.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="231.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="235.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="240.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="245.5" y="41" width="0.5" height="258" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="249.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="254.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="259.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="263.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="268.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="272.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="277.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="282.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="286.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="291.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="296.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="300.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="305.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="310.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="314.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="319.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="323.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="328.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="333.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="337.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="342.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="347.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="351.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="356.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="361.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="365.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="370.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="375.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="379.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="384.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="388.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="393.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="398.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="402.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="407.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="412.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="416.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="421.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="426.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="430.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="435.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="439.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="444.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="449.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="453.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="458.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="463.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="467.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="472.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="477.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect><rect x="481.5" y="299" width="0.5" height="0.5" stroke="none" stroke-width="0" fill="#f05a5b"></rect></g><g><rect x="22" y="40" width="1" height="260" stroke="none" stroke-width="0" fill="#ffffff"></rect><rect x="20" y="299" width="465" height="1" stroke="none" stroke-width="0" fill="#333333"></rect></g><g><path d="M22.82,299.5L27.46,299.11923115L32.1,298.0075384L36.739999999999995,296.21014315L41.379999999999995,293.7713344L46.019999999999996,290.73446875L50.66,287.1419704L55.3,283.03533115L59.94,278.4551104L64.58,273.44093515L69.22,268.0315L73.86,262.26456715L78.5,256.1769664L83.13999999999999,249.80459515L87.78,243.18241840000002L92.42,236.34446875000003L97.05999999999999,229.3238464L101.69999999999999,222.15271915L106.33999999999999,214.86232239999998L110.97999999999999,207.48295915L115.61999999999999,200.04399999999998L120.25999999999999,192.57388315000003L124.89999999999999,185.1001144L129.54,177.64926715000001L134.18,170.2469824L138.82,162.91796875L143.45999999999998,155.68600240000004L148.1,148.57392715000003L152.73999999999998,141.6036544L157.38,134.79616315L162.01999999999998,128.17150000000004L166.66,121.74877915000008L171.29999999999998,115.54618240000002L175.94,109.58095915000001L180.57999999999998,103.86942640000001L185.22,98.42696874999999L189.85999999999999,93.2680384L194.5,88.40615514999996L199.14,83.85390640000003L203.78,79.62294715000002L208.42,75.72399999999999L213.05999999999997,72.16685514999998L217.7,68.96037039999999L222.33999999999997,66.11247114999995L226.98,63.63015039999996L231.61999999999998,61.51946874999996L236.26,59.78555439999997L240.89999999999998,58.432603150000006L245.54,57.4638784L250.17999999999998,56.88171115L254.82,56.6875L259.46,56.88171115L264.1,57.46387840000003L268.74,58.432603150000006L273.38,59.785554400000024L278.02,61.519468750000044L282.65999999999997,63.63015040000002L287.29999999999995,66.11247114999995L291.94,68.96037039999999L296.58,72.16685514999998L301.21999999999997,75.72399999999999L305.85999999999996,79.62294715000002L310.5,83.85390640000003L315.14,88.40615514999999L319.78,93.26803840000002L324.41999999999996,98.42696875000004L329.06,103.86942640000001L333.7,109.58095915000001L338.34,115.54618240000002L342.97999999999996,121.74877914999996L347.62,128.1715L352.26,134.79616314999996L356.9,141.6036544L361.53999999999996,148.57392715000003L366.17999999999995,155.68600239999998L370.82,162.91796875L375.46,170.24698240000004L380.09999999999997,177.64926715000004L384.73999999999995,185.1001144L389.38,192.57388315000003L394.02,200.04400000000004L398.65999999999997,207.48295915000006L403.29999999999995,214.86232239999998L407.94,222.15271915L412.58,229.32384639999998L417.21999999999997,236.34446875L421.85999999999996,243.18241840000002L426.5,249.80459515L431.14,256.1769664L435.78,262.26456715L440.41999999999996,268.0315L445.05999999999995,273.44093515000003L449.7,278.4551104L454.34,283.03533115000005L458.97999999999996,287.1419704L463.61999999999995,290.73446874999996L468.26,293.7713344L472.9,296.21014315L477.53999999999996,298.0075384L482.17999999999995,299.11923115" stroke="#689bf7" stroke-width="2" fill-opacity="1" fill="none"></path></g><g><rect x="21" y="41" width="1" height="12" stroke="none" stroke-width="0" fill="#999999"></rect><rect x="245" y="41" width="1" height="12" stroke="none" stroke-width="0" fill="#999999"></rect></g></g><g></g><g><g><g><rect x="9.5" y="52.5" width="24" height="16" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="middle" x="21" y="64.9" font-family="Arial" font-size="14" font-style="italic" stroke="#ffffff" stroke-width="3" fill="#69c869" aria-hidden="true">0th</text><text text-anchor="middle" x="21" y="64.9" font-family="Arial" font-size="14" font-style="italic" stroke="none" stroke-width="0" fill="#69c869">0th</text></g><rect x="11.5" y="53" width="19" height="14" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g></g><g><g><rect x="229.5" y="52.5" width="32" height="16" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="middle" x="245" y="64.9" font-family="Arial" font-size="14" font-style="italic" stroke="#ffffff" stroke-width="3" fill="#f05a5b" aria-hidden="true">48th</text><text text-anchor="middle" x="245" y="64.9" font-family="Arial" font-size="14" font-style="italic" stroke="none" stroke-width="0" fill="#f05a5b">48th</text></g><rect x="231.5" y="53" width="27" height="14" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g></g></g></g><g></g></svg></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 310px; left: 515px; white-space: nowrap; font-family: Arial; font-size: 14px; font-style: italic;">48th</div><div></div></div></div>
-                </div>
-                <div class="col-xs-12 col-lg-6 welcome-percentile-graph-vertical-align">
-                    <ul class="list-group col-xs-12 col-sm-6 col-lg-7">
-                        <li class="list-group-item">
-                            <span class="badge badge-plain ng-binding">8%</span>
-                            <span style="background-color: #69c869;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;Your Score&nbsp;<i class="ng-binding">(0<sup class="ng-binding">th</sup> rank)</i>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-plain ng-binding">66%</span>
-
-                            <span style="background-color: #f05a5b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;Median Score&nbsp;<i class="ng-binding">(48<sup class="ng-binding">th</sup> rank)</i>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-plain ng-binding">12</span>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Average Time Spent (sec)
-                        </li>
-                    </ul>
-                    <!-- ngIf: !globalConstants.qbankIsSim --><ul ng-if="!globalConstants.qbankIsSim" class="list-group col-xs-12 col-sm-6 col-lg-5 ng-scope">
-                        <li class="list-group-item">
-                            <span class="badge badge-plain ng-binding">16</span>
-                            Tests Created
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-plain ng-binding">4</span>
-                            Tests Completed
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge badge-plain ng-binding">12</span>
-                            Suspended Tests
-                        </li>
-
-                    </ul><!-- end ngIf: !globalConstants.qbankIsSim -->
-
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
-        <div class="ibox float-e-margin" style="margin-bottom:0px;">
-            <div class="ibox-title">
-                <h5>
-                    <!-- ngIf: clientConfig.topLevelProductId != clientConstants.topLevelProduct.cfa --><span ng-if="clientConfig.topLevelProductId != clientConstants.topLevelProduct.cfa" class="ng-scope">Subjects</span><!-- end ngIf: clientConfig.topLevelProductId != clientConstants.topLevelProduct.cfa -->
-                    <!-- ngIf: clientConfig.topLevelProductId == clientConstants.topLevelProduct.cfa -->
-                </h5>
-                <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
-    <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
-    
-</div></div>
-            </div>
-            <div class="ibox-content" style="padding-bottom:0px;">
-                <div id="DataTables_Table_2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_2_filter" class="dataTables_filter"><label>Filter:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_2"></label></div></div></div><div class="row"><div class="col-sm-12"><table datatable="ng" class="table table-striped table-hover table-responsive ng-isolate-scope no-footer dataTable" data-paging="false" data-info="false" style="" id="DataTables_Table_2" role="grid">
-                    <thead class="ng-scope">
-                        <tr role="row"><th class="hidden-xs hidden-sm col-md-5 sorting_asc" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Name</th><th class="hidden-xs hidden-sm col-md-2 sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Correct: activate to sort column ascending" style="width: 134px;">Correct</th><th class="hidden-xs hidden-sm col-md-2 sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Incorrect: activate to sort column ascending" style="width: 134px;">Incorrect</th><th class="hidden-xs hidden-sm col-md-2 sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Omitted: activate to sort column ascending" style="width: 133px;">Omitted</th><th class="hidden-xs hidden-sm col-md-1 ng-scope sorting" ng-if="showPRank" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="p-rank: activate to sort column ascending" style="width: 47px;">p-rank</th><th class="hidden-xs hidden-md hidden-lg sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Info: activate to sort column ascending" style="width: 0px;">Info</th><th class="hidden-xs hidden-md hidden-lg sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Statistics: activate to sort column ascending" style="width: 0px;">Statistics</th><th class="hidden-sm hidden-md hidden-lg sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Info: activate to sort column ascending" style="width: 0px;">Info</th></tr>
-                    </thead>
-                    <tbody class="ng-scope">
-
-                        <!-- ngRepeat: item in performance.subjects --><!-- end ngRepeat: item in performance.subjects --><!-- end ngRepeat: item in performance.subjects --><!-- end ngRepeat: item in performance.subjects -->
-                    <tr ng-repeat="item in performance.subjects" class="ng-scope odd" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Medicine" correct="17" incorrect="67" omitted="16" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Medicine</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="17%" ng-transclude="" value="correctPercent" type="correct" style="width: 17%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="67%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 67%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="16%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 16%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="17">1&nbsp;(17%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="67">4&nbsp;(67%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="17">1&nbsp;(17%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="1" ng-if="showPRank ">1<sup class="ng-binding">st</sup></td><!-- end ngIf: showPRank -->
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Medicine" correct="17" incorrect="67" omitted="16" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Medicine</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="17%" ng-transclude="" value="correctPercent" type="correct" style="width: 17%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="67%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 67%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="16%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 16%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="1"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">1<sup class="ng-binding">st</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 1&nbsp;(17%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 4&nbsp;(67%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 1&nbsp;(17%)
-                                </p></td>
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="1"><progressbarperformancecontrol name="Medicine" correct="17" incorrect="67" omitted="16" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Medicine</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="17%" ng-transclude="" value="correctPercent" type="correct" style="width: 17%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="67%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 67%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="16%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 16%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">1<sup class="ng-binding">st</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;1&nbsp;(17%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;4&nbsp;(67%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;1&nbsp;(17%)
-                                </p></td>
-                        </tr><tr ng-repeat="item in performance.subjects" class="ng-scope even" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Obstetrics &amp; Gynecology" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Obstetrics &amp; Gynecology</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="100">6&nbsp;(100%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="0" ng-if="showPRank ">0<sup class="ng-binding">th</sup></td><!-- end ngIf: showPRank -->
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Obstetrics &amp; Gynecology" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Obstetrics &amp; Gynecology</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="0"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 0&nbsp;(0%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 6&nbsp;(100%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 0&nbsp;(0%)
-                                </p></td>
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="0"><progressbarperformancecontrol name="Obstetrics &amp; Gynecology" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Obstetrics &amp; Gynecology</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;0&nbsp;(0%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;6&nbsp;(100%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;0&nbsp;(0%)
-                                </p></td>
-                        </tr><tr ng-repeat="item in performance.subjects" class="ng-scope odd" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Psychiatry" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Psychiatry</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="100">1&nbsp;(100%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="0" ng-if="showPRank ">0<sup class="ng-binding">th</sup></td><!-- end ngIf: showPRank -->
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Psychiatry" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Psychiatry</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="0"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 0&nbsp;(0%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 1&nbsp;(100%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 0&nbsp;(0%)
-                                </p></td>
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="0"><progressbarperformancecontrol name="Psychiatry" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Psychiatry</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;0&nbsp;(0%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;1&nbsp;(100%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;0&nbsp;(0%)
-                                </p></td>
-                        </tr></tbody>
-                </table></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
-            </div>
-        </div>
-
-        <!-- disable for nclex sim  ng-show="showSystems"ng-show="!((globalConstants.qbankIsSim && clientConfig.topLevelProductId == clientConstants.topLevelProduct.nclex) || (globalConstants.qbankId == clientConstants.qbankIds.med_math))"-->
-        <div class="ibox float-e-margins" ng-show="showSystems" style="margin-bottom:0px;">
-            <div class="ibox-title">
-                <h5>
-                    <!-- ngIf: clientConfig.topLevelProductId != clientConstants.topLevelProduct.mcat && clientConfig.topLevelProductId != clientConstants.topLevelProduct.cfa && clientConfig.topLevelProductId != clientConstants.topLevelProduct.legal --><span ng-if="clientConfig.topLevelProductId != clientConstants.topLevelProduct.mcat &amp;&amp; clientConfig.topLevelProductId != clientConstants.topLevelProduct.cfa &amp;&amp; clientConfig.topLevelProductId != clientConstants.topLevelProduct.legal" class="ng-scope">Systems</span><!-- end ngIf: clientConfig.topLevelProductId != clientConstants.topLevelProduct.mcat && clientConfig.topLevelProductId != clientConstants.topLevelProduct.cfa && clientConfig.topLevelProductId != clientConstants.topLevelProduct.legal -->
-                    <!-- ngIf: clientConfig.topLevelProductId == clientConstants.topLevelProduct.mcat -->
-                    <!-- ngIf: clientConfig.topLevelProductId == clientConstants.topLevelProduct.cfa -->
-                    <!-- ngIf: clientConfig.topLevelProductId == clientConstants.topLevelProduct.legal -->
-
-                </h5>
-                <div ibox-tools="" class="ng-scope"><div class="ibox-tools dropdown" dropdown="">
-    <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
-    
-</div></div>
-            </div>
-            <div class="ibox-content" style="padding-bottom:0px;">
-                <div id="DataTables_Table_3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"><div id="DataTables_Table_3_filter" class="dataTables_filter"><label>Filter:<input type="search" class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_3"></label></div></div></div><div class="row"><div class="col-sm-12"><table datatable="ng" class="table table-striped table-hover table-responsive ng-isolate-scope no-footer dataTable" data-paging="false" data-info="false" style="" id="DataTables_Table_3" role="grid">
-                    <thead class="ng-scope">
-                        <tr role="row"><th class="hidden-xs hidden-sm col-md-5 sorting_asc" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Name</th><th class="hidden-xs hidden-sm col-md-2 sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Correct: activate to sort column ascending" style="width: 134px;">Correct</th><th class="hidden-xs hidden-sm col-md-2 sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Incorrect: activate to sort column ascending" style="width: 134px;">Incorrect</th><th class="hidden-xs hidden-sm col-md-2 sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Omitted: activate to sort column ascending" style="width: 133px;">Omitted</th><th class="hidden-xs hidden-sm col-md-1 ng-scope sorting" ng-if="showPRank" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="p-rank: activate to sort column ascending" style="width: 47px;">p-rank</th><th class="hidden-xs hidden-md hidden-lg sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Info: activate to sort column ascending" style="width: 0px;">Info</th><th class="hidden-xs hidden-md hidden-lg sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Statistcs: activate to sort column ascending" style="width: 0px;">Statistcs</th><th class="hidden-sm hidden-md hidden-lg sorting" tabindex="0" aria-controls="DataTables_Table_3" rowspan="1" colspan="1" aria-label="Info: activate to sort column ascending" style="width: 0px;">Info</th></tr>
-
-                    </thead>
-                    <tbody class="ng-scope">
-                        <!-- ngRepeat: item in performance.systems --><!-- end ngRepeat: item in performance.systems --><!-- end ngRepeat: item in performance.systems --><!-- end ngRepeat: item in performance.systems --><!-- end ngRepeat: item in performance.systems --><!-- end ngRepeat: item in performance.systems -->
-
-                    <tr ng-repeat="item in performance.systems" class="ng-scope odd" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Biostatistics &amp; Epidemiology" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Biostatistics &amp; Epidemiology</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="100">1&nbsp;(100%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="0" ng-if="showPRank">0<sup class="ng-binding">th</sup></td><!-- end ngIf: showPRank -->
-
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Biostatistics &amp; Epidemiology" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Biostatistics &amp; Epidemiology</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="0"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 0&nbsp;(0%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 1&nbsp;(100%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 0&nbsp;(0%)
-                                </p></td>
-
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="0"><progressbarperformancecontrol name="Biostatistics &amp; Epidemiology" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Biostatistics &amp; Epidemiology</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;0&nbsp;(0%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;1&nbsp;(100%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;0&nbsp;(0%)
-                                </p></td>
-                        </tr><tr ng-repeat="item in performance.systems" class="ng-scope even" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Cardiovascular System" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Cardiovascular System</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="100">1&nbsp;(100%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="0" ng-if="showPRank">0<sup class="ng-binding">th</sup></td><!-- end ngIf: showPRank -->
-
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Cardiovascular System" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Cardiovascular System</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="0"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 0&nbsp;(0%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 1&nbsp;(100%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 0&nbsp;(0%)
-                                </p></td>
-
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="0"><progressbarperformancecontrol name="Cardiovascular System" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Cardiovascular System</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;0&nbsp;(0%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;1&nbsp;(100%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;0&nbsp;(0%)
-                                </p></td>
-                        </tr><tr ng-repeat="item in performance.systems" class="ng-scope odd" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Dermatology" correct="20" incorrect="60" omitted="20" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Dermatology</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="20%" ng-transclude="" value="correctPercent" type="correct" style="width: 20%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="60%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 60%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="20%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 20%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="20">1&nbsp;(20%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="60">3&nbsp;(60%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="20">1&nbsp;(20%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="2" ng-if="showPRank">2<sup class="ng-binding">nd</sup></td><!-- end ngIf: showPRank -->
-
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Dermatology" correct="20" incorrect="60" omitted="20" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Dermatology</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="20%" ng-transclude="" value="correctPercent" type="correct" style="width: 20%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="60%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 60%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="20%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 20%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="2"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">2<sup class="ng-binding">nd</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 1&nbsp;(20%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 3&nbsp;(60%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 1&nbsp;(20%)
-                                </p></td>
-
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="2"><progressbarperformancecontrol name="Dermatology" correct="20" incorrect="60" omitted="20" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Dermatology</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="20%" ng-transclude="" value="correctPercent" type="correct" style="width: 20%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="60%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 60%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="20%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 20%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">2<sup class="ng-binding">nd</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;1&nbsp;(20%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;3&nbsp;(60%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;1&nbsp;(20%)
-                                </p></td>
-                        </tr><tr ng-repeat="item in performance.systems" class="ng-scope even" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Gastrointestinal &amp; Nutrition" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Gastrointestinal &amp; Nutrition</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="100">5&nbsp;(100%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="0" ng-if="showPRank">0<sup class="ng-binding">th</sup></td><!-- end ngIf: showPRank -->
-
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Gastrointestinal &amp; Nutrition" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Gastrointestinal &amp; Nutrition</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="0"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 0&nbsp;(0%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 5&nbsp;(100%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 0&nbsp;(0%)
-                                </p></td>
-
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="0"><progressbarperformancecontrol name="Gastrointestinal &amp; Nutrition" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Gastrointestinal &amp; Nutrition</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;0&nbsp;(0%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;5&nbsp;(100%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;0&nbsp;(0%)
-                                </p></td>
-                        </tr><tr ng-repeat="item in performance.systems" class="ng-scope odd" role="row">
-                            <td class="hidden-xs hidden-sm sorting_1">
-                                <progressbarperformancecontrol name="Psychiatric/Behavioral &amp; Substance Abuse" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Psychiatric/Behavioral &amp; Substance Abuse</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="100">1&nbsp;(100%)</td>
-                            <td class="hidden-xs hidden-sm ng-binding" data-sort="0">0&nbsp;(0%)</td>
-                            <!-- ngIf: showPRank --><td class="hidden-xs hidden-sm ng-binding ng-scope" data-sort="0" ng-if="showPRank">0<sup class="ng-binding">th</sup></td><!-- end ngIf: showPRank -->
-
-                            <td class="hidden-xs hidden-md hidden-lg">
-                                <progressbarperformancecontrol name="Psychiatric/Behavioral &amp; Substance Abuse" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Psychiatric/Behavioral &amp; Substance Abuse</p><p class="top-margin20"><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div></p></div></progressbarperformancecontrol>
-                            </td>
-
-                            <td class="hidden-xs hidden-md hidden-lg text-right" data-sort="0"><!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp; 0&nbsp;(0%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp; 1&nbsp;(100%) &nbsp;&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp; 0&nbsp;(0%)
-                                </p></td>
-
-                            <td class="hidden-sm hidden-md hidden-lg" data-sort="0"><progressbarperformancecontrol name="Psychiatric/Behavioral &amp; Substance Abuse" correct="0" incorrect="100" omitted="0" class="ng-isolate-scope"><div style="min-width: 150px; max-width: 300px"><p class="ng-binding">Psychiatric/Behavioral &amp; Substance Abuse</p><p class="top-margin20"></p><div class="progress ng-isolate-scope" ng-transclude="" style="height:6px;" maxvalue="100"><div class="progress-bar ng-isolate-scope progress-bar-correct" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="correctPercent" type="correct" style="width: 0%;"></div><div class="progress-bar ng-isolate-scope progress-bar-incorrect" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="100%" ng-transclude="" value="incorrectPercent" type="incorrect" style="width: 100%;"></div><div class="progress-bar ng-isolate-scope progress-bar-omitted" ng-class="type &amp;&amp; 'progress-bar-' + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="" ng-style="{width: percent + '%'}" aria-valuetext="0%" ng-transclude="" value="omittedPercent" type="omitted" style="width: 0%;"></div></div><p></p></div></progressbarperformancecontrol>
-                                <!-- ngIf: showPRank --><p ng-if="showPRank" class="ng-scope">Percentile Rank: <strong class="ng-binding">0<sup class="ng-binding">th</sup></strong></p><!-- end ngIf: showPRank -->
-                                <p class="ng-binding">
-                                    <img src="img/correct.png" style="width: 15px">&nbsp;0&nbsp;(0%)&nbsp;&nbsp;
-                                    <img src="img/incorrect.png" style="width: 15px">&nbsp;1&nbsp;(100%)&nbsp;&nbsp;
-                                    <img src="img/omitted.png" style="width: 15px">&nbsp;0&nbsp;(0%)
-                                </p></td>
-                        </tr></tbody>
-                </table></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"></div></div></div>
-            </div>
-        </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Correct</th>
+                  <th>Incorrect</th>
+                  <th>Omitted</th>
+                  <th>P-Rank</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-warning" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-success" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-primary" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-info" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td>0 (0%)</td>
+                  <td>1 (100%)</td>
+                  <td>0 (0%)</td>
+                  <td>0th</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+      </div>
     </div>
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+@section('js')
+    <!-- jQuery -->
+    <script src="{{asset('dashboard')}}/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{asset('dashboard')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="{{asset('dashboard')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('dashboard')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{asset('dashboard')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('dashboard')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('dashboard')}}/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript">
+          
+    </script>
+@stop
+
