@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/adminlte.min.css">
-
-    <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/welcome/styles.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -28,6 +26,8 @@
     <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Additional per-page css -->
+      @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -141,5 +141,8 @@
     <script src="{{asset('dashboard')}}/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dashboard')}}/dist/js/demo.js"></script>
+    
+    <!-- Include per-page JS -->
+      @yield('js')
     </body>
     </html>
