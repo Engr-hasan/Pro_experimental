@@ -1,42 +1,65 @@
 @extends('layouts.dashboard')
 @section('css')
-    <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/welcome/qbank-all.css">
-    <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/welcome/introjs.css">
 @stop
 @section('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-     <div class="ibox ">
-        <div class="ibox-content">
-            <div class="pull-left input-group col-xs-12 col-sm-6 col-md-8 col-lg-5">
-                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="option.keyword" maxlength="100" ng-keyup="filterFunction()">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary">
-                        Search
-                    </button>
-                </span>
-                
-            </div>
-
-            <div class="pull-right text-right">
-                <!-- ngIf: filteredData.length > 0 -->
-                <!-- ngIf: filteredData.length > 0 -->
-            </div>
-            <div class="clearfix"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="m-0">Notes</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <!--<div class="search-input-wrapper">-->
+                                        <input id="searchTextField"
+                                               class="form-control ng-pristine ng-valid ng-valid-maxlength ng-touched"
+                                               type="text" ng-model="searchKeyword" maxlength="50">
+                                        <!--<span title="Clear" ng-click="clearSearch();">&times;</span>-->
+                                        <!--</div>-->
+                                        <!--<input id="searchText" type="text" class="form-control" ng-model="searchKeyword" maxlength="100" placeholder="Search flash cards" />-->
+                                        <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary" ng-click="searchFlashCards()"
+                                                style="border-radius:0px;">Search</button>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-lg-6">
+                                    <p>No Notes available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
     </div>
-
-    <div class="ibox-content inspinia-timeline">
-           
-            <!-- ngIf: filteredData.length > 0 -->
-            <!-- ngIf: filteredData.length == 0 --><div ng-if="filteredData.length == 0" class="ng-scope">No notes available</div><!-- end ngIf: filteredData.length == 0 -->
-        </div>
-</div>
-<!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
 @endsection
 @section('js')
-    <script src="{{asset('dashboard')}}/dist/js/jquery.dataTables.js"></script>
-    <script type="text/javascript">
-  
-    </script>
+
 @stop
+

@@ -1,32 +1,49 @@
 @extends('layouts.dashboard')
-
+@section('css')
+    <style>
+        .bd-color {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+    </style>
+@stop
 @section('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <div class="ibox-content">
-            <div class="col-sm-12 col-md-10">
-                <div class="alert alert-info">
-                    <ul class="ul-list">
-                        <li>Subscribers who have subscribed for 6 months or more can reset their test information <b>Only Once</b> during the entire subscription.</li>
-                        <li>Reset of Test info will DELETE ALL data related to the subscription including notes, highlights, performance and all previous tests. Flash card data will not be deleted.</li>
-                        <li>Once the information is reset, the change is irreversible and the data is lost forever.</li>
-                    </ul>
-
-                </div>
-
-                <!-- ngIf: message == '' --><div ng-if="message == ''" class="ng-scope">
-                    <!-- ngIf: !isEligibleForReset --><div ng-if="!isEligibleForReset" class="alert alert-danger ng-scope">
-                        Your subscription does not qualify for a reset or subscription has already been reset.
-                    </div><!-- end ngIf: !isEligibleForReset -->
-
-                    <div>
-                        <!-- ngIf: isEligibleForReset -->
-                    </div>
-                </div><!-- end ngIf: message == '' -->
-                <!-- ngIf: message.length > 0 -->
-            </div>
-            <div class="clearfix"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
-</div>
-<!-- /.content-wrapper -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="m-0">Reset Subscription</h5>
+                            </div>
+                            <div class="card-body bd-color">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
 @endsection
+@section('js')
+
+@stop
+
