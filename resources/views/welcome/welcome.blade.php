@@ -51,7 +51,8 @@
                                             Unused Questions
                                         </li>
                                     </ul>
-                                </div><!-- end ngIf: !globalConstants.qbankIsSim -->
+                                </div>
+                                <!-- end ngIf: !globalConstants.qbankIsSim -->
 
                                 <!-- ngIf: globalConstants.qbankIsSim -->
                             </div>
