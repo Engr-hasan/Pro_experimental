@@ -72,14 +72,21 @@
                         <h5 class="m-0">Test Mode</h5>
                     </div>
                     <div class="card-body">
-                        <label class="switch">
-                            <input class="form-group" type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                        <label class="switch">
-                            <input class="form-group" type="checkbox" checked>
-                            <span class="slider round"></span>
-                        </label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="custom-control custom-switch">
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                  <label class="custom-control-label" for="customSwitch1">Tutor</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1">
+                                <div class="custom-control custom-switch">
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                  <label class="custom-control-label" for="customSwitch1">Timed</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-9"></div>   
+                        </div>   
                     </div>
                 </div>
                 <!-- Test mode end-->
