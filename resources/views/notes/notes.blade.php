@@ -1,44 +1,45 @@
 @extends('layouts.dashboard')
-
+@section('css')
+    <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/welcome/qbank-all.css">
+    <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/welcome/introjs.css">
+@stop
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Main row -->
-            <br/>
-            <div class="row">
-                <section class="col-lg-12 connectedSortable">
-                    <!-- DIRECT CHAT -->
-                    <div class="card direct-chat direct-chat-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Notes</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div>
-                                <p style="padding: 10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                           <h3 class="card-title"></h3>
-                        </div>
-                        <!-- /.card-footer-->
-                    </div>
-                    <!--/.direct-chat -->
-                </section>
+  <div class="wrapper wrapper-content row animated fadeInRight ng-scope">
+    <div class="ibox ">
+        <div class="ibox-content">
+            <div class="pull-left input-group col-xs-12 col-sm-6 col-md-8 col-lg-5">
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-model="option.keyword" maxlength="100" ng-keyup="filterFunction()">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary">
+                        Search
+                    </button>
+                </span>
+                
             </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+
+            <div class="pull-right text-right">
+                <!-- ngIf: filteredData.length > 0 -->
+                <!-- ngIf: filteredData.length > 0 -->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="ibox ">
+        <div class="ibox-content inspinia-timeline">
+           
+            <!-- ngIf: filteredData.length > 0 -->
+            <!-- ngIf: filteredData.length == 0 --><div ng-if="filteredData.length == 0" class="ng-scope">No notes available</div><!-- end ngIf: filteredData.length == 0 -->
+        </div>
+    </div>
+</div>
 </div>
 <!-- /.content-wrapper -->
 @endsection
+@section('js')
+    <script src="{{asset('dashboard')}}/dist/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+  
+    </script>
+@stop
