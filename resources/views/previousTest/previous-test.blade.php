@@ -42,7 +42,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> 
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -56,21 +56,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -84,7 +70,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -98,7 +84,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -112,7 +98,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -126,7 +112,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -140,7 +126,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -154,7 +140,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -168,7 +154,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -182,7 +168,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -196,7 +182,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -210,7 +196,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -224,7 +210,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -238,7 +224,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -252,7 +238,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -266,7 +252,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -280,7 +266,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -294,7 +280,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -308,7 +294,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               <tr>
@@ -322,49 +308,7 @@
                 <td align="center">Dermatology</td>
                 <td align="center">10</td>
                 <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="#">Resume</a> &nbsp;&nbsp;&nbsp;<a href="#">Results</a> &nbsp;&nbsp;&nbsp;<a href="#">Analysis</a>
+                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
                 </td>
               </tr>
               </tfoot>
