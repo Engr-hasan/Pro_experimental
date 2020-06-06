@@ -27,6 +27,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Additional per-page css -->
+{{--    <link rel="stylesheet" href="{{asset('dashboard/toastr.css')}}">--}}
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
       @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -141,8 +143,22 @@
     <script src="{{asset('dashboard/dist/js/pages/dashboard.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dashboard/dist/js/demo.js')}}"></script>
+    {{--toastr js--}}
 
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{{asset('dashboard/toastr.js')}}"></script>
+    {!! Toastr::message() !!}
     <!-- Include per-page JS -->
       @yield('js')
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+            toastr.error('{{$error}}', 'Error', {
+                closeButton:true,
+                progressBar:true,
+            });
+            @endforeach
+        @endif
+    </script>
     </body>
     </html>

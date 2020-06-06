@@ -19,7 +19,7 @@
           <div class="card-body">
               <div class="row">
                   <div class="col-md-9">
-                      <h4 class="page-title">Role</h4>
+                      <h4 class="page-title">Permission</h4>
                   </div>
                   <div class="col-md-3 text-right m-b-30">
                       {{--<a href="{{ route('role.create') }}" class="btn btn-primary rounded"><i class="fa fa-plus"></i>
@@ -33,29 +33,20 @@
               <br>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th>Sl</th>
-                        <th>Name</th>
-                        <th>Guard Name</th>
-                        <th>Action</th>
-                    </tr>
+                <tr>
+                    <th>Sl</th>
+                    <th>Name</th>
+                    <th>Guard Name</th>
+                </tr>
                 </thead>
                 <tbody>
-                @foreach($roles as $row)
+                @foreach($permissions as $row)
                     <tr>
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->name}}</td>
                         <td>{{ $row->guard_name }}</td>
-                        <td>
-                            <center>
-                                <div class="btn-group">
-                                    <a href="{{ route('role.edit', $row) }}" class="btn btn-primary">
-                                        <i class="fa fa-pencil-square-o"></i> Edit</a></div>
-                            </center>
-                        </td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
           </div>
@@ -68,7 +59,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('role.store') }}" method="post">
+            <form action="{{ route('permission.store') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -78,7 +69,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Role:</label>
+                        <label for="recipient-name" class="col-form-label">Permission:</label>
                         <input type="text" name="name" class="form-control" id="recipient-name">
                     </div>
                 </div>

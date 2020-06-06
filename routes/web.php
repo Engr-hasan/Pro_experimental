@@ -31,6 +31,7 @@ Auth::routes();
 Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control')*/->group(function () {
     Route::resource('users', 'UserController');
     Route::resource('role', 'RoleController');
+    Route::resource('permission', 'PermissionController');
 });
 //Temp
 Route::get('/temp','WelcomeController@getTempPage');

@@ -36,7 +36,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+<<<<<<< HEAD
+                        <a href="{{route('permission.index')}}" class="nav-link">
+=======
                         <a href="{{url('/graphs')}}" class="nav-link {{ Request::is('graphs*') ? 'active' : '' }}">
+>>>>>>> 153c98f566ef8169b161aac2bb18c059ecdcbaed
                             <i class="far fa-circle nav-icon"></i>
                             <p>Permission</p>
                         </a>

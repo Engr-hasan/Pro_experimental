@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\AccessControl;
 
 use App\Http\Controllers\Controller;
-use foo\bar;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class RoleController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $data=[
-            'roles'=>Role::all(),
-        ];
-
-        return view('accessControl.role.index', $data);
+        $permissions = Permission::all();
+        return view('accessControl.permission.index',compact('permissions'));
     }
 
     /**
@@ -41,14 +37,14 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
-        $this->validate($request,[
-            'name'=>'required|unique:roles'
+        $request->validate([
+            'name'=>'required|unique:permissions'
         ]);
 
-        Role::create($request->all());
-        \Toastr::success('Role Information crated Successfully!','Success',["progressbar" => true]);
+        Permission::create($request->all());
+        \Toastr::success('Permission crated Successfully!.', '', ["progressbar" => true]);
         return redirect()->back();
+
     }
 
     /**
@@ -70,8 +66,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::findById($id);
-        return view('accessControl.role.edit', compact('role'));
+        //
     }
 
     /**
@@ -81,16 +76,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=>'required|unique:roles,name,'.$role->id
-        ]);
-
-        $role->fill($request->all());
-        $role->update();
-        \Toastr::success('Role Information updated Successfully!.', 'Success', ["progressbar" => true]);
-        return redirect()->route('role.index');
+        //
     }
 
     /**
