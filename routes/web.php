@@ -27,6 +27,11 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+//Access Control Routes.......
+Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control')*/->group(function () {
+    Route::resource('users', 'UserController');
+    Route::resource('role', 'RoleController');
+});
 //Temp
 Route::get('/temp','WelcomeController@getTempPage');
 
