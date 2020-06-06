@@ -10,4 +10,14 @@ class HelpController extends Controller
     {
     	return view('help.help');
     }
+
+    public function createHowToUse()
+    {
+    	return view('help.create-how-to-use');
+    }
+
+    public function createFAQ()
+    {
+    	return view('help.create-faq');
+    }
 }

@@ -127,10 +127,20 @@
             </li>
             <li class="nav-item">
                 <a href="{{url('/help')}}" class="nav-link {{ Request::is('help*') ? 'active' : '' }}">
-                    <i class="nav-icon fa fa-hands-helping"></i>
-                    <p>
-                        Help
-                    </p>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Help</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/create-how-to-use')}}" class="nav-link {{ Request::is('create-how-to-use*') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Create Help</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/create-faq')}}" class="nav-link {{ Request::is('create-faq*') ? 'active' : '' }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Create FAQ</p>
                 </a>
             </li>
         </ul>

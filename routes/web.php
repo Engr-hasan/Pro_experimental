@@ -56,6 +56,9 @@ Route::get('/flash-cards','FlashCardsController@getFlashCardsPage');
 Route::get('/reset','ResetController@getResetPage');
 //Help
 Route::get('/help','HelpController@getHelpPage');
+Route::get('/create-how-to-use','HelpController@createHelp');
+Route::get('/create-how-to-use','HelpController@createHowToUse');
+Route::get('/create-faq','HelpController@createFAQ');
 //Resume
 Route::get('/resume','ResumeController@getResumePage');
 //Results
@@ -63,3 +66,4 @@ Route::get('/results','ResultsController@getResultsPage');
 //Analysis
 Route::get('/analysis','AnalysisController@getAnalysisPage');
 Route::get('/test-analysis','AnalysisController@getTestAnalysisPage');
+Route::get('/review-test','ReviewTestController@getReviewTestPage');
