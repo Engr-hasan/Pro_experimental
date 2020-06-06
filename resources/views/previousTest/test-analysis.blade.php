@@ -28,8 +28,8 @@
                       <a href="#">
                           <img class="" src="{{asset('dashboard')}}/dist/img/print.png" style="width: 40px;height: 40px;">
                       </a>
-                      <a href="#" class="btn btn-info">REVIEW TEST</a>
-                      <a href="#" class="btn btn-info">TEST RESULTS</a>
+                      <a href="{{url('/review-test')}}" class="btn btn-info">REVIEW TEST</a>
+                      <a href="{{url('/results')}}" class="btn btn-info">TEST RESULTS</a>
                     </div>
                   </div>
               </div>
