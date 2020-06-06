@@ -81,8 +81,8 @@
                             </div> 
                             <div class="col-md-1">
                                 <div class="custom-control custom-switch">
-                                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                  <label class="custom-control-label" for="customSwitch1">Timed</label>
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                  <label class="custom-control-label" for="customSwitch2">Timed</label>
                                 </div>
                             </div> 
                             <div class="col-md-9"></div>   
