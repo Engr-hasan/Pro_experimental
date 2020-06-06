@@ -80,7 +80,9 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-
+                <div class="progress ml-5" style="height: 40px; width: 350px;">
+                  <div class="progress-bar" role="progressbar" style="width: 76%;" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100">76%</div>
+                </div>
             </div>
             <div class="col-md-6">
                 <ul class="nav nav-pills mb-3 float-right" id="pills-tab" role="tablist">
@@ -106,6 +108,8 @@
                 </ul>
             </div>
           </div>
+
+          <br><br>
 
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
@@ -268,6 +272,7 @@
               "autoWidth": false,
               "responsive": true,
             });
+
           });
     </script>
 @stop

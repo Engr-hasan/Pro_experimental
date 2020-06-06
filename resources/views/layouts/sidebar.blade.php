@@ -14,8 +14,8 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview {{--menu-open--}}">
-                <a href="#" class="nav-link {{--active--}}">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link {{ Request::is('users*') || Request::is('role*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Access Control
@@ -24,19 +24,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('users.index')}}" class="nav-link active">
+                        <a href="{{route('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>User Lists</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('role.index')}}" class="nav-link">
+                        <a href="{{route('role.index')}}" class="nav-link {{ Request::is('role*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Roles</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/graphs')}}" class="nav-link">
+                        <a href="{{url('/graphs')}}" class="nav-link {{ Request::is('graphs*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Permission</p>
                         </a>
@@ -45,7 +45,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{url('/')}}" class="nav-link active">
+                <a href="{{url('/')}}" class="nav-link {{ Request::is('/*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-tachometer-alt"></i>
                     <p>
                         Welcome
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/create-test')}}" class="nav-link">
+                <a href="{{url('/create-test')}}" class="nav-link {{ Request::is('create-test*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-plus"></i>
                     <p>
                         Create Test
@@ -62,15 +62,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/previous-test')}}" class="nav-link">
+                <a href="{{url('/previous-test')}}" class="nav-link {{ Request::is('previous-test*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Previous Test
                     </p>
                 </a>
             </li>
-            <li class="nav-item has-treeview {{--menu-open--}}">
-                <a href="#" class="nav-link {{--active--}}">
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link {{ Request::is('reports*') || Request::is('graphs*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Performance
@@ -79,13 +79,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{url('/reports')}}" class="nav-link active">
+                        <a href="{{url('/reports')}}" class="nav-link {{ Request::is('reports*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Reports</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/graphs')}}" class="nav-link">
+                        <a href="{{url('/graphs')}}" class="nav-link {{ Request::is('graphs*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Graphs</p>
                         </a>
@@ -93,7 +93,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="{{url('/search')}}" class="nav-link">
+                <a href="{{url('/search')}}" class="nav-link {{ Request::is('search*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-search"></i>
                     <p>
                         Search
@@ -101,7 +101,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/notes')}}" class="nav-link">
+                <a href="{{url('/notes')}}" class="nav-link {{ Request::is('notes*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-notes-medical"></i>
                     <p>
                         Notes
@@ -109,7 +109,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/flash-cards')}}" class="nav-link">
+                <a href="{{url('/flash-cards')}}" class="nav-link {{ Request::is('flash-cards*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-flask"></i>
                     <p>
                         Flash Cards
@@ -117,7 +117,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/reset')}}" class="nav-link">
+                <a href="{{url('/reset')}}" class="nav-link {{ Request::is('reset*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-circle"></i>
                     <p>
                         Reset
@@ -125,7 +125,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/help')}}" class="nav-link">
+                <a href="{{url('/help')}}" class="nav-link {{ Request::is('help*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-hands-helping"></i>
                     <p>
                         Help
