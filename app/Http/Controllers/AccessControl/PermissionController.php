@@ -37,7 +37,14 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|unique:permissions'
+        ]);
+
+        Permission::create($request->all());
+        \Toastr::success('Permission crated Successfully!.', '', ["progressbar" => true]);
+        return redirect()->back();
+
     }
 
     /**

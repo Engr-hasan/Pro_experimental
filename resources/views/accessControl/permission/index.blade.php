@@ -40,7 +40,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($permissions as $row)
                     <tr>
                         <td>{{ $row->id }}</td>
@@ -48,7 +47,6 @@
                         <td>{{ $row->guard_name }}</td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
           </div>
@@ -61,7 +59,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('role.store') }}" method="post">
+            <form action="{{ route('permission.store') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -71,7 +69,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Role:</label>
+                        <label for="recipient-name" class="col-form-label">Permission:</label>
                         <input type="text" name="name" class="form-control" id="recipient-name">
                     </div>
                 </div>
