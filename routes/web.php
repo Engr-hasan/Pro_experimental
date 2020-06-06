@@ -50,3 +50,10 @@ Route::get('/flash-cards','FlashCardsController@getFlashCardsPage');
 Route::get('/reset','ResetController@getResetPage');
 //Help
 Route::get('/help','HelpController@getHelpPage');
+//Resume
+Route::get('/resume','ResumeController@getResumePage');
+//Results
+Route::get('/results','ResultsController@getResultsPage');
+//Analysis
+Route::get('/analysis','AnalysisController@getAnalysisPage');
+Route::get('/test-analysis','AnalysisController@getTestAnalysisPage');
