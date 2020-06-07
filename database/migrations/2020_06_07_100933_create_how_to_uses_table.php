@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFaqsTable extends Migration
+class CreateHowToUsesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateFaqsTable extends Migration
      */
     public function up()
     {
-        Schema::create('faqs', function (Blueprint $table) {
+        Schema::create('how_to_uses', function (Blueprint $table) {
             $table->id();
-            $table->string('faq_title')->nullable();
-            $table->string('faq_description')->nullable();
+            $table->string('how_to_use_title')->nullable();
+            $table->text('how_to_use_description')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateFaqsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faqs');
+        Schema::dropIfExists('how_to_uses');
     }
 }

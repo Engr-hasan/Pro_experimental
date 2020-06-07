@@ -28,12 +28,12 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th class="text-center">ID</th>
-                <th class="text-center">FAQ Title</th>
-                <th class="text-center">FAQ Description</th>
-                <th class="text-center">Status</th>
-                <th class="text-center">Created</th>
-                <th class="text-center">Action</th>
+                <th width="5%" class="text-center">ID</th>
+                <th width="20%" class="text-center">FAQ Title</th>
+                <th width="45%" class="text-center">FAQ Description</th>
+                <th width="10%" width="5%" class="text-center">Status</th>
+                <th width="10%" class="text-center">Created</th>
+                <th width="10%" class="text-center">Action</th>
               </tr>
               </thead>
               <tbody>
@@ -41,8 +41,8 @@
                 @foreach($data as $key=> $singleData)
                   <tr>
                     <td align="center">{{ $key + 1 }}</td>
-                    <td align="center">{{ $singleData->faq_title }}</td>
-                    <td align="center">{{ $singleData->faq_description }}</td>
+                    <td style="text-align: justify;" align="center">{{ $singleData->faq_title }}</td>
+                    <td style="text-align: justify;" align="center">{{ $singleData->faq_description }}</td>
                     <td align="center">
                       @if($singleData->status == 1)
                         <button type="button" class="btn btn-block btn-success btn-xs">Active</button>

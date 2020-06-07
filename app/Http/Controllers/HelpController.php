@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 use App\HowToUse;
+use App\Faq;
 use Illuminate\Http\Request;
 
 class HelpController extends Controller
 {
     public function getHelpPage()
     {
-    	return view('help.help');
+        $howToUse = HowToUse::where('status',1)->latest()->get();
+        $faq = Faq::where('status',1)->latest()->get();
+        // dd($howToUse,$faq);
+    	return view('help.help', compact('howToUse','faq'));
     }
 
     public function listHowToUse()
@@ -71,7 +75,8 @@ class HelpController extends Controller
 
     public function listFaq()
     {
-        return view('help.faq.faq-list');
+        $data = Faq::latest()->get();
+        return view('help.faq.faq-list', compact('data'));
     }
 
     public function createFAQ()
@@ -79,23 +84,50 @@ class HelpController extends Controller
         return view('help.faq.faq-create');
     }
 
-    public function storeFaq()
+    public function storeFaq(Request $request)
     {
-        return view('help.create-faq');
+        // dd($request->all());
+        $this->validate($request,[
+            'faq_title' => 'required',
+            'faq_description' => 'required',
+            'status' => 'required'
+        ]);
+
+        $data = new Faq();
+        $data->faq_title = $request->faq_title;
+        $data->faq_description = $request->faq_description;
+        $data->status = $request->status;
+        $data->save();
+        return redirect()->back()->with('successMsg','FAQ Successfully Saved');
     }
 
-    public function editFaq()
+    public function editFaq(Request $request, $id)
     {
-        return view('help.faq.faq-edit');
+        $data = Faq::find($id);
+        return view('help.faq.faq-edit', compact('data'));
     }
     
-    public function updateFaq()
+    public function updateFaq(Request $request, $id)
     {
-        return view('help.create-faq');
+        // dd($request->all());
+        $this->validate($request,[
+            'faq_title' => 'required',
+            'faq_description' => 'required',
+            'status' => 'required'
+        ]);
+
+        $data = Faq::find($id);
+        $data->faq_title = $request->faq_title;
+        $data->faq_description = $request->faq_description;
+        $data->status = $request->status;
+        $data->save();
+        return redirect()->back()->with('successMsg','FAQ Updated Successfully');
     }
 
-    public function deleteFaq()
+    public function deleteFaq(Request $request, $id)
     {
-        return view('help.create-faq');
+        $data = Faq::find($id);
+        $data->delete();
+        return redirect()->back()->with('successMsg','FAQ Deleted Successfully');
     }
 }
