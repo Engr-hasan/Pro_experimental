@@ -32,6 +32,7 @@ Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control'
     Route::resource('users', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
+    Route::resource('direct-user-permission', 'DirectUserPermissionController');
 });
 //Temp
 Route::get('/temp','WelcomeController@getTempPage');

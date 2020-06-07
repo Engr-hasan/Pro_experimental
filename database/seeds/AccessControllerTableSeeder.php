@@ -29,8 +29,8 @@ class AccessControllerTableSeeder extends Seeder
         //data for roles table
         $data=[
             ['name'=>'developer', 'guard_name'=>'web'],
-            ['name'=>'depo_admin', 'guard_name'=>'web'],
-            ['name'=>'depo_user', 'guard_name'=>'web']
+            ['name'=>'admin', 'guard_name'=>'web'],
+            ['name'=>'user', 'guard_name'=>'web']
         ];
 
         \DB::table('roles')->insert($data);
