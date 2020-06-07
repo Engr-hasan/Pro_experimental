@@ -133,15 +133,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/create-how-to-use')}}" class="nav-link {{ Request::is('create-how-to-use*') ? 'active' : '' }}">
+                <a href="{{url('/list-how-to-use')}}" class="nav-link {{ Request::is('list-how-to-use*') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Create Help</p>
+                    <p>How to Use List</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('/create-faq')}}" class="nav-link {{ Request::is('create-faq*') ? 'active' : '' }}">
+                <a href="{{url('/faq-list')}}" class="nav-link {{ Request::is('faq-list*') ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Create FAQ</p>
+                    <p>FAQ List</p>
                 </a>
             </li>
         </ul>
