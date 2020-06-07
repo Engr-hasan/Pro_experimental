@@ -60,16 +60,16 @@ Route::get('/help','HelpController@getHelpPage');
 Route::get('/list-how-to-use','HelpController@listHowToUse');
 Route::get('/create-how-to-use','HelpController@createHowToUse');
 Route::post('/store-how-to-use','HelpController@storeHowToUse');
-Route::get('/edit-how-to-use','HelpController@editHowToUse');
-Route::post('/update-how-to-use','HelpController@updateHowToUse');
-Route::get('/delete-how-to-use','HelpController@deleteHowToUse');
+Route::get('/edit-how-to-use/{id}','HelpController@editHowToUse');
+Route::post('/update-how-to-use/{id}','HelpController@updateHowToUse');
+Route::get('/delete-how-to-use/{id}','HelpController@deleteHowToUse');
 //Help -> FAQ
 Route::get('/faq-list','HelpController@listFaq');
 Route::get('/faq-create','HelpController@createFAQ');
 Route::post('/faq-store','HelpController@storeFaq');
-Route::get('/faq-edit','HelpController@editFaq');
-Route::post('/faq-update','HelpController@updateFaq');
-Route::get('/faq-delete','HelpController@deleteFaq');
+Route::get('/faq-edit/{id}','HelpController@editFaq');
+Route::post('/faq-update/{id}','HelpController@updateFaq');
+Route::get('/faq-delete/{id}','HelpController@deleteFaq');
 //Resume
 Route::get('/resume','ResumeController@getResumePage');
 //Results

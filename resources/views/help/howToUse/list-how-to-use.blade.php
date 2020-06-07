@@ -14,6 +14,7 @@
 @section('content')
 <div class="content-wrapper">
     <div class="container mt-2">
+    @include('layouts.msg')
      <div class="card">
           <div class="card-header">
             <div>
@@ -27,297 +28,40 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>SCORE</th>
-                <th>NAME</th>
-                <th>DATE</th>
-                <th>MODES</th>
-                <th>SUBJECTS</th>
-                <th>SYSTEMS</th>
-                <th># QS  </th>
-                <th>ACTION</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">How to Use Title</th>
+                <th class="text-center">How to Use Description</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Created</th>
+                <th class="text-center">Action</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
-              <tr>
-                <td align="center">
-                  <span class="bg-info p-2" style="border-radius: 100%">0%</span>
-                </td>
-                <td align="center">12</td>
-                <td align="center">Jun 02, 2020 11:57 PM</td>
-                <td align="center">Tutor - Unused</td>
-                <td align="center">Medicine</td>
-                <td align="center">Dermatology</td>
-                <td align="center">10</td>
-                <td align="center">
-                  <a href="{{url('/resume')}}">Resume</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/results')}}">Results</a> &nbsp;&nbsp;&nbsp;<a href="{{url('/analysis')}}">Analysis</a>
-                </td>
-              </tr>
+              @if(isset($data))
+                @foreach($data as $key=> $singleData)
+                  <tr>
+                    <td align="center">{{ $key + 1 }}</td>
+                    <td align="center">{{ $singleData->how_to_use_title }}</td>
+                    <td align="center">{{ $singleData->how_to_use_description }}</td>
+                    <td align="center">
+                      @if($singleData->status == 1)
+                        <button type="button" class="btn btn-block btn-success btn-xs">Active</button>
+                      @else
+                        <button type="button" class="btn btn-block btn-danger btn-xs">Inactive</button>
+                      @endif
+                    </td>
+                    <td align="center">{{ $singleData->created_at->format('d/m/Y') }}</td>
+                    <td align="center">
+                      <a href="{{url('/edit-how-to-use/'.$singleData->id)}}">
+                        <span class="badge bg-primary">Edit</span>
+                      </a>
+                      <a href="{{url('/delete-how-to-use/'.$singleData->id)}}" onclick="return confirm('Are you sure to Delete?')">
+                        <span class="badge bg-danger">Delete</span>
+                      </a>
+                    </td>
+                  </tr>
+                  @endforeach
+              @endif
               </tfoot>
             </table>
           </div>

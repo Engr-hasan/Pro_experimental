@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\HowToUse;
 use Illuminate\Http\Request;
 
 class HelpController extends Controller
@@ -13,7 +13,8 @@ class HelpController extends Controller
 
     public function listHowToUse()
     {
-    	return view('help.howToUse.list-how-to-use');
+        $data = HowToUse::latest()->get();
+    	return view('help.howToUse.list-how-to-use', compact('data'));
     }
 
     public function createHowToUse()
@@ -21,24 +22,51 @@ class HelpController extends Controller
     	return view('help.howToUse.create-how-to-use');
     }
 
-    public function storeHowToUse()
+    public function storeHowToUse(Request $request)
     {
-        
+        // dd($request->all());
+        $this->validate($request,[
+            'how_to_use_title' => 'required',
+            'how_to_use_description' => 'required',
+            'status' => 'required'
+        ]);
+
+        $data = new HowToUse();
+        $data->how_to_use_title = $request->how_to_use_title;
+        $data->how_to_use_description = $request->how_to_use_description;
+        $data->status = $request->status;
+        $data->save();
+        return redirect()->back()->with('successMsg','HowToUse Successfully Saved');
     }
 
-    public function editHowToUse()
+    public function editHowToUse(Request $request, $id)
     {
-        return view('help.howToUse.edit-how-to-use');
+        $data = HowToUse::find($id);
+        return view('help.howToUse.edit-how-to-use', compact('data'));
     }
 
-    public function updateHowToUse()
+    public function updateHowToUse(Request $request, $id)
     {
-        return view('help.create-faq');
+        // dd($request->all());
+        $this->validate($request,[
+            'how_to_use_title' => 'required',
+            'how_to_use_description' => 'required',
+            'status' => 'required'
+        ]);
+
+        $data = HowToUse::find($id);
+        $data->how_to_use_title = $request->how_to_use_title;
+        $data->how_to_use_description = $request->how_to_use_description;
+        $data->status = $request->status;
+        $data->save();
+        return redirect()->back()->with('successMsg','HowToUse Updated Successfully');
     }
 
-    public function deleteHowToUse()
+    public function deleteHowToUse(Request $request, $id)
     {
-        return view('help.create-faq');
+        $data = HowToUse::find($id);
+        $data->delete();
+        return redirect()->back()->with('successMsg','HowToUse Deleted Successfully');
     }
 
     public function listFaq()
