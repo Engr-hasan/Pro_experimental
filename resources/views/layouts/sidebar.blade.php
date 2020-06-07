@@ -46,7 +46,13 @@
                     <li class="nav-item">
                         <a href="{{route('direct-user-permission.index')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Direct User Permission</p>
+                            <p>Direct User Role</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('assign-permission-to-roles.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Assign Permission To Roles</p>
                         </a>
                     </li>
                 </ul>

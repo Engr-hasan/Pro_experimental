@@ -33,6 +33,8 @@ Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control'
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
     Route::resource('direct-user-permission', 'DirectUserPermissionController');
+    Route::resource('assign-permission-to-roles', 'AssignPermissionToRolesController');
+    Route::post('change-role-permission', 'AssignPermissionToRolesController@change_role_permission');
 });
 //Temp
 Route::get('/temp','WelcomeController@getTempPage');
