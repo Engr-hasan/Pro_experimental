@@ -42,6 +42,12 @@
                             <p>Permission</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('direct-user-permission.index')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Direct User Permission</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
 {{--            @endrole--}}
