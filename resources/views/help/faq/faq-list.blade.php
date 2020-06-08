@@ -18,7 +18,7 @@
      <div class="card">
           <div class="card-header">
             <div>
-              <h3 class="card-title float-left">FAQ List</h3>
+              <h3 class="card-title float-left"><i class="nav-icon fas fa-th"></i> FAQ List</h3>
               <a href="{{url('/faq-create')}}" class="btn btn-primary btn-sm float-right">
                 <strong>+ Create FAQ</strong>
               </a>

@@ -23,13 +23,17 @@
                 <!-- Test mode-->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Test Mode</h5>
+                        <h5 class="m-0">
+                            <span> Test Mode
+                                <img src="{{asset('dashboard')}}/dist/img/info.png" alt="Info"  data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" style="width: 20px;height: 20px;">
+                            </span>
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="custom-control custom-switch">
-                                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
                                   <label class="custom-control-label" for="customSwitch1">Tutor</label>
                                 </div>
                             </div> 
@@ -48,12 +52,15 @@
                 <!-- Question mode -->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Question Mode</h5>
+                        <h5 class="m-0">
+                            Question Mode
+                            <img src="{{asset('dashboard')}}/dist/img/info.png" alt="Info"  data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" style="width: 20px;height: 20px;">
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix">
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="unused" name="q_mode" id="radioSuccess2">
+                                <input type="radio" value="unused" name="unusedCheckbox" id="unused" checked>
                                 <label for="radioSuccess2">
                                     Unused
                                     <input type="text" class="inputDesign" name="unused" id="unused" value="3126" disabled>
@@ -84,7 +91,7 @@
                                 <input type="radio" value="custom" name="q_mode" id="radioSuccess6">
                                 <label for="radioSuccess6">
                                     Custom
-                                    <span class="badge bg-dark">Custom section</span>
+                                    <div></div>
                                 </label>
                             </div>
                         </div>
@@ -104,41 +111,18 @@
                     </div>
                     <div class="card-body" id="subjects">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess22">
-                                    <label for="checkboxSuccess22">
-                                        Medicine
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess33">
-                                    <label for="checkboxSuccess33">
-                                        Obstetrics & Gynecology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess44">
-                                    <label for="checkboxSuccess44">
-                                        Pediatrics
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess55">
-                                    <label for="checkboxSuccess55">
-                                         Psychiatry 
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess66">
-                                    <label for="checkboxSuccess66">
-                                        Surgery
-                                    </label>
-                                </div>
-                            </div>
+                            @if(isset($subjects))
+                                @foreach($subjects as $key=> $singleData)
+                                    <div class="col-md-6 mb-2">
+                                        <div class="icheck-success d-inline">
+                                            <input type="checkbox" name="subject_name" id="subject_name{{$key}}">
+                                            <label for="subject_name{{$key}}">
+                                                {{ $singleData->subject_name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -156,46 +140,18 @@
                     </div>
                     <div class="card-body">
                         <div class="row" id="systems">
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess2">
-                                    <label for="checkboxSuccess2">
-                                        Allergy & Immunology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess3">
-                                    <label for="checkboxSuccess3">
-                                        Biostatistics & Epidemiology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess4">
-                                    <label for="checkboxSuccess4">
-                                        Subjects
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess5">
-                                    <label for="checkboxSuccess5">
-                                        Allergy & Immunology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess6">
-                                    <label for="checkboxSuccess6">
-                                        Biostatistics & Epidemiology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess7">
-                                    <label for="checkboxSuccess7">
-                                        Subjects
-                                    </label>
-                                </div>
-                            </div> 
+                             @if(isset($systems))
+                                @foreach($systems as $key=> $singleData)
+                                    <div class="col-md-6 mb-2">
+                                        <div class="icheck-success d-inline">
+                                            <input type="checkbox" name="system_name" id="system_name{{$key}}">
+                                            <label for="system_name{{$key}}">
+                                                {{ $singleData->system_name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -221,10 +177,6 @@
     <!-- /.content-wrapper -->
 @endsection
 @section('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
     <script type="text/javascript">
        //Subjects 
        $('#allSubjects').click(function(event) {
@@ -253,6 +205,16 @@
               });
           }
         });
+
+
+       //system disable
+
+            if (("#unusedCheckbox").prop("checked")) {
+              $("input[id^='system_name']").prop("disabled", "true");
+              $(this).prop("disabled", false);
+            } else {
+              $("input[id^='system_name']").prop("disabled", false);
+            }
     </script>
 @stop
 
