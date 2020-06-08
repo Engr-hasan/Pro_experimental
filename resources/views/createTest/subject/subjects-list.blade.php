@@ -18,9 +18,9 @@
      <div class="card">
           <div class="card-header">
             <div>
-              <h3 class="card-title float-left"><i class="nav-icon fas fa-th"></i> FAQ List</h3>
-              <a href="{{url('/faq-create')}}" class="btn btn-primary btn-sm float-right">
-                <strong>+ Create FAQ</strong>
+              <h3 class="card-title float-left"><i class="nav-icon fas fa-th"></i> Subjects List</h3>
+              <a href="{{url('/subject-create')}}" class="btn btn-primary btn-sm float-right">
+                <strong>+ Create Subject</strong>
               </a>
             </div>
           </div>
@@ -29,11 +29,10 @@
               <thead>
               <tr>
                 <th width="5%" class="text-center">ID</th>
-                <th width="20%" class="text-center">FAQ Title</th>
-                <th width="45%" class="text-center">FAQ Description</th>
-                <th width="10%" width="5%" class="text-center">Status</th>
-                <th width="10%" class="text-center">Created</th>
-                <th width="10%" class="text-center">Action</th>
+                <th width="50%" class="text-center">Subject Name</th>
+                <th width="15%" width="5%" class="text-center">Status</th>
+                <th width="15%" class="text-center">Created</th>
+                <th width="15%" class="text-center">Action</th>
               </tr>
               </thead>
               <tbody>
@@ -41,8 +40,7 @@
                 @foreach($data as $key=> $singleData)
                   <tr>
                     <td align="center">{{ $key + 1 }}</td>
-                    <td style="text-align: justify;" align="center">{{ $singleData->faq_title }}</td>
-                    <td style="text-align: justify;" align="center">{{ $singleData->faq_description }}</td>
+                    <td style="text-align: justify;" align="center">{{ $singleData->subject_name }}</td>
                     <td align="center">
                       @if($singleData->status == 1)
                         <button type="button" class="btn btn-block btn-success btn-xs">Active</button>
@@ -52,10 +50,10 @@
                     </td>
                     <td align="center">{{ $singleData->created_at->format('d/m/Y') }}</td>
                     <td align="center">
-                      <a href="{{url('/faq-edit/'.$singleData->id)}}">
+                      <a href="{{url('/subject-edit/'.$singleData->id)}}">
                         <span class="badge bg-primary">Edit</span>
                       </a>
-                      <a href="{{url('/faq-delete/'.$singleData->id)}}" onclick="return confirm('Are you sure to Delete?')">
+                      <a href="{{url('/subject-delete/'.$singleData->id)}}" onclick="return confirm('Are you sure to Delete?')">
                         <span class="badge bg-danger">Delete</span>
                       </a>
                     </td>

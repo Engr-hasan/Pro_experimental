@@ -1,64 +1,18 @@
 @extends('layouts.dashboard')
 @section('css')
     <style>
-        .switch {
-            position: relative;
+        .inputDesign{
             display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
+            padding: .25em .4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;color: #fff!important;background-color: #343a40!important;
+            width: 60px;height: 20px;
         }
     </style>
 @stop
@@ -69,13 +23,17 @@
                 <!-- Test mode-->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Test Mode</h5>
+                        <h5 class="m-0">
+                            <span> Test Mode
+                                <img src="{{asset('dashboard')}}/dist/img/info.png" alt="Info"  data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" style="width: 20px;height: 20px;">
+                            </span>
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="custom-control custom-switch">
-                                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
                                   <label class="custom-control-label" for="customSwitch1">Tutor</label>
                                 </div>
                             </div> 
@@ -94,43 +52,46 @@
                 <!-- Question mode -->
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Question Mode</h5>
+                        <h5 class="m-0">
+                            Question Mode
+                            <img src="{{asset('dashboard')}}/dist/img/info.png" alt="Info"  data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" style="width: 20px;height: 20px;">
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix">
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="unused" name="q_mode" id="radioSuccess2">
+                                <input type="radio" value="unused" name="unusedCheckbox" id="unused" checked>
                                 <label for="radioSuccess2">
                                     Unused
-                                    <span class="badge bg-dark">3126</span>
+                                    <input type="text" class="inputDesign" name="unused" id="unused" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="incorrect" name="q_mode" id="radioSuccess3">
                                 <label for="radioSuccess3">
                                     Incorrect
-                                    <span class="badge bg-dark">3126</span>
+                                    <input type="text" class="inputDesign" name="incorrect" id="incorrect" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="marked" name="q_mode" id="radioSuccess4">
                                 <label for="radioSuccess4">
                                     Marked
-                                    <span class="badge bg-dark">3126</span>
+                                    <input type="text" class="inputDesign" name="marked" id="marked" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="all" name="q_mode" id="radioSuccess5">
                                 <label for="radioSuccess5">
                                     All
-                                    <span class="badge bg-dark">3126</span>
+                                    <input type="text" class="inputDesign" name="all" id="all" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="custom" name="q_mode" id="radioSuccess6">
                                 <label for="radioSuccess6">
                                     Custom
-                                    <span class="badge bg-dark">3126</span>
+                                    <div></div>
                                 </label>
                             </div>
                         </div>
@@ -142,49 +103,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" id="checkboxSuccess1">
-                            <label for="checkboxSuccess1">
+                            <input type="checkbox" id="allSubjects">
+                            <label for="allSubjects">
                                 Subjects
                             </label>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="subjects">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess2">
-                                    <label for="checkboxSuccess2">
-                                        Medicine
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess3">
-                                    <label for="checkboxSuccess3">
-                                        Obstetrics & Gynecology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess4">
-                                    <label for="checkboxSuccess4">
-                                        Pediatrics
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess2">
-                                    <label for="checkboxSuccess2">
-                                         Psychiatry 
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess3">
-                                    <label for="checkboxSuccess3">
-                                        Surgery
-                                    </label>
-                                </div>
-                            </div>
+                            @if(isset($subjects))
+                                @foreach($subjects as $key=> $singleData)
+                                    <div class="col-md-6 mb-2">
+                                        <div class="icheck-success d-inline">
+                                            <input type="checkbox" name="subject_name" id="subject_name{{$key}}">
+                                            <label for="subject_name{{$key}}">
+                                                {{ $singleData->subject_name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -194,54 +132,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="icheck-success d-inline">
-                            <input type="checkbox" id="checkboxSuccess1">
-                            <label for="checkboxSuccess1">
+                            <input type="checkbox" id="allSystems">
+                            <label for="allSystems">
                                 Systems
                             </label>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess2">
-                                    <label for="checkboxSuccess2">
-                                        Allergy & Immunology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess3">
-                                    <label for="checkboxSuccess3">
-                                        Biostatistics & Epidemiology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess4">
-                                    <label for="checkboxSuccess4">
-                                        Subjects
-                                    </label>
-                                </div>
-                            </div> 
-                            <div class="col-md-6">
-                                <div class="icheck-success d-inline">
-                                    <input type="checkbox" id="checkboxSuccess2">
-                                    <label for="checkboxSuccess2">
-                                        Ophthalmology
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess3">
-                                    <label for="checkboxSuccess3">
-                                        Miscellaneous (Multisystem)
-                                    </label>
-                                </div>
-                                <div class="icheck-success">
-                                    <input type="checkbox" id="checkboxSuccess4">
-                                    <label for="checkboxSuccess4">
-                                        Male Reproductive System
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="row" id="systems">
+                             @if(isset($systems))
+                                @foreach($systems as $key=> $singleData)
+                                    <div class="col-md-6 mb-2">
+                                        <div class="icheck-success d-inline">
+                                            <input type="checkbox" name="system_name" id="system_name{{$key}}">
+                                            <label for="system_name{{$key}}">
+                                                {{ $singleData->system_name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -253,8 +163,8 @@
                         <h5 class="m-0">No. of Questions</h5>
                     </div>
                     <div class="card-body">
-                        <input class="form-group" name="" type="text">
-                        <span>Max allowed per block &nbsp;&nbsp;&nbsp;<span class="badge bg-dark">0</span></span>
+                        <input class="form-group" name="" type="text" style="width: 70px;">
+                        <span>Max allowed per block &nbsp;&nbsp;&nbsp;<input type="text" class="inputDesign" name="unused" id="unused" value="0" disabled></span>
                     </div>
                 </div>
                 <!-- No of Question end-->
@@ -267,8 +177,44 @@
     <!-- /.content-wrapper -->
 @endsection
 @section('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+       //Subjects 
+       $('#allSubjects').click(function(event) {
+          if(this.checked) {
+              $('div#subjects input[type=checkbox]').each(function() {
+                  this.checked = true;
+              });
+          }
+          else {
+            $('div#subjects input[type=checkbox]').each(function() {
+                  this.checked = false;
+              });
+          }
+        });
+
+       //Systems
+       $('#allSystems').click(function(event) {
+          if(this.checked) {
+              $('div#systems input[type=checkbox]').each(function() {
+                  this.checked = true;
+              });
+          }
+          else {
+            $('div#systems input[type=checkbox]').each(function() {
+                  this.checked = false;
+              });
+          }
+        });
+
+
+       //system disable
+
+            if (("#unusedCheckbox").prop("checked")) {
+              $("input[id^='system_name']").prop("disabled", "true");
+              $(this).prop("disabled", false);
+            } else {
+              $("input[id^='system_name']").prop("disabled", false);
+            }
+    </script>
 @stop
 
