@@ -27,8 +27,18 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Additional per-page css -->
-{{--    <link rel="stylesheet" href="{{asset('dashboard/toastr.css')}}">--}}
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="{{asset('dashboard/toastr.css')}}">
+{{--    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">--}}
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+    <script src="{{asset('dashboard/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('dashboard/ckeditor/js/sample.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('dashboard/ckeditor/css/samples.css')}}">
+    <link rel="stylesheet" href="{{asset('dashboard/ckeditor/toolbarconfigurator/lib/codemirror/neo.css')}}">
+
       @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -69,7 +79,11 @@
                     <i class="fa fa-home"></i> <a href="#">My Account</a>
                 </li>
                 <li style="margin-left: 20px" class="nav-item">
-                    <i class="fa fa-sign-out-alt"></i> <a href="{{ route('logout') }}">Logout</a>
+                    @guest
+                        <i class="fa fa-sign"></i> <a href="{{ route('login') }}">Login</a>
+                    @else
+                        <i class="fa fa-sign-out-alt"></i> <a href="{{ route('logout') }}">Logout</a>
+                    @endguest
                 </li>
             </ul>
             {{--<li class="nav-item dropdown">
@@ -113,6 +127,8 @@
     <script src="{{asset('dashboard/plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('dashboard/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
@@ -144,8 +160,9 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dashboard/dist/js/demo.js')}}"></script>
     {{--toastr js--}}
-
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <!-- Select2 -->
+    <script src="{{asset('dashboard/plugins/select2/js/select2.full.min.js')}}"></script>
     <script src="{{asset('dashboard/toastr.js')}}"></script>
     {!! Toastr::message() !!}
     <!-- Include per-page JS -->

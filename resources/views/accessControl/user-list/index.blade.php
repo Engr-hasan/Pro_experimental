@@ -34,11 +34,11 @@
                       <td>{{ $row->name }}</td>
                       <td>{{ $row->email }}</td>
                       <td>
-                          {{--@if($row->getRoleNames()->isNotEmpty())
+                          @if($row->getRoleNames()->isNotEmpty())
                               <span class="label label-info">
-                                                {!! $row->getRoleNames()->implode("</span> <span class='label label-info'>") !!}
-                                            </span>
-                          @endif--}}
+                                  {!! $row->getRoleNames()->implode("</span> <span class='label label-info'>") !!}
+                              </span>
+                          @endif
                       </td>
                       <td>
                           @can('access_control_user_controller_edit')

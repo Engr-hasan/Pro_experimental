@@ -14,16 +14,17 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-{{--            @role('admin')--}}
+            {{--  Admin Panel Sidebar  --}}
+            @role('admin')
                 <li class="nav-item has-treeview">
-                <a href="#" class="nav-link {{ Request::is('users*') || Request::is('role*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Access Control
-                        <i class="right fas fa-angle-right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
+                    <a href="#" class="nav-link {{ Request::is('users*') || Request::is('role*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Access Control
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{route('users.index')}}" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
@@ -56,8 +57,21 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-{{--            @endrole--}}
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('/list-how-to-use')}}" class="nav-link {{ Request::is('list-how-to-use*') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>How to Use List</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('/faq-list')}}" class="nav-link {{ Request::is('faq-list*') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>FAQ List</p>
+                    </a>
+                </li>
+            @endrole
+
             <li class="nav-item">
                 <a href="{{url('/')}}" class="nav-link {{ Request::is('/*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-tachometer-alt"></i>
@@ -144,18 +158,7 @@
                     <p>Help</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{url('/list-how-to-use')}}" class="nav-link {{ Request::is('list-how-to-use*') ? 'active' : '' }}">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>How to Use List</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/faq-list')}}" class="nav-link {{ Request::is('faq-list*') ? 'active' : '' }}">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>FAQ List</p>
-                </a>
-            </li>
+
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -29,7 +29,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     @foreach($permissions as $permission)
                                         <tr>
                                             <td>{{ $permission->name }}</td>
@@ -49,7 +48,6 @@
                                             @endforeach
                                         </tr>
                                     @endforeach
-
                                     </tbody>
                                 </table>
                                 {{ $permissions->links() }}
@@ -74,7 +72,6 @@
                 var role_id=$(this).attr('data-role-id');
                 var permission_id=$(this).attr('data-permission-id');
                 var status=$(this).prop('checked');
-
                 axios({
                     method: 'post',
                     url: "{{ url('change-role-permission') }}",
@@ -85,23 +82,17 @@
                     },
                     config: { headers: {'Content-Type': 'multipart/form-data' }}
                 }).then(function(response){
-
                     toastr.success('Role permission changed successfully!.', '', {
                         closeButton: true,
                         progressBar: true,
                     });
-
                 }).catch(function (error){
-
                     toastr.error('Sorry!, form submission failed. Enter valid data.', '', {
                         closeButton: true,
                         progressBar: true,
                     });
-
                 });
-
             })
-
         });
     </script>
 @stop
