@@ -36,29 +36,48 @@ Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control'
     Route::resource('assign-permission-to-roles', 'AssignPermissionToRolesController');
     Route::post('change-role-permission', 'AssignPermissionToRolesController@change_role_permission');
 });
+
 //Temp
 Route::get('/temp','WelcomeController@getTempPage');
 
 //welcome
 Route::get('/','WelcomeController@getWelcomePage');
+
 //Create Test
 Route::get('/create-test','CreateTestController@getCreateTestPage');
+
+//CreateTest -> Subject
+Route::get('/subjects-list','SubjectController@listSubjects');
+Route::get('/subject-create','SubjectController@createSubject');
+Route::post('/subject-store','SubjectController@storeSubject');
+Route::get('/subject-edit/{id}','SubjectController@editSubject');
+Route::post('/subject-update/{id}','SubjectController@updateSubject');
+Route::get('/subject-delete/{id}','SubjectController@deleteSubject');
+
 //Previous Test
 Route::get('/previous-test','PreviousTestController@getPreviousTestPage');
+
 //Reports
 Route::get('/reports','ReportsController@getReportsPage');
+
 //Graphs
 Route::get('/graphs','GraphsController@getGraphsPage');
+
 //Search
 Route::get('/search','SearchController@getSearchPage');
+
 //Notes
 Route::get('/notes','NotesController@getNotesPage');
+
 //Flash Cards
 Route::get('/flash-cards','FlashCardsController@getFlashCardsPage');
+
 //Reset
 Route::get('/reset','ResetController@getResetPage');
+
 //Help
 Route::get('/help','HelpController@getHelpPage');
+
 //Help -> How to use
 Route::get('/list-how-to-use','HelpController@listHowToUse');
 Route::get('/create-how-to-use','HelpController@createHowToUse');
@@ -66,6 +85,7 @@ Route::post('/store-how-to-use','HelpController@storeHowToUse');
 Route::get('/edit-how-to-use/{id}','HelpController@editHowToUse');
 Route::post('/update-how-to-use/{id}','HelpController@updateHowToUse');
 Route::get('/delete-how-to-use/{id}','HelpController@deleteHowToUse');
+
 //Help -> FAQ
 Route::get('/faq-list','HelpController@listFaq');
 Route::get('/faq-create','HelpController@createFAQ');
@@ -73,10 +93,13 @@ Route::post('/faq-store','HelpController@storeFaq');
 Route::get('/faq-edit/{id}','HelpController@editFaq');
 Route::post('/faq-update/{id}','HelpController@updateFaq');
 Route::get('/faq-delete/{id}','HelpController@deleteFaq');
+
 //Resume
 Route::get('/resume','ResumeController@getResumePage');
+
 //Results
 Route::get('/results','ResultsController@getResultsPage');
+
 //Analysis
 Route::get('/analysis','AnalysisController@getAnalysisPage');
 Route::get('/test-analysis','AnalysisController@getTestAnalysisPage');

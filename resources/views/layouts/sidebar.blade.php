@@ -76,6 +76,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{url('/subjects-list')}}" class="nav-link {{ Request::is('subjects-list*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Subjects List
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{url('/previous-test')}}" class="nav-link {{ Request::is('previous-test*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
@@ -146,13 +154,13 @@
             </li>
             <li class="nav-item">
                 <a href="{{url('/list-how-to-use')}}" class="nav-link {{ Request::is('list-how-to-use*') ? 'active' : '' }}">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon fas fa-th"></i>
                     <p>How to Use List</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{url('/faq-list')}}" class="nav-link {{ Request::is('faq-list*') ? 'active' : '' }}">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon fas fa-th"></i>
                     <p>FAQ List</p>
                 </a>
             </li>
