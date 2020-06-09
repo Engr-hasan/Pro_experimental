@@ -21,7 +21,7 @@ class SystemController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'system_name' => 'required|unique',
+            'system_name' => 'required',
             'status' => 'required'
         ]);
 
@@ -42,7 +42,7 @@ class SystemController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'system_name' => 'required|unique',
+            'system_name' => 'required',
             'status' => 'required'
         ]);
 

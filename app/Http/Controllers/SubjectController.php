@@ -21,7 +21,7 @@ class SubjectController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'subject_name' => 'required|unique',
+            'subject_name' => 'required',
             'status' => 'required'
         ]);
 
@@ -42,7 +42,7 @@ class SubjectController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'subject_name' => 'required|unique',
+            'subject_name' => 'required',
             'status' => 'required'
         ]);
 

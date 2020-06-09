@@ -30,7 +30,7 @@ class HelpController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'how_to_use_title' => 'required|unique',
+            'how_to_use_title' => 'required',
             'how_to_use_description' => 'required',
             'status' => 'required'
         ]);
@@ -53,7 +53,7 @@ class HelpController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'how_to_use_title' => 'required|unique',
+            'how_to_use_title' => 'required',
             'how_to_use_description' => 'required',
             'status' => 'required'
         ]);
@@ -88,7 +88,7 @@ class HelpController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'faq_title' => 'required|unique',
+            'faq_title' => 'required',
             'faq_description' => 'required',
             'status' => 'required'
         ]);
@@ -111,7 +111,7 @@ class HelpController extends Controller
     {
         // dd($request->all());
         $this->validate($request,[
-            'faq_title' => 'required|unique',
+            'faq_title' => 'required',
             'faq_description' => 'required',
             'status' => 'required'
         ]);
