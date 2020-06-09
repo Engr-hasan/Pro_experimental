@@ -82,7 +82,7 @@
                 </a>
             </li>
 
-            @role('Create Test')
+{{--            @role('Create Test')--}}
             <li class="nav-item">
                 <a href="{{url('/create-test')}}" class="nav-link {{ Request::is('create-test*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-plus"></i>
@@ -139,7 +139,7 @@
                     </li>
                 </ul>
             </li>
-            @endrole
+{{--            @endrole--}}
             <li class="nav-item">
                 <a href="{{url('/search')}}" class="nav-link {{ Request::is('search*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-search"></i>
