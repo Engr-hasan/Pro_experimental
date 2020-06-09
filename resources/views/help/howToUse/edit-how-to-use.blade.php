@@ -28,7 +28,9 @@
                       <!-- textarea -->
                       <div class="form-group">
                         <label>How to Use Description: </label>
-                        <textarea class="form-control" rows="3" name="how_to_use_description" required>{{$data->how_to_use_description}}</textarea>
+                        <textarea class="form-control" id="summary-ckeditor" rows="3"
+                              name="how_to_use_description" required> {!! $data->how_to_use_description !!}
+                        </textarea>
                       </div>
                     </div>
                   </div>
@@ -65,6 +67,9 @@
     </div>
 @endsection
 @section('js')
-
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
 @stop
 

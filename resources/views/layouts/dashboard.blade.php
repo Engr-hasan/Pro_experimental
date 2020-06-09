@@ -28,22 +28,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Additional per-page css -->
     <link rel="stylesheet" href="{{asset('dashboard/toastr.css')}}">
-{{--    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">--}}
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     <!-- Select2 -->
     <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
-    <script src="{{asset('dashboard/ckeditor/ckeditor.js')}}"></script>
-    <script src="{{asset('dashboard/ckeditor/js/sample.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('dashboard/ckeditor/css/samples.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/ckeditor/toolbarconfigurator/lib/codemirror/neo.css')}}">
-
-      @yield('css')
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
