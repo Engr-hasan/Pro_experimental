@@ -60,36 +60,36 @@
                     <div class="card-body">
                         <div class="form-group clearfix">
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="unused" name="unusedCheckbox" id="unused" checked>
-                                <label for="radioSuccess2">
+                                <input type="radio" value="unused" name="unusedCheckbox" id="radioSuccess1">
+                                <label for="radioSuccess1">
                                     Unused
                                     <input type="text" class="inputDesign" name="unused" id="unused" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="incorrect" name="q_mode" id="radioSuccess3">
-                                <label for="radioSuccess3">
+                                <input type="radio" value="incorrect" name="q_mode" id="radioSuccess2">
+                                <label for="radioSuccess2">
                                     Incorrect
                                     <input type="text" class="inputDesign" name="incorrect" id="incorrect" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="marked" name="q_mode" id="radioSuccess4">
-                                <label for="radioSuccess4">
+                                <input type="radio" value="marked" name="q_mode" id="radioSuccess3">
+                                <label for="radioSuccess3">
                                     Marked
                                     <input type="text" class="inputDesign" name="marked" id="marked" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="all" name="q_mode" id="radioSuccess5">
-                                <label for="radioSuccess5">
+                                <input type="radio" value="all" name="q_mode" id="radioSuccess4">
+                                <label for="radioSuccess4">
                                     All
                                     <input type="text" class="inputDesign" name="all" id="all" value="3126" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="custom" name="q_mode" id="radioSuccess6">
-                                <label for="radioSuccess6">
+                                <input type="radio" value="custom" name="q_mode" id="radioSuccess5">
+                                <label for="radioSuccess5">
                                     Custom
                                     <div></div>
                                 </label>
