@@ -72,6 +72,7 @@
                 </li>
             @endrole
 
+
             <li class="nav-item">
                 <a href="{{url('/')}}" class="nav-link {{ Request::is('/*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-tachometer-alt"></i>
@@ -80,6 +81,8 @@
                     </p>
                 </a>
             </li>
+
+            @role('Create Test')
             <li class="nav-item">
                 <a href="{{url('/create-test')}}" class="nav-link {{ Request::is('create-test*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-plus"></i>
@@ -128,6 +131,7 @@
                     </li>
                 </ul>
             </li>
+            @endrole
             <li class="nav-item">
                 <a href="{{url('/search')}}" class="nav-link {{ Request::is('search*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-search"></i>
@@ -166,18 +170,7 @@
                     <p>Help</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{url('/list-how-to-use')}}" class="nav-link {{ Request::is('list-how-to-use*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>How to Use List</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/faq-list')}}" class="nav-link {{ Request::is('faq-list*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>FAQ List</p>
-                </a>
-            </li> 
+
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
