@@ -101,6 +101,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{url('/systems-list')}}" class="nav-link {{ Request::is('systems-list*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Systems List
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{url('/previous-test')}}" class="nav-link {{ Request::is('previous-test*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
