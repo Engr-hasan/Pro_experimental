@@ -53,6 +53,13 @@ Route::post('/subject-store','SubjectController@storeSubject');
 Route::get('/subject-edit/{id}','SubjectController@editSubject');
 Route::post('/subject-update/{id}','SubjectController@updateSubject');
 Route::get('/subject-delete/{id}','SubjectController@deleteSubject');
+//CreateTest -> systems
+Route::get('/systems-list','SystemController@listSystems');
+Route::get('/system-create','SystemController@createSystem');
+Route::post('/system-store','SystemController@storeSystem');
+Route::get('/system-edit/{id}','SystemController@editSystem');
+Route::post('/system-update/{id}','SystemController@updateSystem');
+Route::get('/system-delete/{id}','SystemController@deleteSystem');
 
 //Previous Test
 Route::get('/previous-test','PreviousTestController@getPreviousTestPage');
