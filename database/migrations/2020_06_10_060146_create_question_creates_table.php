@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubjectsTable extends Migration
+class CreateQuestionCreatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('question_creates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('question_mode_id');
-            $table->string('subject_name')->nullable();
+            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('system_id');
+            $table->string('test_mode_type');
+            $table->text('question');
             $table->integer('status')->nullable();
             $table->timestamps();
         });
@@ -29,6 +32,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('question_creates');
     }
 }

@@ -10,4 +10,8 @@ class Subject extends Model
     protected $fillable = [
         'id', 'subject_name', 'status', 'created_at', 'updated_at'
     ];
+
+    public function scopeSubject($query){
+        $query->where('status',1)->latest();
+    }
 }

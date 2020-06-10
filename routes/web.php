@@ -37,6 +37,12 @@ Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control'
     Route::post('change-role-permission', 'AssignPermissionToRolesController@change_role_permission');
 });
 
+
+Route::middleware('auth')->namespace('backend')/*->prefix('access-control')*/->group(function () {
+    Route::resource('question-create', 'QuestionCreateController');
+    Route::resource('question-answer', 'QuestionAnswerController');
+});
+
 //Temp
 Route::get('/temp','WelcomeController@getTempPage');
 

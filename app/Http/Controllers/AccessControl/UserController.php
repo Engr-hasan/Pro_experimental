@@ -86,8 +86,6 @@ class UserController extends Controller
             'selected_roles' => Role::whereIn('name', $user->getRoleNames())->pluck('id')
         ];
 
-//        dd($data);
-
         return view('accessControl.user-list.create', $data);
     }
 
@@ -100,12 +98,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
-//        dd($request->all());
         if (!auth()->user()->can('access_control_user_controller_update')) {
             abort(403, 'Unauthorized action.');
         }
-        //dd($request->all());
 
         $request->validate([
             'name' => 'required|string',

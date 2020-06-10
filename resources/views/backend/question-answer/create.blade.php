@@ -8,31 +8,18 @@
             @include('layouts.msg')
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Create Subject</h3>
+                    <h3 class="card-title">Create Question</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="{{url('/subject-store')}}" method="post" role="form" id="subjectFormId">
+                    <form action="{{route('question-create.store')}}" method="post" role="form" id="subjectFormId">
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label>Question Mode: <span class="text-danger">*</span></label>
-                                    <select name="question_mode_id" class="form-control" id="" required>
-                                        <option class="form-group"disabled selected value="">Select One</option>
-                                        @foreach($q_modes as $mode)
-                                            <option class="form-group" value="{{ $mode->id }}">{{ $mode->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <!-- text input -->
-                                <div class="form-group">
-                                    <label>Subject Name: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="subject_name"
-                                           placeholder="Enter Subject Name" required>
+                                    <label>Question: <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="summary-ckeditor" rows="3" name="question" placeholder="Enter Your Question Here" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -71,6 +58,9 @@
     </div>
 @endsection
 @section('js')
-
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
 @stop
 

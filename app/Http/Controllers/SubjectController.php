@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\QuestionMode;
 use App\Subject;
 use Illuminate\Http\Request;
 
@@ -14,18 +15,20 @@ class SubjectController extends Controller
 
     public function createSubject()
     {
-    	return view('createTest.subject.subject-create');
+        $q_modes = QuestionMode::active()->get();
+    	return view('createTest.subject.subject-create', compact('q_modes'));
     }
 
     public function storeSubject(Request $request)
     {
-        // dd($request->all());
         $this->validate($request,[
-            'subject_name' => 'required',
+            'question_mode_id' => 'required',
+            'subject_name' => 'required|unique:subjects',
             'status' => 'required'
         ]);
 
         $data = new Subject();
+        $data->question_mode_id = $request->question_mode_id;
         $data->subject_name = $request->subject_name;
         $data->status = $request->status;
         $data->save();
@@ -35,14 +38,15 @@ class SubjectController extends Controller
     public function editSubject(Request $request, $id)
     {
         $data = Subject::find($id);
-        return view('createTest.subject.subject-edit', compact('data'));
+        $q_modes = QuestionMode::active()->get();
+        return view('createTest.subject.subject-edit', compact('data', 'q_modes'));
     }
 
     public function updateSubject(Request $request, $id)
     {
         // dd($request->all());
         $this->validate($request,[
-            'subject_name' => 'required',
+            'subject_name' => 'required|unique:subjects,subject_name,' . $request->id,
             'status' => 'required'
         ]);
 

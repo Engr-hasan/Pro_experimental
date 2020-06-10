@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Subject;
 use App\System;
 use Illuminate\Http\Request;
 
@@ -14,18 +15,21 @@ class SystemController extends Controller
 
     public function createSystem()
     {
-    	return view('createTest.system.system-create');
+        $subjects = Subject::subject()->get();
+    	return view('createTest.system.system-create', compact('subjects'));
     }
 
     public function storeSystem(Request $request)
     {
-        // dd($request->all());
+//         dd($request->all());
         $this->validate($request,[
-            'system_name' => 'required',
+            'subject_id' => 'required',
+            'system_name' => 'required|unique:systems',
             'status' => 'required'
         ]);
 
         $data = new System();
+        $data->subject_id = $request->subject_id;
         $data->system_name = $request->system_name;
         $data->status = $request->status;
         $data->save();
@@ -35,14 +39,15 @@ class SystemController extends Controller
     public function editSystem(Request $request, $id)
     {
         $data = System::find($id);
-        return view('createTest.system.system-edit', compact('data'));
+        $subjects = Subject::subject()->get();
+        return view('createTest.system.system-edit', compact('data', 'subjects'));
     }
 
     public function updateSystem(Request $request, $id)
     {
         // dd($request->all());
         $this->validate($request,[
-            'system_name' => 'required',
+            'system_name' => 'required|unique:systems,system_name,'. $request->id,
             'status' => 'required'
         ]);
 

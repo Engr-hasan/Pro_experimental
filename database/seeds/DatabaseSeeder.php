@@ -14,5 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(AccessControllerTableSeeder::class);
         $this->call(RoutePermitsTableSeeder::class);
+        $this->call(QuestionModeSeeder::class);
+        $this->call(SystemSeeder::class);
+        $this->call(SubjectSeeder::class);
     }
 }

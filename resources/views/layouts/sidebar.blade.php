@@ -59,6 +59,18 @@
                 </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="{{url('question-create')}}" class="nav-link {{ Request::is('question-create*') ? 'active' : '' }}">
+                        <i class="fa fa-plus"></i>
+                        <p>Question Create</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('question-answer')}}" class="nav-link {{ Request::is('question-answer*') ? 'active' : '' }}">
+                        <i class="fa fa-plus"></i>
+                        <p>Question Answer</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{url('/list-how-to-use')}}" class="nav-link {{ Request::is('list-how-to-use*') ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>How to Use List</p>
@@ -72,7 +84,7 @@
                 </li>
             @endrole
 
-
+            @role('Create Test')
             <li class="nav-item">
                 <a href="{{url('/')}}" class="nav-link {{ Request::is('/*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-tachometer-alt"></i>
@@ -81,8 +93,6 @@
                     </p>
                 </a>
             </li>
-
-{{--            @role('Create Test')--}}
             <li class="nav-item">
                 <a href="{{url('/create-test')}}" class="nav-link {{ Request::is('create-test*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-plus"></i>
@@ -139,7 +149,6 @@
                     </li>
                 </ul>
             </li>
-{{--            @endrole--}}
             <li class="nav-item">
                 <a href="{{url('/search')}}" class="nav-link {{ Request::is('search*') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-search"></i>
@@ -178,7 +187,7 @@
                     <p>Help</p>
                 </a>
             </li>
-
+            @endrole
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

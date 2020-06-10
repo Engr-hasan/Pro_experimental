@@ -36,15 +36,15 @@
                                   <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
                                   <label class="custom-control-label" for="customSwitch1">Tutor</label>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-1">
                                 <div class="custom-control custom-switch">
                                   <input type="checkbox" class="custom-control-input" id="customSwitch2">
                                   <label class="custom-control-label" for="customSwitch2">Timed</label>
                                 </div>
-                            </div> 
-                            <div class="col-md-9"></div>   
-                        </div>   
+                            </div>
+                            <div class="col-md-9"></div>
+                        </div>
                     </div>
                 </div>
                 <!-- Test mode end-->
@@ -59,14 +59,16 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix">
-                            <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="unused" name="unusedCheckbox" id="radioSuccess1">
-                                <label for="radioSuccess1">
-                                    Unused
-                                    <input type="text" class="inputDesign" name="unused" id="unused" value="3126" disabled>
-                                </label>
-                            </div>
-                            <div class="icheck-success d-inline" style="margin-right: 50px;">
+                            @foreach($q_modes as $mode)
+                                <div class="icheck-success d-inline" style="margin-right: 50px;">
+                                    <input type="radio" value="unused" name="unusedCheckbox" id="radioSuccess1">
+                                    <label for="radioSuccess1">
+                                        {{ $mode->name }}
+                                        <input type="text" class="inputDesign" name="unused" id="unused" value="3126" disabled>
+                                    </label>
+                                </div>
+                            @endforeach
+                            {{--<div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="incorrect" name="q_mode" id="radioSuccess2">
                                 <label for="radioSuccess2">
                                     Incorrect
@@ -93,7 +95,7 @@
                                     Custom
                                     <div></div>
                                 </label>
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -178,7 +180,7 @@
 @endsection
 @section('js')
     <script type="text/javascript">
-       //Subjects 
+       //Subjects
        $('#allSubjects').click(function(event) {
           if(this.checked) {
               $('div#subjects input[type=checkbox]').each(function() {
