@@ -15,4 +15,9 @@ class CreateTestController extends Controller
     	// dd($systems);
     	return view('createTest.create-test', compact('subjects', 'systems'));
     }
+
+    public function getTestPage()
+    {
+    	return view('createTest.generate-test');
+    }
 }
