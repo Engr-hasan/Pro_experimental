@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Navbar & Tabs</title>
+  <title>Generate Test</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -20,67 +20,72 @@
 <body class="hold-transition sidebar-mini">
 	<div class="row">
 		<div class="col-md-1" id="siderDivId">
-			<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display: block; width: 8%;" id="sidebar"><!-- 
+			<div class="w3-sidebar w3-bar-block w3-card" style="display: block; width: 8%;" id="sidebar"><!-- 
 			  <button class="w3-bar-item w3-button w3-large"
 			  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
-			  <table class="table table-sm table-striped text-center">
-			    <tr class="">
-			      <th scope="col">
-			        <a href="#">1</a>
-			      </th>
-			    </tr>
-			    <tr>
-			      <th scope="col">
-			        <a href="#">2</a>
-			      </th>
-			    </tr>
-			    <tr>
-			      <th scope="col">
-			        <a href="#">3</a>
-			      </th>
-			    </tr>
-			  </table>
+			  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				  <table class="table table-sm table-striped text-center">
+				    <tr class="">
+				      <th scope="col">
+				        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1</a>
+				      </th>
+				    </tr>
+				    <tr>
+				      <th scope="col">
+				        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">2</a>
+				      </th>
+				    </tr>
+				    <tr>
+				      <th scope="col">
+				        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3</a>
+				      </th>
+				    </tr>  
+				    <tr>
+				      <th scope="col">
+				        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">4</a>
+				      </th>
+				    </tr>
+				  </table>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-11" id="mainDivId">
 			<div class="wrapper" id="mainId" style=";border: 1px solid black;">
-			  <!-- Navbar -->
 			  <nav class="navbar navbar-expand navbar-primary navbar-dark">
-			    <!-- Left navbar links -->
 			    <ul class="navbar-nav">
 			      <li class="nav-item">
-			        <a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+			        <a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button" style="color: white;"><i class="fas fa-bars"></i></a>
 			      </li>
 			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">Item 1 of 3<br>
+			        <a href="#" class="nav-link" style="color: white;">Item 1 of 3<br>
 			Question Id: 2499</a>
 			      </li>
 			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
+			        <a href="#" class="nav-link" style="color: white;">
 						<input type="checkbox">
 						Mark
 			        </a>
 			      </li>
 
 			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
+			        <a href="#" class="nav-link" style="color: white;">
 						Previous
 			        </a>
 			      </li>
 			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
+			        <a href="#" class="nav-link" style="color: white;">
 						Next
 			        </a>
 			      </li>
 
 			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
+			        <a href="#" class="nav-link" style="color: white;">
 						Full Screen
 			        </a>
 			      </li>
 			 	  <!--Dropdown Menu -->
 			      <li class="nav-item dropdown">
-			        <a class="nav-link" data-toggle="dropdown" href="#">
+			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
 			          Tutorial
 			        </a>
 			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
@@ -95,62 +100,85 @@
 			        </div>
 			      </li>
 			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
-						Lab Value
+			        <a href="#" class="nav-link" style="color: white;">
+						Lab Values
 			        </a>
 			      </li>
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
+			      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+			        <a href="#" class="nav-link" style="color: white;">
 						Notes
 			        </a>
 			      </li>
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link">
+			      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+			        <a href="#" class="nav-link" style="color: white;">
 						Calculator
 			        </a>
 			      </li>
 			      <li class="nav-item dropdown">
-			        <a class="nav-link" data-toggle="dropdown" href="#">
+			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
 			          Reverse Color
 			        </a>
-			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
-			          ddd
+			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
+			          <h5 class="text-center">Settings</h5>
+			          <span>Apperance</span>
+			          <div class="card card-outline card-primary">
+						  <div class="card-header">
+						  	 <div class="row">
+						  	 	<div class="col-md-6">Color Theme</div>
+						  	 	<div class="col-md-2">
+									<a href=""><i class="fas fa-2x fa-circle" style="color: #fbfbfb;margin-left:10px;border: 1px solid gray;border-radius: 100%"></i></a>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+									<a href=""><i class="fas fa-2x fa-circle" style="color: #000;margin-left:10px;"></i></a>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+									<a href=""><i class="fas fa-2x fa-circle" style="color: #FBF0DA;margin-left:10px;"></i></a>
+						  	 	</div>
+						  	 </div>
+			        	  </div>
+			       	  </div>
 			        </div>
 			      </li>
 			      <li class="nav-item dropdown">
-			        <a class="nav-link" data-toggle="dropdown" href="#">
-			          Tutorial
+			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+			          Settings
 			        </a>
 			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
-			          <ul>
-			          	<li class="nav-item">
-				          	<h5><a href="">Interface Tutorial</a></h5>
-				        </li>
-			          	<li class="nav-item">
-				          	<h5><a href="">Keyboard Shortcuts</a></h5>
-				        </li>
-			          </ul>
+			          <h5 class="text-center">Settings</h5>
+			          <span>Apperance</span>
+			          <div class="card card-outline card-primary">
+						  <div class="card-header">
+						  	 <div class="row">
+						  	 	<div class="col-md-6">Color Theme</div>
+						  	 	<div class="col-md-2">
+									<a href=""><i class="fas fa-2x fa-circle" style="color: #fbfbfb;margin-left:10px;border: 1px solid gray;border-radius: 100%"></i></a>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+									<a href=""><i class="fas fa-2x fa-circle" style="color: #000;margin-left:10px;"></i></a>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+									<a href=""><i class="fas fa-2x fa-circle" style="color: #FBF0DA;margin-left:10px;"></i></a>
+						  	 	</div>
+						  	 </div>
+			        	  </div>
+			       	  </div>
 			        </div>
 			      </li>
-			    </ul>
-
-			    <!-- Right navbar links -->
-			    <ul class="navbar-nav ml-auto">
-			    
-			     
 			    </ul>
 			  </nav>
 			  <!-- /.navbar -->
 
-				<div class="row">
-					<div class="p-5">
-						<p style="text-align: justify;">	What is Lorem Ipsum?
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					    <img class="offset-md-2" src="{{asset('dashboard')}}/dist/img/photo2.png" alt="TestImg" style="width: 500px;height: 400px;">
-					    <h3>Which of the following is the most likely diagnosis?</h3>
+			  <div class="tab-content" id="v-pills-tabContent">
+			      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+				       <p class="p-4" style="text-align: justify;">1	What is Lorem Ipsum?
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						<img src="{{asset('dashboard')}}/dist/img/test-img.jpeg" class="p-4" alt="GenerateTestImg">
+
+						<div class="p-5">    
 					    <form>
 						    <div class="row">
 						    	<div class="col-md-4">
+						    		<h4>What is Lichen planus?</h4>
 						    		<div class="card card-outline card-primary">
 						              <div class="card-header">
 						                <div class="custom-control custom-radio">
@@ -185,61 +213,41 @@
 						    </div>
 						    <button type="submit" class="btn btn-primary btn-md float-left">Submit</button>
 						</form>
-					</div>
-				</div>
+					</div> 
+				  </div>
+			      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">2 no page</div>
+			      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">3 no page</div>
+			      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">4 no page</div>
+			  </div>
 
 			 	<!-- /.footer -->
 			  	<nav class="navbar navbar-expand navbar-primary navbar-dark">
 			    	<strong style="color: white;"></strong>
 			    	<ul class="navbar-nav">
 				      <li class="nav-item d-none d-sm-inline-block">
-				        <a href="#" class="nav-link" style="color: white;"><strong>Block Time Remaining: 00:44:24 <br> TUTOR</strong></a>
+				        <a href="#" class="nav-link" style="color: white;">Block Time Remaining: 00:44:24 <br> TUTOR</a>
 				      </li>
 				     </ul>
 				     <ul class="navbar-nav ml-auto">
-					      <li class="nav-item dropdown">
-					         <div class="btn-group dropup">
-							  <strong type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-							    Flash Cards
-							  </strong>
-							  <div class="dropdown-menu">
-							    Flash Cards
-
-							  </div>
-							</div>
-					      </li>&nbsp;&nbsp;&nbsp;&nbsp;
-					      <li class="nav-item dropdown">
-					         <div class="btn-group dropup">
-							  <strong type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-							    Feedback
-							  </strong>
-							  <div class="dropdown-menu">
-							    Feedback
-
-							  </div>
-							</div>
-					      </li>&nbsp;&nbsp;&nbsp;&nbsp;
-					      <li class="nav-item dropdown">
-					         <div class="btn-group dropup">
-							  <strong type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-							    Suspend
-							  </strong>
-							  <div class="dropdown-menu">
-							    Suspend
-
-							  </div>
-							</div>
-					      </li>&nbsp;&nbsp;&nbsp;&nbsp;
-					      <li class="nav-item dropdown">
-					         <div class="btn-group dropup">
-							  <strong type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-							    End Block
-							  </strong>
-							  <div class="dropdown-menu">
-							    End Block
-
-							  </div>
-							</div>
+					      <li class="nav-item d-none d-sm-inline-block">
+					        <a href="#" class="nav-link" style="color: white;">
+								Flash Cards
+					        </a>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block">
+					        <a href="#" class="nav-link" style="color: white;">
+								Feedback
+					        </a>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block">
+					        <a href="#" class="nav-link" style="color: white;">
+								Suspend
+					        </a>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block">
+					        <a href="#" class="nav-link" style="color: white;">
+								End Block
+					        </a>
 					      </li>
 				     </ul> 
 			    </nav>

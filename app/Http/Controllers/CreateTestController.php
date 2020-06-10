@@ -15,4 +15,9 @@ class CreateTestController extends Controller
     	$q_modes = QuestionMode::active()->get();
     	return view('createTest.create-test', compact('subjects', 'systems', 'q_modes'));
     }
+
+    public function getTestPage()
+    {
+    	return view('createTest.generate-test');
+    }
 }

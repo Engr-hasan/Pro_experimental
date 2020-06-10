@@ -171,7 +171,7 @@
                 </div>
                 <!-- No of Question end-->
                 <div class="col-md-12 col-lg-12">
-                    <a href="#" class="btn btn-primary">GENERATE TEST</a>
+                    <a href="{{url('generate-test')}}" class="btn btn-primary">GENERATE TEST</a>
                 </div>
                 <br/>
             </div>

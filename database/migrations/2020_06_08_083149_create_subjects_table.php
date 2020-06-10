@@ -17,6 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('question_mode_id');
             $table->string('subject_name')->nullable();
+            $table->string('system_name')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps();
         });
