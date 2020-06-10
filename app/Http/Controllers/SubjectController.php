@@ -9,7 +9,7 @@ class SubjectController extends Controller
 {
     public function listSubjects()
     {
-        $data = Subject::latest()->get();
+        $data = Subject::subject()->get();
     	return view('createTest.subject.subjects-list', compact('data'));
     }
 

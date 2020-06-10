@@ -31,7 +31,6 @@
                 <th width="5%" class="text-center">ID</th>
                 <th width="50%" class="text-center">Subject Name</th>
                 <th width="15%" width="5%" class="text-center">Status</th>
-                <th width="15%" class="text-center">Created</th>
                 <th width="15%" class="text-center">Action</th>
               </tr>
               </thead>
@@ -48,7 +47,6 @@
                         <button type="button" class="btn btn-block btn-danger btn-xs">Inactive</button>
                       @endif
                     </td>
-                    <td align="center">{{ $singleData->created_at->format('d/m/Y') }}</td>
                     <td align="center">
                       <a href="{{url('/subject-edit/'.$singleData->id)}}">
                         <span class="badge bg-primary">Edit</span>
@@ -60,7 +58,7 @@
                   </tr>
                   @endforeach
               @endif
-              </tfoot>
+              </tbody>
             </table>
           </div>
           <!-- /.card-body -->

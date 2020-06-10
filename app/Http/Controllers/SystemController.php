@@ -9,7 +9,7 @@ class SystemController extends Controller
 {
     public function listSystems()
     {
-        $data = System::latest()->get();
+        $data = System::system()->get();
     	return view('createTest.system.systems-list', compact('data'));
     }
 
