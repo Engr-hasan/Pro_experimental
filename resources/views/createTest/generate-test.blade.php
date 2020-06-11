@@ -20,36 +20,70 @@
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="row">
-		<div class="col-md-1" id="siderDivId">
-			<div class="w3-sidebar w3-bar-block w3-card" style="background-color: #FBF0DA;display: block; width: 8%;" id="sidebar"><!--
-			  <button class="w3-bar-item w3-button w3-large"
-			  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
-			  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-				  <table class="table table-sm table-striped text-center">
-				    <tr class="">
-				      <th scope="col">
-				        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1</a>
-				      </th>
-				    </tr>
-				    <tr>
-				      <th scope="col">
-				        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">2</a>
-				      </th>
-				    </tr>
-				    <tr>
-				      <th scope="col">
-				        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3</a>
-				      </th>
-				    </tr>
-				    <tr>
-				      <th scope="col">
-				        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">4</a>
-				      </th>
-				    </tr>
-				  </table>
+		@if ($color->apperance_color === "#000")
+			<div class="col-md-1" id="siderDivId">
+				<div class="w3-sidebar w3-bar-block w3-card" style="background-color: {{$color->apperance_color}};display: block; width: 8%;border: 1px solid white;" id="sidebar"><!--
+				  <button class="w3-bar-item w3-button w3-large"
+				  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
+				  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					  <table class="table table-sm table-striped text-center">
+					    <tr class="">
+					      <th scope="col">
+					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" style="color: white;">1</a>
+					      </th>
+					    </tr>
+					    <tr>
+					      <th scope="col">
+					        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" style="color: white;">2</a>
+					      </th>
+					    </tr>
+					    <tr>
+					      <th scope="col">
+					        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" style="color: white;">3</a>
+					      </th>
+					    </tr>
+					    <tr>
+					      <th scope="col">
+					        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: white;">4</a>
+					      </th>
+					    </tr>
+					  </table>
+					</div>
 				</div>
 			</div>
-		</div>
+		@else
+			<div class="col-md-1" id="siderDivId">
+				<div class="w3-sidebar w3-bar-block w3-card" style="background-color: {{$color->apperance_color}};display: block; width: 8%;" id="sidebar"><!--
+				  <button class="w3-bar-item w3-button w3-large"
+				  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
+				  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					  <table class="table table-sm table-striped text-center">
+					    <tr class="">
+					      <th scope="col">
+					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1</a>
+					      </th>
+					    </tr>
+					    <tr>
+					      <th scope="col">
+					        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">2</a>
+					      </th>
+					    </tr>
+					    <tr>
+					      <th scope="col">
+					        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3</a>
+					      </th>
+					    </tr>
+					    <tr>
+					      <th scope="col">
+					        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">4</a>
+					      </th>
+					    </tr>
+					  </table>
+					</div>
+				</div>
+			</div>
+		@endif
+
 		<div class="col-md-11" id="mainDivId">
 			<div class="wrapper" id="mainId" style=";border: 1px solid black;">
 			  <nav class="navbar navbar-expand navbar-primary navbar-dark">
@@ -156,22 +190,22 @@
 						  	 		<strong>Theme:</strong>
 						  	 	</div>
 						  	 	<div class="col-md-2">
-						  	 		<a>
-						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;cursor: pointer;border: 1px solid gray;"> 
+						  	 		<a style="color: #fbfbfb;cursor: pointer;">
+						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;"> 
 											w 
 										</span>
 						  	 		</a>
 						  	 	</div>
 						  	 	<div class="col-md-2">
-						  	 		<a>
-						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;cursor: pointer;border: 1px solid gray;"> 
+						  	 		<a style="color: #000;cursor: pointer;">
+						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;"> 
 											B
 										</span>
 						  	 		</a>
 						  	 	</div>
 						  	 	<div class="col-md-2">
-						  	 		<a>
-						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;cursor: pointer;border: 1px solid gray;"> 
+						  	 		<a style="color: #FBF0DA;cursor: pointer;">
+						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;"> 
 											G
 										</span>
 <<<<<<< HEAD
@@ -194,15 +228,79 @@
 			    </ul>
 			  </nav>
 			  <!-- /.navbar -->
-
-			  <div class="tab-content" id="v-pills-tabContent" style="background-color: #FBF0DA;">
+			  @if ($color->apperance_color === "#000")					    		
+			  <div class="tab-content" id="v-pills-tabContent" style="background-color: {{$color->apperance_color}};">
 			      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-				       <p class="p-4" style="text-align: justify;">1	What is Lorem Ipsum?
+				       <p class="p-4" style="text-align: justify;color: white">1. What is Lorem Ipsum?
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-						<img src="{{asset('dashboard')}}/dist/img/test-img.jpeg" class="p-4" alt="GenerateTestImg">
+					
+						<div class="p-5">
+					    <form>
+					    	<div class="row">
+					    		<div class="col-md-1"></div>
+					    		<div class="col-md-10">
+					    			<img src="{{asset('dashboard')}}/dist/img/test-img.jpeg" class="img-fluid rounded p-4" alt="GenerateTestImg">
+					    		</div>
+					    		<div class="col-md-1"></div>
+					    	</div>
+						    <div class="row">
+						    	<div class="col-md-4">
+						    		<h4 style="color: white;">What is Lichen planus?</h4>
+						    		<div class="card card-outline card-primary">
+						              <div class="card-header">
+						                <div class="custom-control custom-radio">
+					                      <input class="custom-control-input" type="radio" id="customRadio1" name="status" value="1" checked>
+					                      <label for="customRadio1" class="custom-control-label">A. Atopic dermatitis</label>
+					                    </div>
+					                    <div class="custom-control custom-radio">
+					                      <input class="custom-control-input" type="radio" id="customRadio2" name="status" value="1" checked>
+					                      <label for="customRadio2" class="custom-control-label">B. Dermatitis herpetiformis</label>
+					                    </div>
+					                    <div class="custom-control custom-radio">
+					                      <input class="custom-control-input" type="radio" id="customRadio3" name="status" value="1" checked>
+					                      <label for="customRadio3" class="custom-control-label">C. Lichen planus</label>
+					                    </div>
+					                    <div class="custom-control custom-radio">
+					                      <input class="custom-control-input" type="radio" id="customRadio4" name="status" value="1" checked>
+					                      <label for="customRadio4" class="custom-control-label">D. Pityriasis rosea</label>
+					                    </div>
+					                    <div class="custom-control custom-radio">
+					                      <input class="custom-control-input" type="radio" id="customRadio5" name="status" value="1" checked>
+					                      <label for="customRadio5" class="custom-control-label">E. Psoriasis</label>
+					                    </div>
+					                    <div class="custom-control custom-radio">
+					                      <input class="custom-control-input" type="radio" id="customRadio6" name="status" value="1" checked>
+					                      <label for="customRadio6" class="custom-control-label">F. Tinea versicolor</label>
+					                    </div>
+						              </div>
+						            </div>
+						    	</div>
+						    	<div class="col-md-4"></div>
+						    	<div class="col-md-4"></div>
+						    </div>
+						    <button type="submit" class="btn btn-primary btn-md float-left">Submit</button>
+						</form>
+					</div>
+				  </div>
+			      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" style="color: white">2 no page</div>
+			      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" style="color: white">3 no page</div>
+			      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" style="color: white">4 no page</div>
+			  </div>
+			  @else
+			  <div class="tab-content" id="v-pills-tabContent" style="background-color: {{$color->apperance_color}};">
+			      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+				       <p class="p-4" style="text-align: justify;">1. What is Lorem Ipsum?
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
 						<div class="p-5">
 					    <form>
+					    	<div class="row">
+					    		<div class="col-md-1"></div>
+					    		<div class="col-md-10">
+					    			<img src="{{asset('dashboard')}}/dist/img/test-img.jpeg" class="img-fluid rounded p-4" alt="GenerateTestImg">
+					    		</div>
+					    		<div class="col-md-1"></div>
+					    	</div>
 						    <div class="row">
 						    	<div class="col-md-4">
 						    		<h4>What is Lichen planus?</h4>
@@ -246,7 +344,7 @@
 			      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">3 no page</div>
 			      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">4 no page</div>
 			  </div>
-
+			  @endif
 			 	<!-- /.footer -->
 			  	<nav class="navbar navbar-expand navbar-primary navbar-dark">
 			    	<strong style="color: white;"></strong>
@@ -321,6 +419,7 @@
               },
               success: function(result){
                  console.log(result);
+                 location.reload(); 
               }
             });
 		}
