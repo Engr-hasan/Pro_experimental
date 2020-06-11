@@ -20,7 +20,7 @@
 <body class="hold-transition sidebar-mini">
 	<div class="row">
 		<div class="col-md-1" id="siderDivId">
-			<div class="w3-sidebar w3-bar-block w3-card" style="display: block; width: 8%;" id="sidebar"><!-- 
+			<div class="w3-sidebar w3-bar-block w3-card" style="background-color: #FBF0DA;display: block; width: 8%;" id="sidebar"><!-- 
 			  <button class="w3-bar-item w3-button w3-large"
 			  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
 			  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -143,22 +143,35 @@
 			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
 			          Settings
 			        </a>
-			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
+			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
 			          <h5 class="text-center">Settings</h5>
 			          <span>Apperance</span>
 			          <div class="card card-outline card-primary">
 						  <div class="card-header">
 						  	 <div class="row">
-						  	 	<div class="col-md-6">Color Theme</div>
-						  	 	<div class="col-md-2">
-									<a href=""><i class="fas fa-2x fa-circle" style="color: #fbfbfb;margin-left:10px;border: 1px solid gray;border-radius: 100%"></i></a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-									<a href=""><i class="fas fa-2x fa-circle" style="color: #000;margin-left:10px;"></i></a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-									<a href=""><i class="fas fa-2x fa-circle" style="color: #FBF0DA;margin-left:10px;"></i></a>
-						  	 	</div>
+						  	 	<form method="post">
+							  	 	<div class="col-md-6">Color Theme</div>
+							  	 	<div class="col-md-2">
+										<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;"> 
+											white 
+										</span>
+							  	 	</div>
+							  	 	<div class="col-md-2">
+							  	 		<span id="#000" onClick="chose_color(this.id)" style="background-color: blue;"> 
+											Black 
+										</span> 
+							  	 	</div>
+							  	 	<div class="col-md-2">
+							  	 		<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: gold;"> 
+											Golden 
+										</span>
+							  	 	</div>
+							  	 	 
+									
+									<p id = "getColor"> 
+									</p>
+									<input type="text" class="form-control" id="apperance_color" name="apperance_color">
+ 								</form>
 						  	 </div>
 			        	  </div>
 			       	  </div>
@@ -168,7 +181,7 @@
 			  </nav>
 			  <!-- /.navbar -->
 
-			  <div class="tab-content" id="v-pills-tabContent">
+			  <div class="tab-content" id="v-pills-tabContent" style="background-color: #FBF0DA;">
 			      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 				       <p class="p-4" style="text-align: justify;">1	What is Lorem Ipsum?
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -270,8 +283,33 @@
 	    		$("#mainDivId").removeClass("col-md-11");
 	    		$("#siderDivId").hide();
 		    });
+
 		});
 		
+
+		var el_select = document.getElementById("getColor"); 
+		
+		function chose_color(clicked) { 
+			var apperance_color = el_select.innerHTML = clicked; 
+			console.log(apperance_color);
+			// var apperance_color = jQuery("#apperance_color").val(apperance_color_name);
+
+	      	$.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+            });
+            jQuery.ajax({
+              url: "{{ url('/apperance-color-store') }}",
+              method: 'post',
+              data: {
+                 apperance_color: apperance_color
+              },
+              success: function(result){
+                 console.log(result);
+              }
+            });
+		}	
 
 		/*$(document).ready(function(){
 		    $("#show").toggle(function(){ 
