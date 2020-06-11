@@ -14,12 +14,12 @@ class AccessControllerTableSeeder extends Seeder
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
 
-        $dev=\DB::table('users')->where('email', 'nur@gmail.com')->first();
+        $dev=\DB::table('users')->where('email', 'super_admin@gmail.com')->first();
 
         if(empty($dev)){
 
             $data=[
-                ['name'=>'Nur Alam', 'email'=>'nur@gmail.com', 'password'=>bcrypt('12345678')],
+                ['name'=>'Super Admin', 'email'=>'super_admin@gmail.com', 'password'=>bcrypt('12345678')],
             ];
 
             \DB::table('users')->insert($data);
@@ -42,7 +42,7 @@ class AccessControllerTableSeeder extends Seeder
 
         \DB::table('permissions')->insert($data);
 
-        $dev=\DB::table('users')->where('email', 'nur@gmail.com')->first();
+        $dev=\DB::table('users')->where('email', 'super_admin@gmail.com')->first();
 
         //Data for role user pivot
         $data=[

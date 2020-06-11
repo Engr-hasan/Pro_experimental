@@ -41,6 +41,8 @@ Route::middleware('auth')->namespace('AccessControl')/*->prefix('access-control'
 Route::middleware('auth')->namespace('backend')/*->prefix('access-control')*/->group(function () {
     Route::resource('question-create', 'QuestionCreateController');
     Route::resource('question-answer', 'QuestionAnswerController');
+    Route::resource('answer-explanation', 'AnswerExplanationController');
+    Route::get('/get-answer', 'AnswerExplanationController@get_answer');
 });
 
 //Temp
