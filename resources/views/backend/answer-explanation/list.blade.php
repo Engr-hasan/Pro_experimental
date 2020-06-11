@@ -29,32 +29,36 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th width="5%" class="text-center">ID</th>
-                                <th width="15%" class="text-center">Test Mode Type</th>
-                                <th width="35%" class="text-center">Question</th>
-                                <th width="15%" width="5%" class="text-center">Status</th>
+                                <th width="3%" class="text-center">ID</th>
+                                <th width="25%" class="text-center">Question</th>
+                                <th width="10%" class="text-center">Answer</th>
+                                <th width="7%" class="text-center">Topic</th>
+                                <th width="30%" width="5%" class="text-center">Explanation</th>
+                                <th width="10%" width="5%" class="text-center">Status</th>
                                 <th width="15%" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {{--@if(isset($questions))
-                            @foreach($questions as $key=> $question)
+                        @if(isset($explanations))
+                            @foreach($explanations as $key=> $explanation)
                                 <tr>
                                     <td align="center">{{ $key + 1 }}</td>
-                                    <td align="center">{{ $question->test_mode_type }}</td>
-                                    <td style="text-align: justify;" align="center">{!! \Str::limit($question->question, '100') !!}</td>
+                                    <td style="text-align: justify;" align="center">{!! \Str::limit($explanation->question->question, '60') !!}</td>
+                                    <td align="center">{{ $explanation->answer->answer }}</td>
+                                    <td align="center">{{ $explanation->topic }}</td>
+                                    <td style="text-align: justify;" align="center">{!! \Str::limit($explanation->explanation, '60') !!}</td>
                                     <td align="center">
-                                        @if($question->status == 1)
+                                        @if($explanation->status == 1)
                                             <span class="badge badge-success">Active</span>
                                         @else
                                             <span class="badge badge-danger">Inactive</span>
                                         @endif
                                     </td>
                                     <td align="center">
-                                        <a class="btn btn-success" href="{{route('question-create.edit',$question->id)}}">
+                                        <a class="btn btn-success" href="{{route('answer-explanation.edit',$explanation->id)}}">
                                             <span class="badge bg-success">Edit</span>
                                         </a>
-                                        <form action="{{ route('question-create.destroy',$question->id) }}"
+                                        <form action="{{ route('answer-explanation.destroy',$explanation->id) }}"
                                               method="post">
                                             @method('DELETE')
                                             @csrf
@@ -66,7 +70,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        @endif--}}
+                        @endif
                         </tbody>
                     </table>
                 </div>

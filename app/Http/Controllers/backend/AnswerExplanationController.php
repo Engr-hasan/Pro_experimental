@@ -17,7 +17,8 @@ class AnswerExplanationController extends Controller
      */
     public function index()
     {
-        return view('backend.answer-explanation.list');
+        $explanations = AnswerExplanation::with('question','answer')->latest()->get();
+        return view('backend.answer-explanation.list',compact('explanations'));
     }
 
     /**
@@ -40,7 +41,6 @@ class AnswerExplanationController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         $this->validate($request,[
            'question_create_id' => 'required',
            'question_answer_list_id' => 'required',
@@ -75,7 +75,10 @@ class AnswerExplanationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $questions = QuestionCreate::active()->get();
+        $answers = QuestionAnswersList::active()->correctAnswer()->get();
+        $explanation = AnswerExplanation::find($id);
+        return view('backend.answer-explanation.edit',compact('questions', 'answers', 'explanation'));
     }
 
     /**
@@ -87,7 +90,19 @@ class AnswerExplanationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'question_create_id' => 'required',
+            'question_answer_list_id' => 'required',
+            'topic' => 'required',
+            'explanation' => 'required',
+            'status' => 'required',
+        ]);
+
+        $explanation = new AnswerExplanation();
+        $explanation->fill($request->except('statistics', 'time_spent', 'last_update', 'image_url'));
+        $explanation->update();
+
+        return redirect()->route('answer-explanation.index');
     }
 
     /**
@@ -98,7 +113,8 @@ class AnswerExplanationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        AnswerExplanation::find($id)->delete();
+        return redirect()->back();  
     }
 
     //Get Answer function
