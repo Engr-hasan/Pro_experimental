@@ -40,7 +40,7 @@ class AnswerExplanationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
         $this->validate($request,[
            'question_create_id' => 'required',
            'question_answer_list_id' => 'required',
