@@ -24,10 +24,9 @@ class CreateTestController extends Controller
     }
 
     public function store(Request $request)
-     {dd($request->all());
+     {
         $color = new ApperanceColor();
         $color->apperance_color = $request->apperance_color;
-
         $color->save();
         return response()->json(['success'=>'Color is successfully added']);
      }

@@ -146,36 +146,41 @@
 			        </a>
 			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
 			          <h5 class="text-center">Settings</h5>
-			          <span>Apperance</span>
 			          <div class="card card-outline card-primary">
 						  <div class="card-header">
+						  	Apperance
+						  </div>
+						  <div class="card-body">
 						  	 <div class="row">
-						  	 	<form method="post">
-							  	 	<div class="col-md-6">Color Theme</div>
-							  	 	<div class="col-md-2">
-										<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;"> 
-											white 
+						  	 	<div class="col-md-6">
+						  	 		<strong>Theme:</strong>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+						  	 		<a>
+						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;cursor: pointer;border: 1px solid gray;"> 
+											w 
 										</span>
-							  	 	</div>
-							  	 	<div class="col-md-2">
-							  	 		<span id="#000" onClick="chose_color(this.id)" style="background-color: blue;"> 
-											Black 
-										</span> 
-							  	 	</div>
-							  	 	<div class="col-md-2">
-							  	 		<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: gold;"> 
-											Golden 
+						  	 		</a>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+						  	 		<a>
+						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;cursor: pointer;border: 1px solid gray;"> 
+											B
 										</span>
-							  	 	</div>
-							  	 	 
-									
-									<p id = "getColor" name="apperance_color"> 
-									</p>
-									<input type="text" class="form-control" id="apperance_color" name="apperance_color">
- 								</form>
+						  	 		</a>
+						  	 	</div>
+						  	 	<div class="col-md-2">
+						  	 		<a>
+						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;cursor: pointer;border: 1px solid gray;"> 
+											G
+										</span>
+						  	 		</a>
+						  	 	</div>
+						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
+								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
 						  	 </div>
-			        	  </div>
-			       	  </div>
+						  </div>
+					  </div>
 			        </div>
 			      </li>
 			    </ul>
@@ -294,11 +299,11 @@
 			var apperance_color = el_select.innerHTML = clicked; 
 			console.log(apperance_color);
 			// var apperance_color = jQuery("#apperance_color").val(apperance_color_name);
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+			$.ajaxSetup({
+			    headers: {
+			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+			});
 	      	
             jQuery.ajax({
               url: "{{ url('/apperance-color-store') }}",
