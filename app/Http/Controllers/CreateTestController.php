@@ -5,6 +5,7 @@ use App\QuestionMode;
 use App\Subject;
 use App\System;
 use App\ApperanceColor;
+use DB;
 use Illuminate\Http\Request;
 
 class CreateTestController extends Controller
@@ -19,8 +20,9 @@ class CreateTestController extends Controller
 
     public function getTestPage()
     {
-        $apperance_color = ApperanceColor::get('apperance_color')->toArray();
-    	return view('createTest.generate-test', compact('apperance_color'));
+        $color = ApperanceColor::orderBy('id', 'desc')->first();
+        // dd($color);
+    	return view('createTest.generate-test', compact('color'));
     }
 
     public function store(Request $request)
@@ -28,6 +30,6 @@ class CreateTestController extends Controller
         $color = new ApperanceColor();
         $color->apperance_color = $request->apperance_color;
         $color->save();
-        return response()->json(['success'=>'Color is successfully added']);
+        return response()->json(['success'=>'Theme Color is Changed']);
      }
 }
