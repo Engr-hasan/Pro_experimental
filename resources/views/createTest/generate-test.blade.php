@@ -149,7 +149,7 @@
 			          <div class="card card-outline card-primary">
 						  <div class="card-header">
 						  	 <div class="row">
-						  	 	<form>
+						  	 	<form method="post">
 						  	 	<div class="col-md-6">Color Theme</div>
 						  	 	<div class="col-md-2">
 									<a href="{{ url('apperance-color-store') }}" id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;"> 
@@ -171,7 +171,7 @@
 								<p id = "getColor"> 
 								</p>
 								<input type="text" class="form-control" id="apperance_color" name="apperance_color">
- 							
+ 								</form>
 						  	 </div>
 			        	  </div>
 			       	  </div>
@@ -291,6 +291,7 @@
 		
 		function chose_color(clicked) { 
 			var apperance_color = el_select.innerHTML = clicked; 
+			console.log(apperance_color);
 			// var apperance_color = jQuery("#apperance_color").val(apperance_color_name);
 
 	      	$.ajaxSetup({
