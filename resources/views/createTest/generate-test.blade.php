@@ -168,7 +168,7 @@
 							  	 	</div>
 							  	 	 
 									
-									<p id = "getColor"> 
+									<p id = "getColor" name="apperance_color"> 
 									</p>
 									<input type="text" class="form-control" id="apperance_color" name="apperance_color">
  								</form>
