@@ -29,6 +29,6 @@ class CreateTestController extends Controller
         $color->apperance_color = $request->apperance_color;
 
         $color->save();
-        return response()->json(['success'=>'color is successfully added']);
+        return response()->json(['success'=>'Color is successfully added']);
      }
 }

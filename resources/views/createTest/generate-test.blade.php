@@ -150,27 +150,27 @@
 						  <div class="card-header">
 						  	 <div class="row">
 						  	 	<form method="post">
-						  	 	<div class="col-md-6">Color Theme</div>
-						  	 	<div class="col-md-2">
-									<a href="{{ url('apperance-color-store') }}" id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;"> 
-										white 
-									</a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-						  	 		<a href="{{ url('apperance-color-store') }}" id="#000" onClick="chose_color(this.id)" style="background-color: blue;"> 
-										Black 
-									</a> 
-						  	 	</div>
-						  	 	<div class="col-md-2">
-						  	 		<a href="{{ url('apperance-color-store') }}" id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: gold;"> 
-										Golden 
-									</a>
-						  	 	</div>
-						  	 	 
-								
-								<p id = "getColor"> 
-								</p>
-								<input type="text" class="form-control" id="apperance_color" name="apperance_color">
+							  	 	<div class="col-md-6">Color Theme</div>
+							  	 	<div class="col-md-2">
+										<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;"> 
+											white 
+										</span>
+							  	 	</div>
+							  	 	<div class="col-md-2">
+							  	 		<span id="#000" onClick="chose_color(this.id)" style="background-color: blue;"> 
+											Black 
+										</span> 
+							  	 	</div>
+							  	 	<div class="col-md-2">
+							  	 		<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: gold;"> 
+											Golden 
+										</span>
+							  	 	</div>
+							  	 	 
+									
+									<p id = "getColor"> 
+									</p>
+									<input type="text" class="form-control" id="apperance_color" name="apperance_color">
  								</form>
 						  	 </div>
 			        	  </div>

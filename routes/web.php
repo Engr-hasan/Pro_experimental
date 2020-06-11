@@ -52,7 +52,7 @@ Route::get('/','WelcomeController@getWelcomePage');
 //Create Test
 Route::get('/create-test','CreateTestController@getCreateTestPage');
 Route::get('/generate-test','CreateTestController@getTestPage');
-Route::post('/apperance-color-store', 'CreateTestController@store');
+Route::any('/apperance-color-store', 'CreateTestController@store');
 
 //CreateTest -> Subject
 Route::get('/subjects-list','SubjectController@listSubjects');
