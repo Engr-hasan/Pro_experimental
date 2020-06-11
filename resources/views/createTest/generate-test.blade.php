@@ -20,7 +20,7 @@
 <body class="hold-transition sidebar-mini">
 	<div class="row">
 		<div class="col-md-1" id="siderDivId">
-			<div class="w3-sidebar w3-bar-block w3-card" style="background-color: #FBF0DA;display: block; width: 8%;" id="sidebar"><!-- 
+			<div class="w3-sidebar w3-bar-block w3-card" style="background-color: #FBF0DA;display: block; width: 8%;" id="sidebar"><!--
 			  <button class="w3-bar-item w3-button w3-large"
 			  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
 			  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -39,7 +39,7 @@
 				      <th scope="col">
 				        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3</a>
 				      </th>
-				    </tr>  
+				    </tr>
 				    <tr>
 				      <th scope="col">
 				        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">4</a>
@@ -120,7 +120,7 @@
 			        </a>
 			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
 			          <h5 class="text-center">Settings</h5>
-			          <span>Apperance</span>
+			          <span>Appearance</span>
 			          <div class="card card-outline card-primary">
 						  <div class="card-header">
 						  	 <div class="row">
@@ -152,23 +152,23 @@
 						  	 	<form method="post">
 							  	 	<div class="col-md-6">Color Theme</div>
 							  	 	<div class="col-md-2">
-										<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;"> 
-											white 
+										<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: gray;">
+											white
 										</span>
 							  	 	</div>
 							  	 	<div class="col-md-2">
-							  	 		<span id="#000" onClick="chose_color(this.id)" style="background-color: blue;"> 
-											Black 
-										</span> 
-							  	 	</div>
-							  	 	<div class="col-md-2">
-							  	 		<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: gold;"> 
-											Golden 
+							  	 		<span id="#000" onClick="chose_color(this.id)" style="background-color: blue;">
+											Black
 										</span>
 							  	 	</div>
-							  	 	 
-									
-									<p id = "getColor"> 
+							  	 	<div class="col-md-2">
+							  	 		<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: gold;">
+											Golden
+										</span>
+							  	 	</div>
+
+
+									<p id = "getColor">
 									</p>
 									<input type="text" class="form-control" id="apperance_color" name="apperance_color">
  								</form>
@@ -187,7 +187,7 @@
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 						<img src="{{asset('dashboard')}}/dist/img/test-img.jpeg" class="p-4" alt="GenerateTestImg">
 
-						<div class="p-5">    
+						<div class="p-5">
 					    <form>
 						    <div class="row">
 						    	<div class="col-md-4">
@@ -226,7 +226,7 @@
 						    </div>
 						    <button type="submit" class="btn btn-primary btn-md float-left">Submit</button>
 						</form>
-					</div> 
+					</div>
 				  </div>
 			      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">2 no page</div>
 			      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">3 no page</div>
@@ -262,7 +262,7 @@
 								End Block
 					        </a>
 					      </li>
-				     </ul> 
+				     </ul>
 			    </nav>
 			     <!-- /.footer -->
 			</div>
@@ -278,19 +278,19 @@
 
     <script>
     	$(document).ready(function(){
-		    $("#show").click(function(){ 
+		    $("#show").click(function(){
 	    		$("#mainDivId").addClass("col-md-12");
 	    		$("#mainDivId").removeClass("col-md-11");
 	    		$("#siderDivId").hide();
 		    });
 
 		});
-		
 
-		var el_select = document.getElementById("getColor"); 
-		
-		function chose_color(clicked) { 
-			var apperance_color = el_select.innerHTML = clicked; 
+
+		var el_select = document.getElementById("getColor");
+
+		function chose_color(clicked) {
+			var apperance_color = el_select.innerHTML = clicked;
 			console.log(apperance_color);
 			// var apperance_color = jQuery("#apperance_color").val(apperance_color_name);
 
@@ -309,10 +309,10 @@
                  console.log(result);
               }
             });
-		}	
+		}
 
 		/*$(document).ready(function(){
-		    $("#show").toggle(function(){ 
+		    $("#show").toggle(function(){
 	    		// $("#mainDivId").addClass("col-md-12");
 	    		// $("#mainDivId").removeClass("col-md-11");
 	    		$("#siderDivId").hide();
@@ -325,7 +325,7 @@
 
 
 		/*$(document).ready(function(){
-		    $("#show").click(function(){ 
+		    $("#show").click(function(){
 	    		$("#mainDivId").addClass("col-md-12");
 	    		$("#mainDivId").removeClass("col-md-11");
 	    		$("#siderDivId").hide();
