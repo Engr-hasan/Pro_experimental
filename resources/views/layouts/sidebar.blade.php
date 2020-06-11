@@ -58,6 +58,7 @@
                     </li>
                 </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="{{url('question-create')}}" class="nav-link {{ Request::is('question-create*') ? 'active' : '' }}">
                         <i class="fa fa-plus"></i>
@@ -68,6 +69,12 @@
                     <a href="{{url('question-answer')}}" class="nav-link {{ Request::is('question-answer*') ? 'active' : '' }}">
                         <i class="fa fa-plus"></i>
                         <p>Question Answer</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('answer-explanation')}}" class="nav-link {{ Request::is('answer-explanation*') ? 'active' : '' }}">
+                        <i class="fa fa-plus"></i>
+                        <p>Answer Explanation</p>
                     </a>
                 </li>
                 <li class="nav-item">
