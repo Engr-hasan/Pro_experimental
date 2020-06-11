@@ -33,13 +33,13 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="custom-control custom-switch">
-                                  <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                                  <input type="checkbox" name="test_mode" value="tutor" class="custom-control-input" id="customSwitch1" checked>
                                   <label class="custom-control-label" for="customSwitch1">Tutor</label>
                                 </div>
                             </div>
                             <div class="col-md-1">
                                 <div class="custom-control custom-switch">
-                                  <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                  <input type="checkbox" name="test_mode" value="timed" class="custom-control-input" id="customSwitch2">
                                   <label class="custom-control-label" for="customSwitch2">Timed</label>
                                 </div>
                             </div>
@@ -61,41 +61,23 @@
                         <div class="form-group clearfix">
                             @foreach($q_modes as $mode)
                                 <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                    <input type="radio" value="unused" name="unusedCheckbox" id="radioSuccess1">
-                                    <label for="radioSuccess1">
+                                    <input type="radio" value="{{$mode->id}}" name="question_mode" id="radioSuccess{{$mode->id}}">
+                                    <label for="radioSuccess{{$mode->id}}">
                                         {{ $mode->name }}
-                                        <input type="text" class="inputDesign" name="unused" id="unused" value="3126" disabled>
+                                        @if($mode->id==1)
+                                            <input type="text" class="inputDesign" value="{{ $q_mode_counts1 }}" disabled>
+                                        @elseif($mode->id==2)
+                                            <input type="text" class="inputDesign" value="{{ $q_mode_counts2 }}" disabled>
+                                        @elseif($mode->id==3)
+                                            <input type="text" class="inputDesign" value="{{ $q_mode_counts3 }}" disabled>
+                                        @elseif($mode->id==4)
+                                            <input type="text" class="inputDesign" value="{{ $q_mode_counts4 }}" disabled>
+                                        @else
+                                            <input type="text" class="inputDesign" value="{{ $q_mode_counts5 }}" disabled>
+                                        @endif
                                     </label>
                                 </div>
                             @endforeach
-                            {{--<div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="incorrect" name="q_mode" id="radioSuccess2">
-                                <label for="radioSuccess2">
-                                    Incorrect
-                                    <input type="text" class="inputDesign" name="incorrect" id="incorrect" value="3126" disabled>
-                                </label>
-                            </div>
-                            <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="marked" name="q_mode" id="radioSuccess3">
-                                <label for="radioSuccess3">
-                                    Marked
-                                    <input type="text" class="inputDesign" name="marked" id="marked" value="3126" disabled>
-                                </label>
-                            </div>
-                            <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="all" name="q_mode" id="radioSuccess4">
-                                <label for="radioSuccess4">
-                                    All
-                                    <input type="text" class="inputDesign" name="all" id="all" value="3126" disabled>
-                                </label>
-                            </div>
-                            <div class="icheck-success d-inline" style="margin-right: 50px;">
-                                <input type="radio" value="custom" name="q_mode" id="radioSuccess5">
-                                <label for="radioSuccess5">
-                                    Custom
-                                    <div></div>
-                                </label>
-                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -117,7 +99,7 @@
                                 @foreach($subjects as $key=> $singleData)
                                     <div class="col-md-6 mb-2">
                                         <div class="icheck-success d-inline">
-                                            <input type="checkbox" name="subject_name" id="subject_name{{$key}}">
+                                            <input type="checkbox" name="subjects[]" value="{{$singleData->id}}" id="subject_name{{$key}}">
                                             <label for="subject_name{{$key}}">
                                                 {{ $singleData->subject_name }}
                                             </label>
@@ -146,7 +128,7 @@
                                 @foreach($systems as $key=> $singleData)
                                     <div class="col-md-6 mb-2">
                                         <div class="icheck-success d-inline">
-                                            <input type="checkbox" name="system_name" id="system_name{{$key}}">
+                                            <input type="checkbox" name="systems[]" value="{{$singleData->id}}" id="system_name{{$key}}">
                                             <label for="system_name{{$key}}">
                                                 {{ $singleData->system_name }}
                                             </label>
@@ -165,7 +147,7 @@
                         <h5 class="m-0">No. of Questions</h5>
                     </div>
                     <div class="card-body">
-                        <input class="form-group" name="" type="text" style="width: 70px;">
+                        <input class="form-group" name="number_of_question" type="text" style="width: 70px;">
                         <span>Max allowed per block &nbsp;&nbsp;&nbsp;<input type="text" class="inputDesign" name="unused" id="unused" value="0" disabled></span>
                     </div>
                 </div>

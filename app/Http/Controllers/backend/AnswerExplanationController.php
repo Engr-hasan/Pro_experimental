@@ -114,7 +114,7 @@ class AnswerExplanationController extends Controller
     public function destroy($id)
     {
         AnswerExplanation::find($id)->delete();
-        return redirect()->back();  
+        return redirect()->back();
     }
 
     //Get Answer function
