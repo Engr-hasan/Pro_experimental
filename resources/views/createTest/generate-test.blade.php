@@ -191,35 +191,27 @@
 						  	 	</div>
 						  	 	<div class="col-md-2">
 						  	 		<a style="color: #fbfbfb;cursor: pointer;">
-						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;"> 
-											w 
+						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+											w
 										</span>
 						  	 		</a>
 						  	 	</div>
 						  	 	<div class="col-md-2">
 						  	 		<a style="color: #000;cursor: pointer;">
-						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;"> 
+						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;">
 											B
 										</span>
 						  	 		</a>
 						  	 	</div>
 						  	 	<div class="col-md-2">
 						  	 		<a style="color: #FBF0DA;cursor: pointer;">
-						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;"> 
+						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;">
 											G
 										</span>
-<<<<<<< HEAD
-							  	 	</div>
-									<p id = "getColor" name="apperance_color">
-									</p>
-									<input type="text" class="form-control" id="apperance_color" name="apperance_color">
- 								</form>
-=======
 						  	 		</a>
 						  	 	</div>
 						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
 								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
->>>>>>> 3ebaaff2a025218e25173479ebdcc9579c2bcce5
 						  	 </div>
 						  </div>
 					  </div>
@@ -228,12 +220,12 @@
 			    </ul>
 			  </nav>
 			  <!-- /.navbar -->
-			  @if ($color->apperance_color === "#000")					    		
+			  @if ($color->apperance_color === "#000")
 			  <div class="tab-content" id="v-pills-tabContent" style="background-color: {{$color->apperance_color}};">
 			      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 				       <p class="p-4" style="text-align: justify;color: white">1. What is Lorem Ipsum?
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					
+
 						<div class="p-5">
 					    <form>
 					    	<div class="row">
@@ -410,7 +402,7 @@
 			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			    }
 			});
-	      	
+
             jQuery.ajax({
               url: "{{ url('/apperance-color-store') }}",
               method: 'post',
@@ -419,7 +411,7 @@
               },
               success: function(result){
                  console.log(result);
-                 location.reload(); 
+                 location.reload();
               }
             });
 		}
