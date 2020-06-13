@@ -26,7 +26,7 @@
                                 <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                                     <!-- Accordion card -->
                                     <div class="card">
-                                    @if(isset($howToUse))
+                                    @if($howToUse->count() > 0)
                                         @foreach($howToUse as $key=> $singleData)
                                         <!-- Card header -->
                                         <div class="card-header" role="tab" id="headingOne1{{ $key }}">
@@ -42,10 +42,13 @@
                                         <div id="collapseOne1{{ $key }}" class="collapse show" role="tabpanel" aria-labelledby="headingOne1{{ $key }}"
                                              data-parent="#accordionEx">
                                             <div class="card-body">
-                                                <p style="text-align: justify;">{{ $singleData->how_to_use_description}}</p>
+                                                <p style="text-align: justify;">
+                                                    {!! $singleData->how_to_use_description !!}</p>
                                             </div>
                                         </div>
                                          @endforeach
+                                    @else
+                                        <strong class="text-center">How to use not found</strong>    
                                     @endif
                                     </div>
                                     <!-- Accordion card -->
@@ -69,7 +72,7 @@
 
                                     <!-- Accordion card -->
                                     <div class="card">
-                                    @if(isset($faq))
+                                    @if($faq->count() > 0)
                                         @foreach($faq as $key=> $faqData)
                                         <!-- Card header -->
                                         <div class="card-header" role="tab" id="headingOne2{{ $key }}">
@@ -86,10 +89,13 @@
                                         <div id="collapseOne2{{ $key }}" class="collapse show" role="tabpanel" aria-labelledby="headingOne2{{ $key }}"
                                              data-parent="#accordionEx2">
                                             <div class="card-body">
-                                                <p style="text-align: justify;">{{ $faqData->faq_description}}</p>
+                                                <p style="text-align: justify;">
+                                                    {!! $faqData->faq_description !!}</p>
                                             </div>
                                         </div>
                                         @endforeach
+                                    @else
+                                        <strong class="text-center">FAQ not found</strong>    
                                     @endif
                                     </div>
                                     <!-- Accordion card -->
