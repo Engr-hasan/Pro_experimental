@@ -126,7 +126,7 @@
 					      </li>
 					  
 					      <li class="nav-item d-none d-sm-inline-block">
-					        <a href="#" class="nav-link" style="color: white;">
+					        <a href="#" class="nav-link" style="color: white;" id="toggle">
 					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/fullscreen.png" alt="fullScreen" style="width: 10px;height: 15px;"><br>
 					  						Full Screen
 					        </a>
@@ -455,8 +455,32 @@
             });
 		}
 
+
+		//Full screen
+		if (document.fullscreenEnabled) {
+			
+			var btn = document.getElementById("toggle");
+			
+			btn.addEventListener("click", function (event) {
+				
+				if (!document.fullscreenElement) {
+					document.documentElement.requestFullscreen();
+				} else {
+					document.exitFullscreen();
+				}
+				
+			}, false);
+			
+			document.addEventListener("fullscreenerror", function (event) {
+				
+				console.log(event);
+				
+			});
+		}
+
+
 		/*Apperance color end*/
-		
+
 		/*$(document).ready(function(){
 		    $("#show").toggle(function(){
 	    		// $("#mainDivId").addClass("col-md-12");
