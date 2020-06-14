@@ -42,7 +42,7 @@
                   <tr>
                     <td align="center">{{ $key + 1 }}</td>
                     <td style="text-align: justify;" align="center">{{ $singleData->faq_title }}</td>
-                    <td style="text-align: justify;" align="center">{{ $singleData->faq_description }}</td>
+                    <td style="text-align: justify;" align="center">{!! $singleData->faq_description !!}</td>
                     <td align="center">
                       @if($singleData->status == 1)
                         <button type="button" class="btn btn-block btn-success btn-xs">Active</button>

@@ -15,8 +15,15 @@
   <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="{{asset('dashboard')}}/dist/css/sidebar.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+  	ul li a{
+  		font-size: 14px;
+  	}
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="row">
@@ -86,139 +93,168 @@
 
 		<div class="col-md-11" id="mainDivId">
 			<div class="wrapper" id="mainId" style=";border: 1px solid black;">
-			  <nav class="navbar navbar-expand navbar-primary navbar-dark">
-			    <ul class="navbar-nav">
-			      <li class="nav-item">
-			        <a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button" style="color: white;"><i class="fas fa-bars"></i></a>
-			      </li>
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link" style="color: white;">Item 1 of 3<br>
-			Question Id: 2499</a>
-			      </li>
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link" style="color: white;">
-						<input type="checkbox">
-						Mark
-			        </a>
-			      </li>
-
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link" style="color: white;">
-						Previous
-			        </a>
-			      </li>
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link" style="color: white;">
-						Next
-			        </a>
-			      </li>
-
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link" style="color: white;">
-						Full Screen
-			        </a>
-			      </li>
-			 	  <!--Dropdown Menu -->
+				<nav class="navbar navbar-expand navbar-primary navbar-dark">
+			    	<strong style="color: white;"></strong>
+			    	<ul class="navbar-nav">
+			    	  <li class="nav-item d-none d-sm-inline-block mt-2">
+				        <a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button" style="color: white;"><i class="fas fa-bars"></i></a>
+				      </li>
+				      <li class="nav-item d-none d-sm-inline-block">
+				        <a href="#" class="nav-link" style="color: white;">Item 1 of 3<br> Question Id: 2499</a>
+				      </li>
+				     </ul>
+				     <ul class="navbar-nav ml-auto">
+					      <li class="nav-item d-none d-sm-inline-block">
+					        <a href="#" class="nav-link mt-2" style="color: white;">
+					  						<input type="checkbox">
+					  						<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>
+					  						Mark
+					        </a>
+					      </li>
+					  
+					      <li class="nav-item d-none d-sm-inline-block ml-3">
+					        <a href="#" class="nav-link" style="color: white;">
+					        				&nbsp;&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i><br>
+					  						Previous
+					        </a>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block mr-3">
+					        <a href="#" class="nav-link" style="color: white;">
+					  						&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i><br>
+					  						Next
+					        </a>
+					      </li>
+					  
+					      <li class="nav-item d-none d-sm-inline-block">
+					        <a href="#" class="nav-link" style="color: white;" id="toggle">
+					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/fullscreen.png" alt="fullScreen" style="width: 10px;height: 15px;"><br>
+					  						Full Screen
+					        </a>
+					      </li>
+					      <li class="nav-item dropdown">
+					        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+					        	&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/tutorial.png" alt="tutorial" style="width: 10px;height: 15px;"><br>
+					          Tutorial
+					        </a>
+					        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
+					          <ul>
+					          	<li class="nav-item">
+					  				          	<h5><a href="">Interface Tutorial</a></h5>
+					  				        </li>
+					          	<li class="nav-item">
+					  				          	<h5><a href="">Keyboard Shortcuts</a></h5>
+					  				        </li>
+					          </ul>
+					        </div>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block">
+			        		<a href="#" class="nav-link" style="color: white;">
+			        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-flask" aria-hidden="true"></i><br>
+			  						Lab Values
+					        </a>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+					        <a href="#" class="nav-link" style="color: white;">
+					        				&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>
+					  						Notes
+					        </a>
+					      </li>
+					      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+					        <a href="#" class="nav-link" style="color: white;">
+					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calculator" aria-hidden="true"></i><br>
+					  						Calculator
+					        </a>
+					      </li>
 			      <li class="nav-item dropdown">
 			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
-			          Tutorial
-			        </a>
-			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
-			          <ul>
-			          	<li class="nav-item">
-				          	<h5><a href="">Interface Tutorial</a></h5>
-				        </li>
-			          	<li class="nav-item">
-				          	<h5><a href="">Keyboard Shortcuts</a></h5>
-				        </li>
-			          </ul>
-			        </div>
-			      </li>
-			      <li class="nav-item d-none d-sm-inline-block">
-			        <a href="#" class="nav-link" style="color: white;">
-						Lab Values
-			        </a>
-			      </li>
-			      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
-			        <a href="#" class="nav-link" style="color: white;">
-						Notes
-			        </a>
-			      </li>
-			      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
-			        <a href="#" class="nav-link" style="color: white;">
-						Calculator
-			        </a>
-			      </li>
-			      <li class="nav-item dropdown">
-			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-palette"></i><br>
 			          Reverse Color
 			        </a>
 			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
 			          <h5 class="text-center">Settings</h5>
-			          <span>Appearance</span>
 			          <div class="card card-outline card-primary">
-						  <div class="card-header">
-						  	 <div class="row">
-						  	 	<div class="col-md-6">Color Theme</div>
-						  	 	<div class="col-md-2">
-									<a href=""><i class="fas fa-2x fa-circle" style="color: #fbfbfb;margin-left:10px;border: 1px solid gray;border-radius: 100%"></i></a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-									<a href=""><i class="fas fa-2x fa-circle" style="color: #000;margin-left:10px;"></i></a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-									<a href=""><i class="fas fa-2x fa-circle" style="color: #FBF0DA;margin-left:10px;"></i></a>
-						  	 	</div>
-						  	 </div>
+			  			  <div class="card-header">
+			  				Appearance
 			        	  </div>
+			        	  <div class="card-body">
+  						  	 <div class="row">
+  						  	 	<div class="col-md-6">
+  						  	 		<strong>Theme:</strong>
+  						  	 	</div>
+  						  	 	<div class="col-md-2">
+  						  	 		<a style="color: #fbfbfb;cursor: pointer;">
+  						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+  											w
+  										</span>
+  						  	 		</a>
+  						  	 	</div>
+  						  	 	<div class="col-md-2">
+  						  	 		<a style="color: #000;cursor: pointer;">
+  						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+  											B
+  										</span>
+  						  	 		</a>
+  						  	 	</div>
+  						  	 	<div class="col-md-2">
+  						  	 		<a style="color: #FBF0DA;cursor: pointer;">
+  						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+  											G
+  										</span>
+  						  	 		</a>
+  						  	 	</div>
+  						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
+  								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
+  						  	 </div>
+  						  </div>
 			       	  </div>
 			        </div>
 			      </li>
 			      <li class="nav-item dropdown">
 			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/settings.png" alt="Settings" style="width: 10px;height: 15px;"><br>
 			          Settings
 			        </a>
-			        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
-			          <h5 class="text-center">Settings</h5>
-			          <div class="card card-outline card-primary">
-						  <div class="card-header">
-						  	Apperance
-						  </div>
-						  <div class="card-body">
-						  	 <div class="row">
-						  	 	<div class="col-md-6">
-						  	 		<strong>Theme:</strong>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-						  	 		<a style="color: #fbfbfb;cursor: pointer;">
-						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;">
-											w
-										</span>
-						  	 		</a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-						  	 		<a style="color: #000;cursor: pointer;">
-						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;">
-											B
-										</span>
-						  	 		</a>
-						  	 	</div>
-						  	 	<div class="col-md-2">
-						  	 		<a style="color: #FBF0DA;cursor: pointer;">
-						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;">
-											G
-										</span>
-						  	 		</a>
-						  	 	</div>
-						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
-								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
-						  	 </div>
-						  </div>
-					  </div>
-			        </div>
-			      </li>
-			    </ul>
-			  </nav>
+				        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
+				          <h5 class="text-center">Settings</h5>
+				          <div class="card card-outline card-primary">
+	  						  <div class="card-header">
+	  						  	Apperance
+	  						  </div>
+	  						  <div class="card-body">
+	  						  	 <div class="row">
+	  						  	 	<div class="col-md-6">
+	  						  	 		<strong>Theme:</strong>
+	  						  	 	</div>
+	  						  	 	<div class="col-md-2">
+	  						  	 		<a style="color: #fbfbfb;cursor: pointer;">
+	  						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+	  											w
+	  										</span>
+	  						  	 		</a>
+	  						  	 	</div>
+	  						  	 	<div class="col-md-2">
+	  						  	 		<a style="color: #000;cursor: pointer;">
+	  						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+	  											B
+	  										</span>
+	  						  	 		</a>
+	  						  	 	</div>
+	  						  	 	<div class="col-md-2">
+	  						  	 		<a style="color: #FBF0DA;cursor: pointer;">
+	  						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+	  											G
+	  										</span>
+	  						  	 		</a>
+	  						  	 	</div>
+	  						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
+	  								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
+	  						  	 </div>
+	  						  </div>
+	  					  </div>
+				        </div>
+				      </li>
+				     </ul>
+			    </nav>
 			  <!-- /.navbar -->
 			  @if ($color->apperance_color === "#000")
 			  <div class="tab-content" id="v-pills-tabContent" style="background-color: {{$color->apperance_color}};">
@@ -348,21 +384,25 @@
 				     <ul class="navbar-nav ml-auto">
 					      <li class="nav-item d-none d-sm-inline-block">
 					        <a href="#" class="nav-link" style="color: white;">
-								Flash Cards
+					        	<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid white;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
 					        </a>
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block">
 					        <a href="#" class="nav-link" style="color: white;">
+					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i><br>
 								Feedback
 					        </a>
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block">
 					        <a href="#" class="nav-link" style="color: white;">
+					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: yellow;"></i><br>
 								Suspend
 					        </a>
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block">
 					        <a href="#" class="nav-link" style="color: white;">
+					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ban" aria-hidden="true"></i><br>
 								End Block
 					        </a>
 					      </li>
@@ -386,11 +426,10 @@
 	    		$("#mainDivId").addClass("col-md-12");
 	    		$("#mainDivId").removeClass("col-md-11");
 	    		$("#siderDivId").hide();
-		    });
-
+		    });			 
 		});
 
-
+    	/*Apperance color*/
 		var el_select = document.getElementById("getColor");
 
 		function chose_color(clicked) {
@@ -415,6 +454,32 @@
               }
             });
 		}
+
+
+		//Full screen
+		if (document.fullscreenEnabled) {
+			
+			var btn = document.getElementById("toggle");
+			
+			btn.addEventListener("click", function (event) {
+				
+				if (!document.fullscreenElement) {
+					document.documentElement.requestFullscreen();
+				} else {
+					document.exitFullscreen();
+				}
+				
+			}, false);
+			
+			document.addEventListener("fullscreenerror", function (event) {
+				
+				console.log(event);
+				
+			});
+		}
+
+
+		/*Apperance color end*/
 
 		/*$(document).ready(function(){
 		    $("#show").toggle(function(){
