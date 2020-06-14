@@ -29,7 +29,8 @@
 	<div class="row">
 		@if ($color->apperance_color === "#000")
 			<div class="col-md-1" id="siderDivId">
-				<div class="w3-sidebar w3-bar-block w3-card" style="background-color: {{$color->apperance_color}};display: block; width: 8%;border: 1px solid white;" id="sidebar"><!--
+				<div class="w3-sidebar w3-bar-block w3-card" style="background-color: {{$color->apperance_color}};display: block; width: 8%;border: 1px solid white;" id="sidebar">
+				<!--
 				  <button class="w3-bar-item w3-button w3-large"
 				  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
 				  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -112,13 +113,13 @@
 					        </a>
 					      </li>
 					  
-					      <li class="nav-item d-none d-sm-inline-block ml-3">
+					      <li class="nav-item d-none d-sm-inline-block ml-3 prevtab">
 					        <a href="#" class="nav-link" style="color: white;">
 					        				&nbsp;&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i><br>
 					  						Previous
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block mr-3">
+					      <li class="nav-item d-none d-sm-inline-block mr-3 nexttab">
 					        <a href="#" class="nav-link" style="color: white;">
 					  						&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i><br>
 					  						Next
@@ -479,7 +480,48 @@
 		}
 
 
-		/*Apperance color end*/
+
+		/*Tab next-prev*/
+
+		function bootstrapTabControl(){
+		  var i, items = $('.nav-link'), pane = $('.tab-pane');
+		  // next
+		  $('.nexttab').on('click', function(){
+		      for(i = 0; i < items.length; i++){
+		          if($(items[i]).hasClass('active') == true){
+		              break;
+		          }
+		      }
+		      if(i < items.length - 1){
+		          // for tab
+		          $(items[i]).removeClass('active');
+		          $(items[i+1]).addClass('active');
+		          // for pane
+		          $(pane[i]).removeClass('show active');
+		          $(pane[i+1]).addClass('show active');
+		      }
+
+		  });
+		  // Prev
+		  $('.prevtab').on('click', function(){
+		      for(i = 0; i < items.length; i++){
+		          if($(items[i]).hasClass('active') == true){
+		              break;
+		          }
+		      }
+		      if(i != 0){
+		          // for tab
+		          $(items[i]).removeClass('active');
+		          $(items[i-1]).addClass('active');
+		          // for pane
+		          $(pane[i]).removeClass('show active');
+		          $(pane[i-1]).addClass('show active');
+		      }
+		  });
+		}
+		bootstrapTabControl();
+		/*Tab next-prev*/
+
 
 		/*$(document).ready(function(){
 		    $("#show").toggle(function(){
