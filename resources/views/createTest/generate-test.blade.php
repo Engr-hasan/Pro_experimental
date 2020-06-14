@@ -23,6 +23,34 @@
   	ul li a{
   		font-size: 14px;
   	}
+
+
+  	#CalculatorLi{
+		position: relative;
+	}
+	#CalculatorHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
+	#NotesLi{
+		position: relative;
+	}
+	#NotesHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
+	#FlashCardLi{
+		position: relative;
+	}
+	#FlashCardHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -154,13 +182,13 @@
 			  						Lab Values
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+					      <li class="nav-item d-none d-sm-inline-block" style="color: white;" id="NotesLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        				&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>
 					  						Notes
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+					      <li class="nav-item d-none d-sm-inline-block" style="color: white;" id="CalculatorLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calculator" aria-hidden="true"></i><br>
 					  						Calculator
@@ -374,6 +402,75 @@
 			      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">4 no page</div>
 			  </div>
 			  @endif
+
+
+			  <!-- Notes -->
+			  <div class="row" id="NotesHide" style="display: none;">
+	            <div class="card">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light">Edit Item Notes</strong>
+	                <strong id="NotesClose" class="float-right text-light">&times;</strong>
+	              </div>
+	              <div class="card-body">
+	                 <textarea name="notes" id="notes" cols="38" rows="10"></textarea>
+	              </div>
+	              <div class="card-footer">
+          	  	  	<button class="btn btn-default btn-sm float-left">Save and Close</button>
+          	  	  
+          	  	  	<button class="btn btn-default btn-sm float-right">Delete Notes</button>
+	              </div>
+	              </div>
+	          </div>
+	          <!-- Notes -->
+				
+			  <!-- Calculator -->
+	          <div class="row" id="CalculatorHide" style="display: none;">
+	            <div class="card" style="width: 300px;">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light">Calculator</strong>
+	                <strong id="CalculatorClose" class="float-right text-light">&times;</strong>
+	              </div>
+	              <div class="card-body">
+	                 <p>Calculator</p>
+	              </div>
+	            </div>
+	          </div>	
+			  <!-- Calculator -->
+
+			  <!-- Flash Card -->
+	          <div class="row" id="FlashCardHide" style="display: none;">
+	            <div class="card" style="width: 500px;">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light">Flash Cards</strong>
+	                <strong id="FlashCardClose" class="float-right text-light">&times;</strong>
+	              </div>
+	              <div class="card-body">
+	              	 <div class="row">
+	                	<div class="col-md-12">
+	                		<i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Search" name="search" style="width: 420px;">
+	                	</div>
+	                 </div><br>
+
+	                <h4>This Question</h4>
+	                <div class="row">
+	                	<div class="col-md-4">
+	                		<div class="info-box">
+					            <div class="info-box-content">
+					               <br><br><br><br>
+					               <i class="fa fa-plus text-center" aria-hidden="true" style="color: blue;font-size: 25px;"></i>
+					               <strong class="text-center">New Card</strong>
+					               <br><br><br><br>
+					            </div>
+				            </div>
+	                	</div>
+	                	<div class="col-md-4"></div>
+	                	<div class="col-md-4"></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>	
+			  <!-- Flash Card -->
+
 			 	<!-- /.footer -->
 			  	<nav class="navbar navbar-expand navbar-primary navbar-dark">
 			    	<strong style="color: white;"></strong>
@@ -383,7 +480,7 @@
 				      </li>
 				     </ul>
 				     <ul class="navbar-nav ml-auto">
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" id="FlashCardLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid white;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
@@ -569,6 +666,23 @@
 		}
 		bootstrapTabControl();
 		/*Tab next-prev*/
+
+
+		//Notes box and calculator
+		$(document).ready(function(){
+		    $("#NotesLi, #NotesClose").click(function(){
+	    		$("#NotesHide").toggle();
+		    });
+
+		    $("#CalculatorLi, #CalculatorClose").click(function(){
+	    		$("#CalculatorHide").toggle();
+		    });
+
+		    $("#FlashCardLi, #FlashCardClose").click(function(){
+	    		$("#FlashCardHide").toggle();
+		    });
+		});
+
 
 
 		/*$(document).ready(function(){
