@@ -43,6 +43,15 @@
 		right: 10px;
 	}
 
+	#FeedbackLi{
+		position: relative;
+	}
+	#FeedbackHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
 	#FlashCardLi{
 		position: relative;
 	}
@@ -51,6 +60,11 @@
 		bottom: 62px;
 		right: 10px;
 	}
+
+	input[type="button"] 
+         { 
+         width:100% 
+         } 
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -409,7 +423,9 @@
 	            <div class="card">
 	              <div class="card-header" style="background-color: gray;">
 	                <strong class="card-title float-left text-light">Edit Item Notes</strong>
-	                <strong id="NotesClose" class="float-right text-light">&times;</strong>
+	                <strong id="NotesClose" class="float-right text-light">
+						<a href="#" style="color: white;">&times;</a>
+	                </strong>
 	              </div>
 	              <div class="card-body">
 	                 <textarea name="notes" id="notes" cols="38" rows="10"></textarea>
@@ -425,24 +441,79 @@
 				
 			  <!-- Calculator -->
 	          <div class="row" id="CalculatorHide" style="display: none;">
-	            <div class="card" style="width: 300px;">
+	            <div class="card" style="width: 280px;">
 	              <div class="card-header" style="background-color: gray;">
 	                <strong class="card-title float-left text-light">Calculator</strong>
-	                <strong id="CalculatorClose" class="float-right text-light">&times;</strong>
+	                <strong id="CalculatorClose" class="float-right text-light">
+						<a href="#" style="color: white;">&times;</a>
+	                </strong>
 	              </div>
 	              <div class="card-body">
-	                 <p>Calculator</p>
+	                 <table border="1"> 
+				         <tr> 
+				            <td colspan="3"><input type="text" id="result"/></td> 
+				            <td><input type="button" value="c" onclick="clr()"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="1" onclick="dis('1')"/> </td> 
+				            <td><input type="button" value="2" onclick="dis('2')"/> </td> 
+				            <td><input type="button" value="3" onclick="dis('3')"/> </td> 
+				            <td><input type="button" value="/" onclick="dis('/')"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="4" onclick="dis('4')"/> </td> 
+				            <td><input type="button" value="5" onclick="dis('5')"/> </td> 
+				            <td><input type="button" value="6" onclick="dis('6')"/> </td> 
+				            <td><input type="button" value="-" onclick="dis('-')"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="7" onclick="dis('7')"/> </td> 
+				            <td><input type="button" value="8" onclick="dis('8')"/> </td> 
+				            <td><input type="button" value="9" onclick="dis('9')"/> </td> 
+				            <td><input type="button" value="+" onclick="dis('+')"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="." onclick="dis('.')"/> </td> 
+				            <td><input type="button" value="0" onclick="dis('0')"/> </td> 
+				            <td><input type="button" value="=" onclick="solve()"/> </td> 
+				            <td><input type="button" value="*" onclick="dis('*')"/> </td> 
+				         </tr> 
+				      </table> 
 	              </div>
 	            </div>
 	          </div>	
 			  <!-- Calculator -->
+
+			  <!-- Notes -->
+			  <div class="row" id="FeedbackHide" style="display: none;">
+	            <div class="card" style="width: 600px;">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light"><i class='fab fa-facebook-messenger'></i> &nbsp;Feedback</strong>
+	                <strong id="FeedbackClose" class="float-right text-light">
+	                	<a href="#" style="color: white;">&times;</a>
+	                </strong>
+	              </div>
+	              <div class="card-body">
+	                 <textarea name="notes" id="notes" cols="60" rows="10" placeholder='We appreciate your feedback. However, please provide as much detail as possible in the permitted space avoiding simplistic feedback like "Good question", "hard question" etc.'></textarea>
+	              </div>
+	              <div class="card-footer">
+          	  	  	<label class="float-left"><input type="checkbox"> Check here if concern is for software/ technical issue.</label>
+
+          	  	  
+          	  	  	<button class="btn btn-default btn-sm float-right">Submit</button>
+	              </div>
+	              </div>
+	          </div>
+	          <!-- Notes -->
 
 			  <!-- Flash Card -->
 	          <div class="row" id="FlashCardHide" style="display: none;">
 	            <div class="card" style="width: 500px;">
 	              <div class="card-header" style="background-color: gray;">
 	                <strong class="card-title float-left text-light">Flash Cards</strong>
-	                <strong id="FlashCardClose" class="float-right text-light">&times;</strong>
+	                <strong id="FlashCardClose" class="float-right text-light">
+	                	<a href="#" style="color: white;">&times;</a>
+	                </strong>
 	              </div>
 	              <div class="card-body">
 	              	 <div class="row">
@@ -486,7 +557,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid white;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" id="FeedbackLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i><br>
 								Feedback
@@ -668,7 +739,7 @@
 		/*Tab next-prev*/
 
 
-		//Notes box and calculator
+		//Notes, calculator, feedback, flash card
 		$(document).ready(function(){
 		    $("#NotesLi, #NotesClose").click(function(){
 	    		$("#NotesHide").toggle();
@@ -681,8 +752,34 @@
 		    $("#FlashCardLi, #FlashCardClose").click(function(){
 	    		$("#FlashCardHide").toggle();
 		    });
+
+		    $("#FeedbackLi, #FeedbackClose").click(function(){
+	    		$("#FeedbackHide").toggle();
+		    });
 		});
 
+
+		//calculator
+		//function that display value 
+         function dis(val) 
+         { 
+             document.getElementById("result").value+=val 
+         } 
+           
+         //function that evaluates the digit and return result 
+         function solve() 
+         { 
+             let x = document.getElementById("result").value 
+             let y = eval(x) 
+             document.getElementById("result").value = y 
+         } 
+           
+         //function that clear the display 
+         function clr() 
+         { 
+             document.getElementById("result").value = "" 
+         } 
+		//calculator end
 
 
 		/*$(document).ready(function(){
