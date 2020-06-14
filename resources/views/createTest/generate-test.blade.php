@@ -395,17 +395,65 @@
 								Feedback
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-default">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: yellow;"></i><br>
 								Suspend
 					        </a>
+						      <!-- /.modal -->
+					         <div class="modal fade" id="modal-default">
+						        <div class="modal-dialog">
+						          <div class="modal-content">
+						            <div class="modal-header">
+						              <h4 class="modal-title">Suspend Test?</h4>
+						              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						                <span aria-hidden="true">&times;</span>
+						              </button>
+						            </div>
+						            <div class="modal-body">
+						                <p>You are about to suspend this exam.</p>
+										<p>Do you want to suspend this exam?</p>
+						            </div>
+						            <div class="modal-footer">
+						            	<div class="float-right">
+						            		<button type="button" class="btn btn-primary">Yes</button>
+							            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+						            	</div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						      <!-- /.modal -->
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-endblock">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ban" aria-hidden="true"></i><br>
 								End Block
 					        </a>
+					        <!-- /.modal -->
+					         <div class="modal fade" id="modal-endblock">
+						        <div class="modal-dialog">
+						          <div class="modal-content">
+						            <div class="modal-header">
+						              <h4 class="modal-title">End Test</h4>
+						              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						                <span aria-hidden="true">&times;</span>
+						              </button>
+						            </div>
+						            <div class="modal-body">
+						                <p>Do you want to end this exam?</p>
+										<p>You can always resume the exam from previous tests.</p>
+						            </div>
+						            <div class="modal-footer">
+						            	<div class="float-right">
+						            		<button type="button" class="btn btn-primary">Yes</button>
+							            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+						            	</div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						      <!-- /.modal -->
 					      </li>
 				     </ul>
 			    </nav>
