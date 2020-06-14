@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QuestionModeSeeder::class);
         $this->call(SystemSeeder::class);
         $this->call(SubjectSeeder::class);
+        $this->call(ColorAppearanceSeeder::class);
     }
 }
