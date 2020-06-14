@@ -55,6 +55,7 @@ Route::get('/','WelcomeController@getWelcomePage');
 Route::get('/create-test','CreateTestController@getCreateTestPage');
 Route::get('/generate-test','CreateTestController@getTestPage');
 Route::any('/apperance-color-store', 'CreateTestController@store');
+Route::post('create-test-store', 'CreateTestController@createTeststore')->name('create.test.store');
 
 //CreateTest -> Subject
 Route::get('/subjects-list','SubjectController@listSubjects');

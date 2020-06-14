@@ -43,4 +43,10 @@ class CreateTestController extends Controller
         $color->save();
         return response()->json(['success'=>'Theme Color is Changed']);
      }
+
+
+     public function createTeststore(Request $request)
+     {
+        dd($request->all());
+     }
 }
