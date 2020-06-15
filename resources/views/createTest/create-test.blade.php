@@ -178,9 +178,9 @@
        //Subjects
        $('#allSubjects').click(function(event) {
           if(this.checked) {
+              $( "#allSystems" ).prop( "disabled", false );
               $('div#subjects input[type=checkbox]').each(function() {
                   this.checked = true;
-                  $( "#allSystems" ).prop( "disabled", false );
               });
           }
           else {

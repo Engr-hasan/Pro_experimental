@@ -14,14 +14,6 @@ class QuestionModeSeeder extends Seeder
         \DB::table('question_modes')->insert([
            [
                'name' => 'Unused'
-           ],[
-               'name' => 'Incorrect'
-           ],[
-               'name' => 'Marked'
-           ],[
-               'name' => 'All'
-           ],[
-               'name' => 'Custom'
            ]
         ]);
     }

@@ -32,7 +32,9 @@ class SubjectController extends Controller
         $data->subject_name = $request->subject_name;
         $data->status = $request->status;
         $data->save();
-        return redirect()->back()->with('successMsg','Subject Successfully Saved');
+
+        \Toastr::success('Success', 'DOne');
+        return redirect()->back()/*->with('successMsg','Subject Successfully Saved')*/;
     }
 
     public function editSubject(Request $request, $id)
