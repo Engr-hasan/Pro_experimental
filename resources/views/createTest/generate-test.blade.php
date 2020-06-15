@@ -23,13 +23,56 @@
   	ul li a{
   		font-size: 14px;
   	}
+
+
+  	#CalculatorLi{
+		position: relative;
+	}
+	#CalculatorHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
+	#NotesLi{
+		position: relative;
+	}
+	#NotesHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
+	#FeedbackLi{
+		position: relative;
+	}
+	#FeedbackHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
+	#FlashCardLi{
+		position: relative;
+	}
+	#FlashCardHide {
+		position: absolute;
+		bottom: 62px;
+		right: 10px;
+	}
+
+	input[type="button"] 
+         { 
+         width:100% 
+         } 
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="row">
 		@if ($color->apperance_color === "#000")
 			<div class="col-md-1" id="siderDivId">
-				<div class="w3-sidebar w3-bar-block w3-card" style="background-color: {{$color->apperance_color}};display: block; width: 8%;border: 1px solid white;" id="sidebar"><!--
+				<div class="w3-sidebar w3-bar-block w3-card" style="background-color: {{$color->apperance_color}};display: block; width: 8%;border: 1px solid white;" id="sidebar">
+				<!--
 				  <button class="w3-bar-item w3-button w3-large"
 				  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
 				  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -112,13 +155,13 @@
 					        </a>
 					      </li>
 					  
-					      <li class="nav-item d-none d-sm-inline-block ml-3">
+					      <li class="nav-item d-none d-sm-inline-block ml-3 prevtab">
 					        <a href="#" class="nav-link" style="color: white;">
 					        				&nbsp;&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i><br>
 					  						Previous
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block mr-3">
+					      <li class="nav-item d-none d-sm-inline-block mr-3 nexttab">
 					        <a href="#" class="nav-link" style="color: white;">
 					  						&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i><br>
 					  						Next
@@ -153,13 +196,13 @@
 			  						Lab Values
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+					      <li class="nav-item d-none d-sm-inline-block" style="color: white;" id="NotesLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        				&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>
 					  						Notes
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block" style="color: white;">
+					      <li class="nav-item d-none d-sm-inline-block" style="color: white;" id="CalculatorLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calculator" aria-hidden="true"></i><br>
 					  						Calculator
@@ -373,6 +416,132 @@
 			      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">4 no page</div>
 			  </div>
 			  @endif
+
+
+			  <!-- Notes -->
+			  <div class="row" id="NotesHide" style="display: none;">
+	            <div class="card">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light">Edit Item Notes</strong>
+	                <strong id="NotesClose" class="float-right text-light">
+						<a href="#" style="color: white;">&times;</a>
+	                </strong>
+	              </div>
+	              <div class="card-body">
+	                 <textarea name="notes" id="notes" cols="38" rows="10"></textarea>
+	              </div>
+	              <div class="card-footer">
+          	  	  	<button class="btn btn-default btn-sm float-left">Save and Close</button>
+          	  	  
+          	  	  	<button class="btn btn-default btn-sm float-right">Delete Notes</button>
+	              </div>
+	              </div>
+	          </div>
+	          <!-- Notes -->
+				
+			  <!-- Calculator -->
+	          <div class="row" id="CalculatorHide" style="display: none;">
+	            <div class="card" style="width: 280px;">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light">Calculator</strong>
+	                <strong id="CalculatorClose" class="float-right text-light">
+						<a href="#" style="color: white;">&times;</a>
+	                </strong>
+	              </div>
+	              <div class="card-body">
+	                 <table border="1"> 
+				         <tr> 
+				            <td colspan="3"><input type="text" id="result"/></td> 
+				            <td><input type="button" value="c" onclick="clr()"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="1" onclick="dis('1')"/> </td> 
+				            <td><input type="button" value="2" onclick="dis('2')"/> </td> 
+				            <td><input type="button" value="3" onclick="dis('3')"/> </td> 
+				            <td><input type="button" value="/" onclick="dis('/')"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="4" onclick="dis('4')"/> </td> 
+				            <td><input type="button" value="5" onclick="dis('5')"/> </td> 
+				            <td><input type="button" value="6" onclick="dis('6')"/> </td> 
+				            <td><input type="button" value="-" onclick="dis('-')"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="7" onclick="dis('7')"/> </td> 
+				            <td><input type="button" value="8" onclick="dis('8')"/> </td> 
+				            <td><input type="button" value="9" onclick="dis('9')"/> </td> 
+				            <td><input type="button" value="+" onclick="dis('+')"/> </td> 
+				         </tr> 
+				         <tr> 
+				            <td><input type="button" value="." onclick="dis('.')"/> </td> 
+				            <td><input type="button" value="0" onclick="dis('0')"/> </td> 
+				            <td><input type="button" value="=" onclick="solve()"/> </td> 
+				            <td><input type="button" value="*" onclick="dis('*')"/> </td> 
+				         </tr> 
+				      </table> 
+	              </div>
+	            </div>
+	          </div>	
+			  <!-- Calculator -->
+
+			  <!-- Notes -->
+			  <div class="row" id="FeedbackHide" style="display: none;">
+	            <div class="card" style="width: 600px;">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light"><i class='fab fa-facebook-messenger'></i> &nbsp;Feedback</strong>
+	                <strong id="FeedbackClose" class="float-right text-light">
+	                	<a href="#" style="color: white;">&times;</a>
+	                </strong>
+	              </div>
+	              <div class="card-body">
+	                 <textarea name="notes" id="notes" cols="60" rows="10" placeholder='We appreciate your feedback. However, please provide as much detail as possible in the permitted space avoiding simplistic feedback like "Good question", "hard question" etc.'></textarea>
+	              </div>
+	              <div class="card-footer">
+          	  	  	<label class="float-left"><input type="checkbox"> Check here if concern is for software/ technical issue.</label>
+
+          	  	  
+          	  	  	<button class="btn btn-default btn-sm float-right">Submit</button>
+	              </div>
+	              </div>
+	          </div>
+	          <!-- Notes -->
+
+			  <!-- Flash Card -->
+	          <div class="row" id="FlashCardHide" style="display: none;">
+	            <div class="card" style="width: 500px;">
+	              <div class="card-header" style="background-color: gray;">
+	                <strong class="card-title float-left text-light">Flash Cards</strong>
+	                <strong id="FlashCardClose" class="float-right text-light">
+	                	<a href="#" style="color: white;">&times;</a>
+	                </strong>
+	              </div>
+	              <div class="card-body">
+	              	 <div class="row">
+	                	<div class="col-md-12">
+	                		<i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Search" name="search" style="width: 420px;">
+	                	</div>
+	                 </div><br>
+
+	                <h4>This Question</h4>
+	                <div class="row">
+	                	<div class="col-md-4">
+	                		<div class="info-box">
+					            <div class="info-box-content">
+					               <br><br><br><br>
+					               <i class="fa fa-plus text-center" aria-hidden="true" style="color: blue;font-size: 25px;"></i>
+					               <strong class="text-center">New Card</strong>
+					               <br><br><br><br>
+					            </div>
+				            </div>
+	                	</div>
+	                	<div class="col-md-4"></div>
+	                	<div class="col-md-4"></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>	
+			  <!-- Flash Card -->
+
 			 	<!-- /.footer -->
 			  	<nav class="navbar navbar-expand navbar-primary navbar-dark">
 			    	<strong style="color: white;"></strong>
@@ -382,29 +551,77 @@
 				      </li>
 				     </ul>
 				     <ul class="navbar-nav ml-auto">
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" id="FlashCardLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	<br>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid white;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" id="FeedbackLi">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i><br>
 								Feedback
 					        </a>
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-default">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: yellow;"></i><br>
 								Suspend
 					        </a>
+						      <!-- /.modal -->
+					         <div class="modal fade" id="modal-default">
+						        <div class="modal-dialog">
+						          <div class="modal-content">
+						            <div class="modal-header">
+						              <h4 class="modal-title">Suspend Test?</h4>
+						              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						                <span aria-hidden="true">&times;</span>
+						              </button>
+						            </div>
+						            <div class="modal-body">
+						                <p>You are about to suspend this exam.</p>
+										<p>Do you want to suspend this exam?</p>
+						            </div>
+						            <div class="modal-footer">
+						            	<div class="float-right">
+						            		<button type="button" class="btn btn-primary">Yes</button>
+							            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+						            	</div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						      <!-- /.modal -->
 					      </li>
-					      <li class="nav-item d-none d-sm-inline-block">
+					      <li class="nav-item d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-endblock">
 					        <a href="#" class="nav-link" style="color: white;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ban" aria-hidden="true"></i><br>
 								End Block
 					        </a>
+					        <!-- /.modal -->
+					         <div class="modal fade" id="modal-endblock">
+						        <div class="modal-dialog">
+						          <div class="modal-content">
+						            <div class="modal-header">
+						              <h4 class="modal-title">End Test</h4>
+						              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						                <span aria-hidden="true">&times;</span>
+						              </button>
+						            </div>
+						            <div class="modal-body">
+						                <p>Do you want to end this exam?</p>
+										<p>You can always resume the exam from previous tests.</p>
+						            </div>
+						            <div class="modal-footer">
+						            	<div class="float-right">
+						            		<button type="button" class="btn btn-primary">Yes</button>
+							            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+						            	</div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						      <!-- /.modal -->
 					      </li>
 				     </ul>
 			    </nav>
@@ -479,7 +696,91 @@
 		}
 
 
-		/*Apperance color end*/
+
+		/*Tab next-prev*/
+
+		function bootstrapTabControl(){
+		  var i, items = $('.nav-link'), pane = $('.tab-pane');
+		  // next
+		  $('.nexttab').on('click', function(){
+		      for(i = 0; i < items.length; i++){
+		          if($(items[i]).hasClass('active') == true){
+		              break;
+		          }
+		      }
+		      if(i < items.length - 1){
+		          // for tab
+		          $(items[i]).removeClass('active');
+		          $(items[i+1]).addClass('active');
+		          // for pane
+		          $(pane[i]).removeClass('show active');
+		          $(pane[i+1]).addClass('show active');
+		      }
+
+		  });
+		  // Prev
+		  $('.prevtab').on('click', function(){
+		      for(i = 0; i < items.length; i++){
+		          if($(items[i]).hasClass('active') == true){
+		              break;
+		          }
+		      }
+		      if(i != 0){
+		          // for tab
+		          $(items[i]).removeClass('active');
+		          $(items[i-1]).addClass('active');
+		          // for pane
+		          $(pane[i]).removeClass('show active');
+		          $(pane[i-1]).addClass('show active');
+		      }
+		  });
+		}
+		bootstrapTabControl();
+		/*Tab next-prev*/
+
+
+		//Notes, calculator, feedback, flash card
+		$(document).ready(function(){
+		    $("#NotesLi, #NotesClose").click(function(){
+	    		$("#NotesHide").toggle();
+		    });
+
+		    $("#CalculatorLi, #CalculatorClose").click(function(){
+	    		$("#CalculatorHide").toggle();
+		    });
+
+		    $("#FlashCardLi, #FlashCardClose").click(function(){
+	    		$("#FlashCardHide").toggle();
+		    });
+
+		    $("#FeedbackLi, #FeedbackClose").click(function(){
+	    		$("#FeedbackHide").toggle();
+		    });
+		});
+
+
+		//calculator
+		//function that display value 
+         function dis(val) 
+         { 
+             document.getElementById("result").value+=val 
+         } 
+           
+         //function that evaluates the digit and return result 
+         function solve() 
+         { 
+             let x = document.getElementById("result").value 
+             let y = eval(x) 
+             document.getElementById("result").value = y 
+         } 
+           
+         //function that clear the display 
+         function clr() 
+         { 
+             document.getElementById("result").value = "" 
+         } 
+		//calculator end
+
 
 		/*$(document).ready(function(){
 		    $("#show").toggle(function(){
