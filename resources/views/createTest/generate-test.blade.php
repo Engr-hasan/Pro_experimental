@@ -65,9 +65,12 @@
          { 
          width:100% 
          } 
+   	/*{
+		background-color: #3852a4;
+    }*/     
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="startTime()">
 	<div class="row">
 		@if ($color->apperance_color === "#000")
 			<div class="col-md-1" id="siderDivId">
@@ -79,7 +82,7 @@
 					  <table class="table table-sm table-striped text-center">
 					    <tr class="">
 					      <th scope="col">
-					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" style="color: white;">1</a>
+					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" style="color: white;">1 &nbsp;&nbsp;<span class="toggleDiv"></span></a>
 					      </th>
 					    </tr>
 					    <tr>
@@ -136,7 +139,7 @@
 
 		<div class="col-md-11" id="mainDivId">
 			<div class="wrapper" id="mainId" style=";border: 1px solid black;">
-				<nav class="navbar navbar-expand navbar-primary navbar-dark">
+				<nav class="navbar navbar-expand" style="background-color: #3852a4;">
 			    	<strong style="color: white;"></strong>
 			    	<ul class="navbar-nav">
 			    	  <li class="nav-item d-none d-sm-inline-block mt-2">
@@ -149,7 +152,7 @@
 				     <ul class="navbar-nav ml-auto">
 					      <li class="nav-item d-none d-sm-inline-block">
 					        <a href="#" class="nav-link mt-2" style="color: white;">
-					  						<input type="checkbox">
+					  						<input type="checkbox"  id="div1" class="my_features" data-name="div2">
 					  						<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>
 					  						Mark
 					        </a>
@@ -1436,11 +1439,11 @@
 			  <!-- Flash Card -->
 
 			 	<!-- /.footer -->
-			  	<nav class="navbar navbar-expand navbar-primary navbar-dark">
+			  	<nav class="navbar navbar-expand" style="background-color: #3852a4;">
 			    	<strong style="color: white;"></strong>
 			    	<ul class="navbar-nav">
 				      <li class="nav-item d-none d-sm-inline-block">
-				        <a href="#" class="nav-link" style="color: white;">Block Time Remaining: 00:44:24 <br> TUTOR</a>
+				        <a href="#" class="nav-link" style="color: white;">Block Time Remaining: <span id="txt"></span> <br> TUTOR</a>
 				      </li>
 				     </ul>
 				     <ul class="navbar-nav ml-auto">
@@ -1687,6 +1690,44 @@
 		    });
 		});
 		//Lab value end
+
+
+
+		// Timer
+		function startTime()
+		{
+		var today=new Date();
+		console.log(today);
+		var h=today.getHours();
+		var m=today.getMinutes();
+		var s=today.getSeconds();
+		// add a zero in front of numbers<10
+		m=checkTime(m);
+		s=checkTime(s);
+		document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+		t=setTimeout(function(){startTime()},500);
+		}
+
+		function checkTime(i)
+		{
+		if (i<10)
+		  {
+		  i="0" + i;
+		  }
+		return i;
+		}
+
+
+
+
+		$(function() {
+		  $('.my_features').on("change",function() { 
+		    $('#'+$(this).attr('data-name')).toggle(this.checked); // toggle instead
+		  }).change(); // trigger the change
+		});
+
+
+
 
 		/*$(document).ready(function(){
 		    $("#show").toggle(function(){

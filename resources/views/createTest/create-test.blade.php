@@ -105,6 +105,7 @@
                                                 <input type="checkbox" name="subjects[]" value="{{$singleData->id}}" id="subject_name{{$key}}">
                                                 <label for="subject_name{{$key}}">
                                                     {{ $singleData->subject_name }}
+                                                    <input type="text" value="0534535"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;">
                                                 </label>
                                             </div>
                                         </div>
@@ -134,6 +135,7 @@
                                                 <input type="checkbox" name="systems[]" value="{{$singleData->id}}" id="system_name{{$key}}">
                                                 <label for="system_name{{$key}}">
                                                     {{ $singleData->system_name }}
+                                                    <input type="text" value="0"  style="border: 1px solid gray;border-radius: 100%;padding: 4px;width: 20px;height: 20px;text-align: center;color: #2196F3;" disabled>
                                                 </label>
                                             </div>
                                         </div>
@@ -151,7 +153,7 @@
                         </div>
                         <div class="card-body">
                             <input class="form-group" name="number_of_question" type="text" style="width: 70px;">
-                            <span>Max allowed per block &nbsp;&nbsp;&nbsp;<input type="text" class="inputDesign" name="unused" id="unused" value="0" disabled></span>
+                            <span>Max allowed per block &nbsp;&nbsp;&nbsp;<input type="text" name="unused" id="unused" value="0"  style="border:0px;border-radius: 100%;padding: 4px;width: 20px;height: 20px;text-align: center;background-color: #d1dade;color: black;" disabled></span>
                         </div>
                     </div>
                     <!-- No of Question end-->
