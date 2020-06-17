@@ -79,10 +79,10 @@
 				  <button class="w3-bar-item w3-button w3-large"
 				  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
 				  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					  <table class="table table-sm table-striped text-center">
+					  <table class="table table-sm table-striped text-center markQ">
 					    <tr class="">
 					      <th scope="col">
-					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" style="color: white;">1 &nbsp;&nbsp;<span class="toggleDiv"></span></a>
+					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" style="color: white;">1 <i class="fa fa-flag ml-1 mr-1 selectQ" aria-hidden="true" style="color: red;display: none;"></i></a>
 					      </th>
 					    </tr>
 					    <tr>
@@ -110,10 +110,10 @@
 				  <button class="w3-bar-item w3-button w3-large"
 				  onclick="w3_close()"> <span class="float-right font-weight-bold">&times;</span></button> -->
 				  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					  <table class="table table-sm table-striped text-center">
+					  <table class="table table-sm table-striped text-center markQ">
 					    <tr class="">
 					      <th scope="col">
-					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1</a>
+					        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1 <i class="fa fa-flag ml-1 mr-1 selectQ" aria-hidden="true" style="color: red;display: none;"></i></a>
 					      </th>
 					    </tr>
 					    <tr>
@@ -152,7 +152,7 @@
 				     <ul class="navbar-nav ml-auto">
 					      <li class="nav-item d-none d-sm-inline-block">
 					        <a href="#" class="nav-link mt-2" style="color: white;">
-					  						<input type="checkbox"  id="div1" class="my_features" data-name="div2">
+					  						<input type="checkbox"  id="MarkCheckbox">
 					  						<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>
 					  						Mark
 					        </a>
@@ -1535,6 +1535,33 @@
 
     <script>
     	$(document).ready(function(){
+    		 $("#MarkCheckbox").click(function(){
+    		 	if ($('#MarkCheckbox').is(":checked")) {
+	    		 	var flag = '<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>';
+	    		 	$(".markQ tr th a.active").append(flag);
+	    		}
+ 			 });	
+
+ 			/*$('#MarkCheckbox').change(socmedCh);
+			function socmedCh() {
+			  if ($('#MarkCheckbox').is(":checked")) {
+			    $(".selectQ").show();
+			  } else {
+			    $(".selectQ").hide();	
+			  }
+			}*/	
+
+			/*$("#MarkCheckbox").click(function(){
+    		 	if ($('#MarkCheckbox').is(":checked")) {
+	    		 	var flag = '<i class="fa fa-flag ml-1 mr-1" id="selectQ" aria-hidden="true" style="color: red;"></i>';
+	    		 	$(".markQ tr th a.active").append(flag);
+    		 	} else {
+					$('#selectQ').remove();
+    		 	}
+ 			 });*/ 
+		});
+
+    	$(document).ready(function(){
 		    $("#show").click(function(){
 	    		$("#mainDivId").addClass("col-md-12");
 	    		$("#mainDivId").removeClass("col-md-11");
@@ -1596,9 +1623,10 @@
 		/*Tab next-prev*/
 
 		function bootstrapTabControl(){
-		  var i, items = $('.nav-link'), pane = $('.tab-pane');
+		  var i, items = $('.markQ .nav-link'), pane = $('.tab-pane');
 		  // next
 		  $('.nexttab').on('click', function(){
+		  	$( "#MarkCheckbox" ).prop( "checked", false );
 		      for(i = 0; i < items.length; i++){
 		          if($(items[i]).hasClass('active') == true){
 		              break;
@@ -1616,6 +1644,7 @@
 		  });
 		  // Prev
 		  $('.prevtab').on('click', function(){
+		  	$( "#MarkCheckbox" ).prop( "checked", false );
 		      for(i = 0; i < items.length; i++){
 		          if($(items[i]).hasClass('active') == true){
 		              break;
@@ -1697,7 +1726,6 @@
 		function startTime()
 		{
 		var today=new Date();
-		console.log(today);
 		var h=today.getHours();
 		var m=today.getMinutes();
 		var s=today.getSeconds();
