@@ -102,7 +102,7 @@
                                     @foreach($subjects as $key=> $singleData)
                                         <div class="col-md-6 mb-2">
                                             <div class="icheck-success d-inline">
-                                                <input type="checkbox" name="subjects[]" value="{{$singleData->id}}" id="subject_name{{$key}}">
+                                                <input type="checkbox"  name="subjects[]" value="{{$singleData->id}}" {{--id="subject_name{{$key}}"--}} id="chk" onclick=ChangeText(this)>
                                                 <label for="subject_name{{$key}}">
                                                     {{ $singleData->subject_name }}
                                                 </label>
@@ -167,6 +167,17 @@
 @section('js')
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>--}}
     <script type="text/javascript">
+
+        function ChangeText(chkb) {
+            var div = document.getElementById('div');
+            div.disabled = chkb.checked;
+            var chl = div.children;
+            for(var i=0; i< chl.length; i++)
+            {
+                chl[i].disabled = chkb.checked;
+            }
+        }
+
         /*$(document).ready(function () {
             new Vue({
                 el:'#wrapper',
