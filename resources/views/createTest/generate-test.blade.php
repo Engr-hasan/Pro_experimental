@@ -1679,7 +1679,7 @@
 							      </div>
 							    @else
 							    	<a href="#" class="nav-link" style="color: white;">
-						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: black;"></i><br>
+						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: white;"></i><br>
 										Suspend
 							        </a>
 								      <!-- /.modal -->
