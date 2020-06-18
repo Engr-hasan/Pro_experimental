@@ -65,9 +65,15 @@
          { 
          width:100% 
          } 
-   	/*{
-		background-color: #3852a4;
-    }*/     
+    @if ($color->apperance_color === "#000")
+	   	.nav-pills .nav-link.active{
+	   		background-color: #FBF0DA;
+	   	}
+	@else
+		.nav-pills .nav-link.active{
+	   		background-color: black;
+	   	}
+   	@endif   	
   </style>
 </head>
 <body class="hold-transition sidebar-mini" onload="startTime()">
@@ -139,80 +145,152 @@
 
 		<div class="col-md-11" id="mainDivId">
 			<div class="wrapper" id="mainId" style=";border: 1px solid black;">
-				<nav class="navbar navbar-expand" style="background-color: #3852a4;">
+				@if ($color->apperance_color === "#000")
+					<nav class="navbar navbar-expand" style="background-color: #FBF0DA;">
+				@else
+					<nav class="navbar navbar-expand" style="background-color: black;">
+				@endif
 			    	<strong style="color: white;"></strong>
 			    	<ul class="navbar-nav">
 			    	  <li class="nav-item d-none d-sm-inline-block mt-2">
-				        <a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button" style="color: white;"><i class="fas fa-bars"></i></a>
+			    	  	@if ($color->apperance_color === "#000")
+				        	<a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button" style="color: #212529;"><i class="fas fa-bars"></i></a>
+				        @else
+				       		<a class="nav-link" id="show" data-widget="pushmenu" href="#" role="button" style="color: white;"><i class="fas fa-bars"></i></a>	
+				       	@endif	
 				      </li>
 				      <li class="nav-item d-none d-sm-inline-block">
-				        <a href="#" class="nav-link" style="color: white;">Item 1 of 3<br> Question Id: 2499</a>
+				      	@if ($color->apperance_color === "#000")
+				        	<a href="#" class="nav-link" style="color: #212529;">Item 1 of 3<br> Question Id: 2499</a>
+				        @else
+				        	<a href="#" class="nav-link" style="color: white;">Item 1 of 3<br> Question Id: 2499</a>
+				        @endif
 				      </li>
 				     </ul>
 				     <ul class="navbar-nav ml-auto">
 					      <li class="nav-item d-none d-sm-inline-block">
-					        <a href="#" class="nav-link mt-2" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+					       		<a href="#" class="nav-link mt-2" style="color: #212529;">
 					  						<input type="checkbox"  id="MarkCheckbox">
 					  						<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>
-					  						Mark
-					        </a>
+					  						Mark</a>
+							@else
+					  			<a href="#" class="nav-link mt-2" style="color: white;">
+					  						<input type="checkbox"  id="MarkCheckbox">
+					  						<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>
+					  						Mark</a>
+					  		@endif	
 					      </li>
 					  
 					      <li class="nav-item d-none d-sm-inline-block ml-3 prevtab">
-					        <a href="#" class="nav-link" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+					       		<a href="#" class="nav-link" style="color: #212529;">
 					        				&nbsp;&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i><br>
-					  						Previous
-					        </a>
+					  						Previous </a>
+					  		@else
+					  			<a href="#" class="nav-link" style="color: white;">
+					        				&nbsp;&nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i><br>
+					  						Previous</a>
+					        @endif	
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block mr-3 nexttab">
-					        <a href="#" class="nav-link" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+					        	<a href="#" class="nav-link" style="color: #212529;">
 					  						&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i><br>
-					  						Next
-					        </a>
+					  						Next</a>
+					  		@else
+					  			<a href="#" class="nav-link" style="color: white;">
+					  						&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i><br>
+					  						Next</a>
+					  		@endif									
 					      </li>
 					  
 					      <li class="nav-item d-none d-sm-inline-block">
-					        <a href="#" class="nav-link" style="color: white;" id="toggle">
-					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/fullscreen.png" alt="fullScreen" style="width: 10px;height: 15px;"><br>
-					  						Full Screen
-					        </a>
+					      	@if ($color->apperance_color === "#000")
+					        <a href="#" class="nav-link" style="color: #212529;" id="toggle">
+					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					        				<i class="fa fa-expand" aria-hidden="true"></i>
+					        				<br>
+					  						Full Screen</a>
+							@else
+					  		<a href="#" class="nav-link" style="color: white;" id="toggle">
+					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					        				<i class="fa fa-expand" aria-hidden="true"></i>
+					        				<br>
+					  						Full Screen</a>
+							@endif
 					      </li>
 					      <li class="nav-item dropdown">
-					        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
-					        	&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/tutorial.png" alt="tutorial" style="width: 10px;height: 15px;"><br>
-					          Tutorial
-					        </a>
-					        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
-					          <ul>
-					          	<li class="nav-item">
-					  				          	<h5><a href="">Interface Tutorial</a></h5>
-					  				        </li>
-					          	<li class="nav-item">
-					  				          	<h5><a href="">Keyboard Shortcuts</a></h5>
-					  				        </li>
-					          </ul>
-					        </div>
+					      	@if ($color->apperance_color === "#000")
+						        <a class="nav-link" data-toggle="dropdown" href="#" style="color: #212529;">
+									&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i>
+						        	<br>
+						          Tutorial
+						        </a>
+						        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
+						          <ul>
+						          	<li class="nav-item">
+						  				          	<h5><a href="">Interface Tutorial</a></h5>
+						  				        </li>
+						          	<li class="nav-item">
+						  				          	<h5><a href="">Keyboard Shortcuts</a></h5>
+						  				        </li>
+						          </ul>
+						        </div>
+					        @else
+						        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+									&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i>
+						        	<br>
+						          Tutorial
+						        </a>
+						        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="padding: 16px 0px 16px 0px;">
+						          <ul>
+						          	<li class="nav-item">
+						  				          	<h5><a href="">Interface Tutorial</a></h5>
+						  				        </li>
+						          	<li class="nav-item">
+						  				          	<h5><a href="">Keyboard Shortcuts</a></h5>
+						  				        </li>
+						          </ul>
+						        </div>
+					        @endif
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block" id="labValueLi">
-			        		<a href="#" class="nav-link" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+			        			<a href="#" class="nav-link" style="color: #212529;">
 			        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-flask" aria-hidden="true"></i><br>
-			  						Lab Values
-					        </a>
+			  						Lab Values</a>
+			  				@else
+			  					<a href="#" class="nav-link" style="color: white;">
+			        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-flask" aria-hidden="true"></i><br>
+			  						Lab Values</a>
+			  				@endif
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block" style="color: white;" id="NotesLi">
-					        <a href="#" class="nav-link" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+					        	<a href="#" class="nav-link" style="color: #212529;">
 					        				&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>
-					  						Notes
-					        </a>
+					  						Notes</a>
+					  		@else
+					  			<a href="#" class="nav-link" style="color: white;">
+					        				&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>
+					  						Notes</a>
+					  		@endif
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block" style="color: white;" id="CalculatorLi">
-					        <a href="#" class="nav-link" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+					        	<a href="#" class="nav-link" style="color: #212529;">
 					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calculator" aria-hidden="true"></i><br>
-					  						Calculator
-					        </a>
+					  						Calculator</a>
+					  		@else
+					  			 <a href="#" class="nav-link" style="color: white;">
+					        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calculator" aria-hidden="true"></i><br>
+					  						Calculator</a>
+					  		@endif
 					      </li>
 			      <li class="nav-item dropdown">
-			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+			      	@if ($color->apperance_color === "#000")
+			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: #212529;">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-palette"></i><br>
 			          Reverse Color
 			        </a>
@@ -254,19 +332,18 @@
   						  </div>
 			       	  </div>
 			        </div>
-			      </li>
-			      <li class="nav-item dropdown">
-			        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;<img src="{{asset('dashboard')}}/dist/img/settings.png" alt="Settings" style="width: 10px;height: 15px;"><br>
-			          Settings
-			        </a>
+			        @else
+			        	<a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-palette"></i><br>
+				          Reverse Color
+				        </a>
 				        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
 				          <h5 class="text-center">Settings</h5>
 				          <div class="card card-outline card-primary">
-	  						  <div class="card-header">
-	  						  	Apperance
-	  						  </div>
-	  						  <div class="card-body">
+				  			  <div class="card-header">
+				  				Appearance
+				        	  </div>
+				        	  <div class="card-body">
 	  						  	 <div class="row">
 	  						  	 	<div class="col-md-6">
 	  						  	 		<strong>Theme:</strong>
@@ -296,8 +373,98 @@
 	  								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
 	  						  	 </div>
 	  						  </div>
-	  					  </div>
+				       	  </div>
 				        </div>
+			        @endif
+			      </li>
+			      <li class="nav-item dropdown">
+			      	@if ($color->apperance_color === "#000")
+				        <a class="nav-link" data-toggle="dropdown" href="#" style="color: #212529;">
+				          &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cog fa-fw" aria-hidden="true"></i><br>
+				          Settings
+				        </a>
+					        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
+					          <h5 class="text-center">Settings</h5>
+					          <div class="card card-outline card-primary">
+		  						  <div class="card-header">
+		  						  	Apperance
+		  						  </div>
+		  						  <div class="card-body">
+		  						  	 <div class="row">
+		  						  	 	<div class="col-md-6">
+		  						  	 		<strong>Theme:</strong>
+		  						  	 	</div>
+		  						  	 	<div class="col-md-2">
+		  						  	 		<a style="color: #fbfbfb;cursor: pointer;">
+		  						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+		  											w
+		  										</span>
+		  						  	 		</a>
+		  						  	 	</div>
+		  						  	 	<div class="col-md-2">
+		  						  	 		<a style="color: #000;cursor: pointer;">
+		  						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+		  											B
+		  										</span>
+		  						  	 		</a>
+		  						  	 	</div>
+		  						  	 	<div class="col-md-2">
+		  						  	 		<a style="color: #FBF0DA;cursor: pointer;">
+		  						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+		  											G
+		  										</span>
+		  						  	 		</a>
+		  						  	 	</div>
+		  						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
+		  								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
+		  						  	 </div>
+		  						  </div>
+		  					  </div>
+					        </div>
+					    @else
+					    	<a class="nav-link" data-toggle="dropdown" href="#" style="color: white;">
+					          &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cog fa-fw" aria-hidden="true"></i><br>
+					          Settings
+					        </a>
+						        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-2" style="padding: 16px 0px 16px 0px;">
+						          <h5 class="text-center">Settings</h5>
+						          <div class="card card-outline card-primary">
+			  						  <div class="card-header">
+			  						  	Apperance
+			  						  </div>
+			  						  <div class="card-body">
+			  						  	 <div class="row">
+			  						  	 	<div class="col-md-6">
+			  						  	 		<strong>Theme:</strong>
+			  						  	 	</div>
+			  						  	 	<div class="col-md-2">
+			  						  	 		<a style="color: #fbfbfb;cursor: pointer;">
+			  						  	 			<span id="#fbfbfb" onClick="chose_color(this.id)" style="background-color: #fbfbfb;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+			  											w
+			  										</span>
+			  						  	 		</a>
+			  						  	 	</div>
+			  						  	 	<div class="col-md-2">
+			  						  	 		<a style="color: #000;cursor: pointer;">
+			  						  	 			<span id="#000" onClick="chose_color(this.id)" style="background-color: #000;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+			  											B
+			  										</span>
+			  						  	 		</a>
+			  						  	 	</div>
+			  						  	 	<div class="col-md-2">
+			  						  	 		<a style="color: #FBF0DA;cursor: pointer;">
+			  						  	 			<span id="#FBF0DA" onClick="chose_color(this.id)" style="background-color: #FBF0DA;padding: 5px;border-radius: 100%;border: 1px solid gray;">
+			  											G
+			  										</span>
+			  						  	 		</a>
+			  						  	 	</div>
+			  						  	 	<p id = "getColor" name="apperance_color" style="display: none;"></p>
+			  								<input type="text" class="form-control" id="apperance_color" name="apperance_color" style="display: none;">
+			  						  	 </div>
+			  						  </div>
+			  					  </div>
+						        </div>
+				        	@endif
 				      </li>
 				     </ul>
 			    </nav>
@@ -323,7 +490,7 @@
 								    <div class="row">
 								    	<div class="col-md-4" id="QWith4to6">
 								    		<h4 style="color: white;">What is Lichen planus?</h4>
-								    		<div class="card card-outline card-primary">
+								    		<div class="card card-outline card-secondary">
 								              <div class="card-header">
 								                <div class="custom-control custom-radio">
 							                      <input class="custom-control-input" type="radio" id="customRadio1" name="status" value="1" checked>
@@ -355,7 +522,7 @@
 								    	<div class="col-md-4" id="QWith4to2"></div>
 								    	<div class="col-md-4"></div>
 								    </div>
-								    <button type="submit" class="btn btn-primary btn-md float-left">Submit</button>
+								    <button type="submit" class="btn btn-secondary btn-md float-left">Submit</button>
 								</form>
 							</div>
 						  </div>
@@ -381,7 +548,7 @@
 								    <div class="row">
 								    	<div class="col-md-4">
 								    		<h4>What is Lichen planus?</h4>
-								    		<div class="card card-outline card-primary">
+								    		<div class="card card-outline card-secondary">
 								              <div class="card-header">
 								                <div class="custom-control custom-radio">
 							                      <input class="custom-control-input" type="radio" id="customRadio1" name="status" value="1" checked>
@@ -413,7 +580,7 @@
 								    	<div class="col-md-4"></div>
 								    	<div class="col-md-4"></div>
 								    </div>
-								    <button type="submit" class="btn btn-primary btn-md float-left">Submit</button>
+								    <button type="submit" class="btn btn-secondary btn-md float-left">Submit</button>
 								</form>
 							</div>
 						  </div>
@@ -1439,58 +1606,111 @@
 			  <!-- Flash Card -->
 
 			 	<!-- /.footer -->
-			  	<nav class="navbar navbar-expand" style="background-color: #3852a4;">
+			 	@if ($color->apperance_color === "#000")
+			  		<nav class="navbar navbar-expand" style="background-color: #FBF0DA;">
+			  	@else
+			  		<nav class="navbar navbar-expand" style="background-color: black;">
+				@endif
 			    	<strong style="color: white;"></strong>
 			    	<ul class="navbar-nav">
 				      <li class="nav-item d-none d-sm-inline-block">
-				        <a href="#" class="nav-link" style="color: white;">Block Time Remaining: <span id="txt"></span> <br> TUTOR</a>
+				      	@if ($color->apperance_color === "#000")
+				        	<a href="#" class="nav-link" style="color: #212529;">Block Time Remaining: <span id="txt"></span> <br> TUTOR</a>
+				        @else
+				        	<a href="#" class="nav-link" style="color: white;">Block Time Remaining: <span id="txt"></span> <br> TUTOR</a>
+				        @endif
 				      </li>
 				     </ul>
 				     <ul class="navbar-nav ml-auto">
 					      <li class="nav-item d-none d-sm-inline-block" id="FlashCardLi">
-					        <a href="#" class="nav-link" style="color: white;">
-					        	<br>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid white;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
-					        </a>
+					      	@if ($color->apperance_color === "#000")
+						        <a href="#" class="nav-link" style="color: #212529;">
+						        	<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid #212529;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
+						        </a>
+						    @else
+						    	<a href="#" class="nav-link" style="color: white;">
+						        	<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='fab fa-facebook-messenger' style="border: 1px solid white;padding-top: 5px;"></i><sub><span class="badge badge-dark">0</span></sub><br>
+						        </a>
+					        @endif
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block" id="FeedbackLi">
-					        <a href="#" class="nav-link" style="color: white;">
-					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i><br>
-								Feedback
-					        </a>
+					      	@if ($color->apperance_color === "#000")
+						        <a href="#" class="nav-link" style="color: #212529;">
+						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i><br>
+									Feedback
+						        </a>
+						    @else
+						    	<a href="#" class="nav-link" style="color: white;">
+						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comments-o" aria-hidden="true"></i><br>
+									Feedback
+						        </a>
+					        @endif
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-default">
-					        <a href="#" class="nav-link" style="color: white;">
-					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: yellow;"></i><br>
-								Suspend
-					        </a>
-						      <!-- /.modal -->
-					         <div class="modal fade" id="modal-default">
-						        <div class="modal-dialog">
-						          <div class="modal-content">
-						            <div class="modal-header">
-						              <h4 class="modal-title">Suspend Test?</h4>
-						              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						                <span aria-hidden="true">&times;</span>
-						              </button>
-						            </div>
-						            <div class="modal-body">
-						                <p>You are about to suspend this exam.</p>
-										<p>Do you want to suspend this exam?</p>
-						            </div>
-						            <div class="modal-footer">
-						            	<div class="float-right">
-						            		<button type="button" class="btn btn-primary">Yes</button>
-							            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-						            	</div>
-						            </div>
-						          </div>
-						        </div>
-						      </div>
+					      	@if ($color->apperance_color === "#000")
+						        <a href="#" class="nav-link" style="color: #212529;">
+						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: black;"></i><br>
+									Suspend
+						        </a>
+							      <!-- /.modal -->
+						         <div class="modal fade" id="modal-default">
+							        <div class="modal-dialog">
+							          <div class="modal-content">
+							            <div class="modal-header">
+							              <h4 class="modal-title">Suspend Test?</h4>
+							              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							                <span aria-hidden="true">&times;</span>
+							              </button>
+							            </div>
+							            <div class="modal-body">
+							                <p>You are about to suspend this exam.</p>
+											<p>Do you want to suspend this exam?</p>
+							            </div>
+							            <div class="modal-footer">
+							            	<div class="float-right">
+							            		<button type="button" class="btn btn-primary">Yes</button>
+								            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+							            	</div>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+							    @else
+							    	<a href="#" class="nav-link" style="color: white;">
+						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pause-circle-o" style="color: black;"></i><br>
+										Suspend
+							        </a>
+								      <!-- /.modal -->
+							         <div class="modal fade" id="modal-default">
+								        <div class="modal-dialog">
+								          <div class="modal-content">
+								            <div class="modal-header">
+								              <h4 class="modal-title">Suspend Test?</h4>
+								              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								                <span aria-hidden="true">&times;</span>
+								              </button>
+								            </div>
+								            <div class="modal-body">
+								                <p>You are about to suspend this exam.</p>
+												<p>Do you want to suspend this exam?</p>
+								            </div>
+								            <div class="modal-footer">
+								            	<div class="float-right">
+								            		<button type="button" class="btn btn-primary">Yes</button>
+									            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+								            	</div>
+								            </div>
+								          </div>
+								        </div>
+								      </div>
+								   @endif
 						      <!-- /.modal -->
 					      </li>
 					      <li class="nav-item d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-endblock">
-					        <a href="#" class="nav-link" style="color: white;">
+					      	@if ($color->apperance_color === "#000")
+					        <a href="#" class="nav-link" style="color: #212529;">
 					        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ban" aria-hidden="true"></i><br>
 								End Block
 					        </a>
@@ -1518,6 +1738,36 @@
 						        </div>
 						      </div>
 						      <!-- /.modal -->
+						      @else
+						      	<a href="#" class="nav-link" style="color: white;">
+						        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ban" aria-hidden="true"></i><br>
+									End Block
+						        </a>
+						        <!-- /.modal -->
+						         <div class="modal fade" id="modal-endblock">
+							        <div class="modal-dialog">
+							          <div class="modal-content">
+							            <div class="modal-header">
+							              <h4 class="modal-title">End Test</h4>
+							              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							                <span aria-hidden="true">&times;</span>
+							              </button>
+							            </div>
+							            <div class="modal-body">
+							                <p>Do you want to end this exam?</p>
+											<p>You can always resume the exam from previous tests.</p>
+							            </div>
+							            <div class="modal-footer">
+							            	<div class="float-right">
+							            		<button type="button" class="btn btn-primary">Yes</button>
+								            	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+							            	</div>
+							            </div>
+							          </div>
+							        </div>
+							      </div>
+ 								<!-- /.modal -->
+ 							   @endif
 					      </li>
 				     </ul>
 			    </nav>
