@@ -1,0 +1,122 @@
+$("input[type='checkbox']").on('click', function(){
+   var checked = $(this).attr('checked');
+   if(checked){
+      var value = $(this).val();
+      $.post('file.php', { value:value }, function(data){
+          // data = 0 - means that there was an error
+          // data = 1 - means that everything is ok
+          if(data == 1){
+             // Do something or do nothing :-)
+             alert('Data was saved in db!');
+          }
+      });
+   }
+});
+
+
+
+
+
+
+
+
+
+
+$('input:checkbox').click( function() {
+  clicked = $(this).attr('checked');
+  if (clicked) {
+    /* AJAX the server to tell them it was clicked. */ }
+  else {
+    /* AJAX the server to tell them it was unclicked. */ } } );
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).on('change','.sort_rang',function(){
+   var url = "ajax_search.php";
+   $.ajax({
+     type: "POST",
+     url: url,
+     data: $("#search_form").serialize(),
+     success: function(data)
+     {                  
+        $('.oneproducct').html(data);
+     }               
+   });
+  return false;
+});
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SoftAOX | Insert Checkbox values in Database using Ajax, Jquery & PHP</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<h3>Insert Checkbox values in Database using Ajax, Jquery in PHP</h3>
+<input type="checkbox" class="get_value" value="Apple">
+<label>Apple</label>
+<br/>
+<input type="checkbox" class="get_value" value="IBM">
+<label>IBM</label>
+<br/>
+<input type="checkbox" class="get_value" value="Google">
+<label>Google</label>
+<br/>
+<input type="checkbox" class="get_value" value="Microsoft">
+<label>Microsoft</label>
+<br/>
+<input type="checkbox" class="get_value" value="Amazon">
+<label>Amazon</label>
+<br/>
+<br/>
+<button type="button" name="submit" id="submit">Save</button>
+<br/>
+<h4 id="result"></h4>
+<script>
+$(document).ready(function() {
+$('#submit').click(function() {
+var insert = [];
+$('.get_value').each(function() {
+if ($(this).is(":checked")) {
+insert.push($(this).val());
+}
+});
+insert = insert.toString();
+$.ajax({
+url: "insert.php",
+method: "POST",
+data: {
+insert: insert
+},
+success: function(data) {
+$('#result').html(data);
+}
+});
+});
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
