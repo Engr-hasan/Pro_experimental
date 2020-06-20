@@ -16,7 +16,7 @@
                     <form action="{{url('/subject-store')}}" method="post" role="form" id="subjectFormId">
                         @csrf
                         <div class="row">
-                            <div class="col-sm-12">
+                            {{--<div class="col-sm-12">
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Question Mode: <span class="text-danger">*</span></label>
@@ -27,7 +27,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="col-sm-12">
                                 <!-- text input -->
                                 <div class="form-group">

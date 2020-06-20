@@ -46,8 +46,8 @@ class QuestionCreateController extends Controller
     {
         $this->validate($request,[
            'question'=>'required',
-           'test_mode_type'=>'required',
-           'question_mode_id'=>'required',
+//           'test_mode_type'=>'required',
+//           'question_mode_id'=>'required',
            'subject_id'=>'required',
            'system_id'=>'required',
            'status' => 'required',

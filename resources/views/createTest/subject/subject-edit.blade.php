@@ -16,14 +16,14 @@
                   @csrf
                   <div class="row">
                     <div class="col-sm-12">
-                        <div class="form-group">
+                        {{--<div class="form-group">
                             <label>Question Mode: <span class="text-danger">*</span></label>
                             <select name="question_mode_id" class="form-control" id="" required>
                                 @foreach($q_modes as $mode)
                                     <option class="form-group" {{ $data->question_mode_id == $mode->id ? 'selected' : '' }} value="{{ $mode->id }}">{{ $mode->name }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div>--}}
                       <!-- text input -->
                       <div class="form-group">
                         <label>Subject Name: </label>

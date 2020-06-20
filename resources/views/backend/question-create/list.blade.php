@@ -30,7 +30,7 @@
                         <thead>
                         <tr>
                             <th width="5%" class="text-center">ID</th>
-                            <th width="15%" class="text-center">Test Mode Type</th>
+{{--                            <th width="15%" class="text-center">Test Mode Type</th>--}}
                             <th width="35%" class="text-center">Question</th>
                             <th width="15%" width="5%" class="text-center">Status</th>
                             <th width="15%" class="text-center">Action</th>
@@ -41,7 +41,7 @@
                             @foreach($questions as $key=> $question)
                                 <tr>
                                     <td align="center">{{ $key + 1 }}</td>
-                                    <td align="center">{{ $question->test_mode_type }}</td>
+{{--                                    <td align="center">{{ $question->test_mode_type }}</td>--}}
                                     <td style="text-align: justify;" align="center">{!! \Str::limit($question->question, '100') !!}</td>
                                     <td align="center">
                                         @if($question->status == 1)

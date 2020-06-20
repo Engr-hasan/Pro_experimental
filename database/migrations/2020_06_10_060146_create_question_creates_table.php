@@ -15,10 +15,10 @@ class CreateQuestionCreatesTable extends Migration
     {
         Schema::create('question_creates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('question_mode_id');
+//            $table->unsignedBigInteger('question_mode_id');
             $table->unsignedBigInteger('subject_id');
             $table->unsignedBigInteger('system_id');
-            $table->string('test_mode_type');
+//            $table->string('test_mode_type');
             $table->text('question');
             $table->integer('status')->nullable();
             $table->timestamps();

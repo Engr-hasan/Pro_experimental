@@ -15,20 +15,20 @@ class SubjectController extends Controller
 
     public function createSubject()
     {
-        $q_modes = QuestionMode::active()->get();
-    	return view('createTest.subject.subject-create', compact('q_modes'));
+//        $q_modes = QuestionMode::active()->get();
+    	return view('createTest.subject.subject-create');
     }
 
     public function storeSubject(Request $request)
     {
         $this->validate($request,[
-            'question_mode_id' => 'required',
+//            'question_mode_id' => 'required',
             'subject_name' => 'required|unique:subjects',
             'status' => 'required'
         ]);
 
         $data = new Subject();
-        $data->question_mode_id = $request->question_mode_id;
+//        $data->question_mode_id = $request->question_mode_id;
         $data->subject_name = $request->subject_name;
         $data->status = $request->status;
         $data->save();
@@ -40,8 +40,8 @@ class SubjectController extends Controller
     public function editSubject(Request $request, $id)
     {
         $data = Subject::find($id);
-        $q_modes = QuestionMode::active()->get();
-        return view('createTest.subject.subject-edit', compact('data', 'q_modes'));
+//        $q_modes = QuestionMode::active()->get();
+        return view('createTest.subject.subject-edit', compact('data'));
     }
 
     public function updateSubject(Request $request, $id)

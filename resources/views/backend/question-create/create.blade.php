@@ -16,7 +16,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                     <label>Test Mode Type: <span class="text-danger">*</span></label>
                                     <select name="test_mode_type" class="form-control" id="" required>
                                         <option class="form-group"disabled selected value="">Select One</option>
@@ -32,7 +32,7 @@
                                             <option class="form-group" value="{{ $mode->id }}">{{ $mode->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div>--}}
                                 <div class="form-group">
                                     <label>Subject: <span class="text-danger">*</span></label>
                                     <select name="subject_id" class="form-control" id="" required>
