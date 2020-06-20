@@ -19,11 +19,11 @@ class CreateTestController extends Controller
             'subjects' => Subject::subject()->get(),
             'systems' => System::system()->get(),
             'q_modes' => QuestionMode::active()->get(),
-            'q_mode_counts1' => QuestionCreate::where('question_mode_id',1)->count(),
+            /*'q_mode_counts1' => QuestionCreate::where('question_mode_id',1)->count(),
             'q_mode_counts2' => QuestionCreate::where('question_mode_id',2)->count(),
             'q_mode_counts3' => QuestionCreate::where('question_mode_id',3)->count(),
             'q_mode_counts4' => QuestionCreate::where('question_mode_id',4)->count(),
-            'q_mode_counts5' => QuestionCreate::where('question_mode_id',5)->count(),
+            'q_mode_counts5' => QuestionCreate::where('question_mode_id',5)->count(),*/
         ];
 
     	return view('createTest.create-test', $data);

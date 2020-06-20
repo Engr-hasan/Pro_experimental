@@ -62,6 +62,15 @@
                         </div>
                         <div class="card-body" id="app"  v-on:click="seen = !seen">
                             <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline" style="margin-right: 50px;">
+                                        <input type="radio" value="" name="question_mode" id="radioSuccess1">
+                                        <label for="radioSuccess1">Unseen</label>
+                                    </div>
+                            </div>
+                        </div>
+
+                        {{--<div class="card-body" id="app"  v-on:click="seen = !seen">
+                            <div class="form-group clearfix">
                                 @foreach($q_modes as $mode)
                                     <div class="icheck-success d-inline" style="margin-right: 50px;">
                                         <input type="radio" value="{{$mode->id}}" name="question_mode" id="radioSuccess{{$mode->id}}">
@@ -82,7 +91,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                     <!-- Question mode end-->
 
