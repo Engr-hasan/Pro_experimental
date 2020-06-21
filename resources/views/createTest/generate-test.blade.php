@@ -1615,9 +1615,9 @@
 			    	<ul class="navbar-nav">
 				      <li class="nav-item d-none d-sm-inline-block">
 				      	@if ($color->apperance_color === "#000")
-				        	<a href="#" class="nav-link" style="color: #212529;">Block Time Remaining: <span id="txt"></span> <br> TUTOR</a>
+				        	<a href="#" class="nav-link" style="color: #212529;">Block Time Remaining: <span id="time"></span> <br> TUTOR</a>
 				        @else
-				        	<a href="#" class="nav-link" style="color: white;">Block Time Remaining: <span id="txt"></span> <br> TUTOR</a>
+				        	<a href="#" class="nav-link" style="color: white;">Block Time Remaining: <span id="time"></span> <br> TUTOR</a>
 				        @endif
 				      </li>
 				     </ul>
@@ -1785,39 +1785,25 @@
 
     <script>
     	$(document).ready(function(){
+    		//Question mark
     		 $("#MarkCheckbox").click(function(){
     		 	if ($('#MarkCheckbox').is(":checked")) {
 	    		 	var flag = '<i class="fa fa-flag ml-1 mr-1" aria-hidden="true" style="color: red;"></i>';
 	    		 	$(".markQ tr th a.active").append(flag);
 	    		}
  			 });	
+ 			//Question mark end
+			
 
- 			/*$('#MarkCheckbox').change(socmedCh);
-			function socmedCh() {
-			  if ($('#MarkCheckbox').is(":checked")) {
-			    $(".selectQ").show();
-			  } else {
-			    $(".selectQ").hide();	
-			  }
-			}*/	
-
-			/*$("#MarkCheckbox").click(function(){
-    		 	if ($('#MarkCheckbox').is(":checked")) {
-	    		 	var flag = '<i class="fa fa-flag ml-1 mr-1" id="selectQ" aria-hidden="true" style="color: red;"></i>';
-	    		 	$(".markQ tr th a.active").append(flag);
-    		 	} else {
-					$('#selectQ').remove();
-    		 	}
- 			 });*/ 
-		});
-
-    	$(document).ready(function(){
+			//sidebar collapse
 		    $("#show").click(function(){
 	    		$("#mainDivId").addClass("col-md-12");
 	    		$("#mainDivId").removeClass("col-md-11");
-	    		$("#siderDivId").hide();
-		    });			 
+	    		$("#siderDivId").hide();	
+		    });	
+			//sidebar collapse end
 		});
+
 
     	/*Apperance color*/
 		var el_select = document.getElementById("getColor");
@@ -1844,6 +1830,7 @@
               }
             });
 		}
+		/*Apperance color end*/
 
 
 		//Full screen
@@ -1867,11 +1854,10 @@
 				
 			});
 		}
-
+		//Full screen end
 
 
 		/*Tab next-prev*/
-
 		function bootstrapTabControl(){
 		  var i, items = $('.markQ .nav-link'), pane = $('.tab-pane');
 		  // next
@@ -1911,7 +1897,7 @@
 		  });
 		}
 		bootstrapTabControl();
-		/*Tab next-prev*/
+		/*Tab next-prev end*/
 
 
 		//Notes, calculator, feedback, flash card
@@ -1932,6 +1918,7 @@
 	    		$("#FeedbackHide").toggle();
 		    });
 		});
+		//Notes, calculator, feedback, flash card end
 
 
 		//calculator
@@ -1971,7 +1958,6 @@
 		//Lab value end
 
 
-
 		// Timer
 		function startTime()
 		{
@@ -1994,39 +1980,46 @@
 		  }
 		return i;
 		}
+		//Timer end
 
 
+		//reverse timer
+		function startTimer(duration, display) {
+		    var start = Date.now(),
+		        diff,
+		        minutes,
+		        seconds;
+		    function timer() {
+		        // get the number of seconds that have elapsed since 
+		        // startTimer() was called
+		        diff = duration - (((Date.now() - start) / 1000) | 0);
 
+		        // does the same job as parseInt truncates the float
+		        minutes = (diff / 60) | 0;
+		        seconds = (diff % 60) | 0;
 
-		$(function() {
-		  $('.my_features').on("change",function() { 
-		    $('#'+$(this).attr('data-name')).toggle(this.checked); // toggle instead
-		  }).change(); // trigger the change
-		});
+		        minutes = minutes < 10 ? "0" + minutes : minutes;
+		        seconds = seconds < 10 ? "0" + seconds : seconds;
 
+		        display.textContent = minutes + ":" + seconds; 
 
+		        if (diff <= 0) {
+		            // add one second so that the count down starts at the full duration
+		            // example 05:00 not 04:59
+		            start = Date.now() + 1000;
+		        }
+		    };
+		    // we don't want to wait a full second before the timer starts
+		    timer();
+		    setInterval(timer, 1000);
+		}
 
-
-		/*$(document).ready(function(){
-		    $("#show").toggle(function(){
-	    		// $("#mainDivId").addClass("col-md-12");
-	    		// $("#mainDivId").removeClass("col-md-11");
-	    		$("#siderDivId").hide();
-		    }, function(){
-		    	// $("#mainDivId").addClass("col-md-11");
-	    		// $("#mainDivId").removeClass("col-md-12");
-	    		$("#siderDivId").show();
-		    });
-		});*/
-
-
-		/*$(document).ready(function(){
-		    $("#show").click(function(){
-	    		$("#mainDivId").addClass("col-md-12");
-	    		$("#mainDivId").removeClass("col-md-11");
-	    		$("#siderDivId").hide();
-		    });
-		});*/
+		window.onload = function () {
+		    var getMin = 60 * 60,
+		        display = document.querySelector('#time');
+		    startTimer(getMin, display);
+		};
+		//reverse timer end
 	</script>
 </body>
 </html>
