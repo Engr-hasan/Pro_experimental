@@ -98,7 +98,7 @@
                                             <input type="checkbox" id="subject_name{{$key}}">
                                             <label for="subject_name{{$key}}">
                                                 {{ $singleData->subject_name }}
-                                                <input type="text" value="0534535"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
+                                                <input type="text" value="0"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
                                             </label>
                                         </div>
                                     </div>
@@ -201,7 +201,7 @@
                 </div>
                 <!-- No of Question end-->
                 <div class="col-md-12 col-lg-12">
-                    <a href="{{url('generate-test')}}" class="btn btn-primary">GENERATE TEST</a>
+                    <a href="{{url('generate-test')}}" class="btn btn-secondary">GENERATE TEST</a>
                 </div>
                 <br/>
             </div>
