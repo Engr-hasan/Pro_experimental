@@ -1557,13 +1557,13 @@
 	                </strong>
 	              </div>
 	              <div class="card-body">
-	                 <textarea name="notes" id="notes" cols="60" rows="10" placeholder='We appreciate your feedback. However, please provide as much detail as possible in the permitted space avoiding simplistic feedback like "Good question", "hard question" etc.'></textarea>
+	                 <textarea id="feedbacks" cols="60" rows="10" placeholder='We appreciate your feedback. However, please provide as much detail as possible in the permitted space avoiding simplistic feedback like "Good question", "hard question" etc.' required="required"></textarea>
 	              </div>
 	              <div class="card-footer">
-          	  	  	<label class="float-left"><input type="checkbox"> Check here if concern is for software/ technical issue.</label>
+          	  	  	<label class="float-left"><input type="checkbox" id="i_concern" value="1" required="required"> Check here if concern is for software/ technical issue.</label>
 
           	  	  
-          	  	  	<button class="btn btn-default btn-sm float-right">Submit</button>
+          	  	  	<button class="btn btn-default btn-sm float-right" id="feedbackSubmit">Submit</button>
 	              </div>
 	              </div>
 	          </div>
@@ -2020,6 +2020,33 @@
 		    startTimer(getMin, display);
 		};
 		//reverse timer end
+
+
+		// Feedback
+		jQuery(document).ready(function(){
+           jQuery('#feedbackSubmit').click(function(e){
+               e.preventDefault();
+           $.ajaxSetup({
+			    headers: {
+			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+		   });
+           jQuery.ajax({
+              url: "{{ url('/give-feedback') }}",
+              method: 'post',
+              data: {
+                 feedbacks: jQuery('#feedbacks').val(),
+                 i_concern: jQuery('#i_concern').val()
+              },
+              success: function(result){
+                 console.log(result);
+                 $('#FeedbackHide').hide();
+                 $('#feedbacks').val('');
+                 $('#i_concern').val('');
+              }});
+           });
+        });
+        // Feedback end
 	</script>
 </body>
 </html>

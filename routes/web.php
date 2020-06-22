@@ -122,3 +122,6 @@ Route::get('/results','ResultsController@getResultsPage');
 Route::get('/analysis','AnalysisController@getAnalysisPage');
 Route::get('/test-analysis','AnalysisController@getTestAnalysisPage');
 Route::get('/review-test','ReviewTestController@getReviewTestPage');
+
+//Feedback
+Route::post('/give-feedback','FeedbackController@feedbackStore');
