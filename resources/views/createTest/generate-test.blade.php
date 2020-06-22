@@ -1547,7 +1547,7 @@
 	          </div>	
 			  <!-- Calculator -->
 
-			  <!-- Notes -->
+			  <!-- Feedback -->
 			  <div class="row" id="FeedbackHide" style="display: none;">
 	            <div class="card" style="width: 600px;">
 	              <div class="card-header" style="background-color: gray;">
@@ -1560,14 +1560,14 @@
 	                 <textarea id="feedbacks" cols="60" rows="10" placeholder='We appreciate your feedback. However, please provide as much detail as possible in the permitted space avoiding simplistic feedback like "Good question", "hard question" etc.' required="required"></textarea>
 	              </div>
 	              <div class="card-footer">
-          	  	  	<label class="float-left"><input type="checkbox" id="i_concern" value="1" required="required"> Check here if concern is for software/ technical issue.</label>
+          	  	  	<label class="float-left"><input type="checkbox" id="i_concern" value="1"> Check here if concern is for software/ technical issue.</label>
 
           	  	  
           	  	  	<button class="btn btn-default btn-sm float-right" id="feedbackSubmit">Submit</button>
 	              </div>
 	              </div>
 	          </div>
-	          <!-- Notes -->
+	          <!-- Feedback -->
 
 			  <!-- Flash Card -->
 	          <div class="row" id="FlashCardHide" style="display: none;">
@@ -2026,6 +2026,7 @@
 		jQuery(document).ready(function(){
            jQuery('#feedbackSubmit').click(function(e){
                e.preventDefault();
+           $('#FeedbackHide').hide();    
            $.ajaxSetup({
 			    headers: {
 			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2040,9 +2041,7 @@
               },
               success: function(result){
                  console.log(result);
-                 $('#FeedbackHide').hide();
-                 $('#feedbacks').val('');
-                 $('#i_concern').val('');
+                 location.reload();
               }});
            });
         });
