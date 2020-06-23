@@ -125,3 +125,7 @@ Route::get('/review-test','ReviewTestController@getReviewTestPage');
 
 //Feedback
 Route::post('/give-feedback','FeedbackController@feedbackStore');
+//System get subject wise
+Route::post('/get-sub-id','CreateTestController@subIdGet');
+//System select
+Route::post('/get-sys-id','CreateTestController@sysIdGet');

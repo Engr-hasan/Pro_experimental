@@ -5,6 +5,7 @@ use App\AnswerExplanation;
 use App\QuestionAnswersList;
 use App\QuestionCreate;
 use App\QuestionMode;
+use App\Questions;
 use App\Subject;
 use App\System;
 use App\ApperanceColor;
@@ -13,20 +14,30 @@ use Illuminate\Http\Request;
 
 class CreateTestController extends Controller
 {
+    public function subIdGet(Request $request)
+     {
+        $getSubWiseSys = Questions::where('question_subject', $request->question_subject)->where('status',1)->get('question_system')->count();
+        // dd($getSubWiseSys);
+     }
+
+     public function sysIdGet(Request $request)
+     {
+        $getSysWiseData = Questions::where('question_system', $request->question_system)->where('status',1)->get('question_system')->count();
+        // dd($getSysWiseData);
+     }
+
     public function getCreateTestPage()
     {
-        $data = [
-            'subjects' => Subject::subject()->get(),
-            'systems' => System::system()->get(),
-            'q_modes' => QuestionMode::active()->get(),
-            /*'q_mode_counts1' => QuestionCreate::where('question_mode_id',1)->count(),
-            'q_mode_counts2' => QuestionCreate::where('question_mode_id',2)->count(),
-            'q_mode_counts3' => QuestionCreate::where('question_mode_id',3)->count(),
-            'q_mode_counts4' => QuestionCreate::where('question_mode_id',4)->count(),
-            'q_mode_counts5' => QuestionCreate::where('question_mode_id',5)->count(),*/
-        ];
-
-    	return view('createTest.create-test', $data);
+        $allQuestions = Questions::all()->count();
+        $unused = Questions::where('status',1)->get()->count();
+        $incorrect = Questions::where('status',2)->get()->count();
+        $marked = Questions::where('status',3)->get()->count();
+        $subjects = Subject::where('status',1)->get();
+        $systems = System::where('status',1)->get();
+        // $getSubWiseSys = $this->subIdGet();
+        // $getSysWiseData = $this->sysIdGet();
+        // dd($getSubWiseSys);
+    	return view('createTest.create-test', compact('allQuestions','unused','incorrect','marked','subjects','systems')); //,'getSubWiseSys','getSysWiseData'
     }
 
     public function getTestPage()
@@ -43,7 +54,6 @@ class CreateTestController extends Controller
         $color->save();
         return response()->json(['success'=>'Theme Color is Changed']);
      }
-
 
      public function createTeststore(Request $request)
      {

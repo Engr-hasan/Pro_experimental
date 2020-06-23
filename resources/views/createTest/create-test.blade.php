@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 @section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <style>
 
     </style>
@@ -44,28 +45,28 @@
                                 <input type="radio" value="unused" name="q_mode" id="radioSuccess2" checked>
                                 <label for="radioSuccess2">
                                     Unused
-                                    <input type="text" value="43"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
+                                    <input type="text" value="{{$unused}}"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="incorrect" name="q_mode" id="radioSuccess3">
                                 <label for="radioSuccess3">
                                     Incorrect
-                                    <input type="text" value="243"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
+                                    <input type="text" value="{{$incorrect}}"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="marked" name="q_mode" id="radioSuccess4">
                                 <label for="radioSuccess4">
                                     Marked
-                                    <input type="text" value="443"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
+                                    <input type="text" value="{{$marked}}"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
                                 <input type="radio" value="all" name="q_mode" id="radioSuccess5">
                                 <label for="radioSuccess5">
                                     All
-                                    <input type="text" value="343"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
+                                    <input type="text" value="{{$allQuestions}}"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
                                 </label>
                             </div>
                             <div class="icheck-success d-inline" style="margin-right: 50px;">
@@ -91,18 +92,20 @@
                     </div>
                     <div class="card-body" id="subjects">
                         <div class="row">
-                            @if(isset($subjects))
+                            @if($subjects->count() > 0)
                                 @foreach($subjects as $key=> $singleData)
                                     <div class="col-md-6 mb-2">
                                         <div class="icheck-success d-inline">
-                                            <input type="checkbox" id="subject_name{{$key}}">
-                                            <label for="subject_name{{$key}}">
+                                            <input type="checkbox" id="{{$singleData->id}}" onClick="getSubjectValById(this.id)">
+                                            <label for="{{$singleData->id}}">
                                                 {{ $singleData->subject_name }}
-                                                <input type="text" value="0"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
-                                            </label>
+                                                <input type="text" value="{{ \App\Questions::where('question_subject',$singleData->id)->where('status',1)->get()->count() }}"  style="border: 1px solid gray;padding: 4px;width: 40px;height: 20px;text-align: center;border-radius: 15px;color: #2196F3;" disabled>
+                                            </label><p id = "getIdSub"></p>
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                                <strong class="text-center">Subjects not found!</strong>    
                             @endif
                         </div>
                     </div>
@@ -121,18 +124,20 @@
                     </div>
                     <div class="card-body">
                         <div class="row" id="systems">
-                            @if(isset($systems))
+                            @if($systems->count() > 0)
                                 @foreach($systems as $key=> $singleData)
                                     <div class="col-md-6 mb-2">
                                         <div class="icheck-success d-inline">
-                                            <input type="checkbox" id="system_name{{$key}}">
-                                            <label for="system_name{{$key}}">
+                                            <input type="checkbox" id="s{{ $singleData->id }}" onClick="getSystemValById(this.id)">
+                                            <label for="s{{ $singleData->id }}">
                                                 {{ $singleData->system_name }}
                                                 <input type="text" value="0"  style="border: 1px solid gray;border-radius: 100%;padding: 4px;width: 20px;height: 20px;text-align: center;color: #2196F3;" disabled>
-                                            </label>
+                                            </label><p id="getIdSys"></p>
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                                <strong class="text-center">Systems not found!</strong>    
                             @endif
                         </div>
                     </div>
@@ -219,23 +224,11 @@
           if(this.checked) {
               $('div#subjects input[type=checkbox]').each(function() {
                   this.checked = true;
-
-                    $('#allSystems').prop("disabled", false);
-                    $('div#systems input[type=checkbox]').each(function() {
-                       this.checked = false;
-                       $(this).prop("disabled", false);
-                    });
               });
           }
           else {
             $('div#subjects input[type=checkbox]').each(function() {
                   this.checked = false;
-
-                $('#allSystems').prop("disabled", true);
-                $('div#systems input[type=checkbox]').each(function() {
-                   this.checked = false;
-                   $(this).prop("disabled", true);
-                });
             });
           }
         });
@@ -255,11 +248,10 @@
         });
 
        //system disabled default
-        $('#allSystems').prop("disabled", true);
-        $('div#systems input[type=checkbox]').each(function() {
-           this.checked = false;
-           $(this).prop("disabled", true);
-        });
+        // $('#allSystems').prop("disabled", true);
+        // $('div#systems input[type=checkbox]').each(function() {
+        //    $(this).prop("disabled", true);
+        // });
 
 
        //custom
@@ -278,5 +270,55 @@
             }
         });
         //custom
+
+
+        //Subject
+        var sub_id_select = document.getElementById("getIdSub");
+        function getSubjectValById(clicked) {
+            var getSubId = sub_id_select.innerHTML = clicked;
+            // console.log(getSubId);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            jQuery.ajax({
+              url: "{{ url('/get-sub-id') }}",
+              method: 'post',
+              data: {
+                 question_subject: getSubId
+              },
+              success: function(result){
+                 console.log(result);
+              }
+            });
+        }
+
+
+        //System
+        var sys_id_select = document.getElementById("getIdSys");
+        function getSystemValById(clicked) {
+            var sysid = clicked;
+            var clicked = sysid.slice(1, 5);
+            var getSysId = sys_id_select.innerHTML = clicked;
+            // console.log(getSysId);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            jQuery.ajax({
+              url: "{{ url('/get-sys-id') }}",
+              method: 'post',
+              data: {
+                 question_system: getSysId
+              },
+              success: function(result){
+                 console.log(result);
+              }
+            });
+        }
     </script>
 @stop
